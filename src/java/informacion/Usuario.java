@@ -20,6 +20,10 @@ public class Usuario {
         this.correo = correo;
     }
 
+    public Usuario(String matricula) {
+        this.matricula = matricula;
+    }
+
     public String getMatricula() {
         return matricula;
     }

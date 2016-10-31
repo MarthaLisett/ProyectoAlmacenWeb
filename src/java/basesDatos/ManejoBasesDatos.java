@@ -32,7 +32,7 @@ public class ManejoBasesDatos {
         }
     }
 
-    public boolean existe(Usuario user) {
+    public static boolean existe(Usuario user) {
         boolean existe = false;
 
         try {
@@ -51,7 +51,7 @@ public class ManejoBasesDatos {
         return existe;
     }
 
-    public void ObtenerInfoUsuario(Usuario user) {
+    public static void ObtenerInfoUsuario(Usuario user) {
         try {
             Statement statement = connection.createStatement();
             String matricula = user.getMatricula();
