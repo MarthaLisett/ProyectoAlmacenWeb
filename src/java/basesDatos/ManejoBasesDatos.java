@@ -31,17 +31,15 @@ public class ManejoBasesDatos {
             e.printStackTrace();
         }
     }
-    
-    public boolean existe(Usuario user){
-        
+
+    public boolean existe(Usuario user) {
         boolean existe = false;
-        
+
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT Matricula FROM alumno");
             while (result.next()) {
                 String matricula = result.getString(1);
-                
                 if (user.getMatricula().equals(matricula)) {
                     existe = !existe;
                 }
@@ -50,8 +48,24 @@ public class ManejoBasesDatos {
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return existe;
     }
 
+    public void ObtenerInfoUsuario(Usuario user) {
+        try {
+            Statement statement = connection.createStatement();
+            String matricula = user.getMatricula();
+            ResultSet infoAlumno = statement.executeQuery("SELECT Matricula, Nombre, ApellidoPaterno, ApellidoMaterno, Correo FROM mensajes where matricula ='" + matricula + "'");
+            while (infoAlumno.next()) {
+                String id = infoAlumno.getString(1);
+                String nombre = infoAlumno.getString(2);
+                String apellidoPat = infoAlumno.getString(3);
+                String apellidoMat = infoAlumno.getString(4);
+                String correo = infoAlumno.getString(5);
+            }
+            statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
