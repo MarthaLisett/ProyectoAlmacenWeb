@@ -55,7 +55,7 @@ public class ManejoBasesDatos {
         try {
             Statement statement = connection.createStatement();
             String matricula = user.getMatricula();
-            ResultSet infoAlumno = statement.executeQuery("SELECT Matricula, Nombre, ApellidoPaterno, ApellidoMaterno, Correo FROM mensajes where matricula ='" + matricula + "'");
+            ResultSet infoAlumno = statement.executeQuery("SELECT Matricula, Nombre, ApellidoPaterno, ApellidoMaterno, Correo FROM alumno where matricula ='" + matricula + "'");
             while (infoAlumno.next()) {
                 String id = infoAlumno.getString(1);
                 String nombre = infoAlumno.getString(2);
