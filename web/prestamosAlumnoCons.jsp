@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
 <body bgcolor="gray">
-    <h1> Prestamos de Material y Equipo a Alumnos</h1>
+    <h1> Prestamos de Consumibles a Alumnos</h1>
 <form>
 <table border="1" bgcolor="red">
 <tr>
@@ -37,14 +37,12 @@
 <table border="1" bgcolor="red">
 <tr>
 <td>  <input type="text" name="id" placeholder="ID">
-</td></td><td><textarea name="desc" placeholder="Descripcion" size="80" rows="5"></textarea></td>
+</td><td><textarea name="desc" placeholder="Descripcion" size="80" rows="5"></textarea></td>
 <td>  <input type="text" name="cantidad" placeholder="Cantidad">
 </td>
 <td>  <input type="text" name="marca" placeholder="Marca">
 </td>
 <td>  <input type="text" name="cant" placeholder="Cantidad">
-</td>
-<td>  <input type="text" name="estatus" value="prestamo" >
 </td>
 </tr>
 </table>
@@ -56,3 +54,4 @@
 </form>
 </body>
 </html>
+

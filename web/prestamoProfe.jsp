@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
 <body bgcolor="gray">
-    <h1> Prestamos de Material y Equipo a Alumnos</h1>
+    <h1> Prestamos de Material y Equipo a Profesores</h1>
 <form>
 <table border="1" bgcolor="red">
 <tr>
@@ -29,8 +29,6 @@
 <td>  <input type="text" name="correo" placeholder="Correo">
 </td>
 <td>  <input type="text" name="lab" placeholder="Laboratorio">
-</td>
-<td>  <input type="text" name="profe" placeholder="Profesor">
 </td>
 </tr>
 </table>
