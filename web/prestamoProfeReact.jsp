@@ -36,7 +36,7 @@
 <tr>
 <td>  <input type="text" name="id" placeholder="ID">
 </td></td><td><textarea name="desc" placeholder="Descripcion" size="80" rows="5"></textarea></td>
-<td>  <input type="text" name="cantidad" placeholder="Cantidad">
+<td>  <input type="text" name="cap" placeholder="Capacidad">
 </td>
 <td>  <input type="text" name="marca" placeholder="Marca">
 </td>
