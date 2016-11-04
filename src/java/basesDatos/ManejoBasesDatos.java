@@ -25,30 +25,28 @@ public class ManejoBasesDatos {
     public ManejoBasesDatos() {
         try {
 
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/mensajeria", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://10.12.172.100", "root", "");
+            //  connection = DriverManager.getConnection("jdbc:mysql://localhost/laboratorioqumica", "root", "");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static boolean existe(Usuario user) {
-        boolean existe = false;
+    public static String existe(Usuario user) {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT Matricula FROM alumno");
-            while (result.next()) {
-                String matricula = result.getString(1);
-                if (user.getMatricula().equals(matricula)) {
-                    existe = !existe;
-                }
+            ResultSet result = statement.executeQuery("SELECT Tipo FROM usuario WHERE Matricula = '" + user.getMatricula() + "'");
+            while (result.next()) {      
+                return result.getString(1);
             }
             statement.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return existe;
+
+        return "";
     }
 
     public static void ObtenerInfoUsuario(Usuario user) {

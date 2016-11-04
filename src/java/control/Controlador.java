@@ -37,13 +37,25 @@ public class Controlador extends HttpServlet {
         String nombre, apellidoP, apellidoM, correo;
          // Crear nuevo usuario
         Usuario usuario = new Usuario(matricula);
-        /*
-        if (ManejoBasesDatos.existe(usuario)){
-            // obtener nombre, apellidos y correo
+        
+        if (ManejoBasesDatos.existe(usuario).equals(usuario.getTipo())){
+            switch(usuario.getTipo()) {
+                case "Alumno":
+                    url = "menuAlumno.jsp";
+                    break;
+                case "Admin":
+                    url = "menuAdmin.jsp";
+                    break;
+                case "Profesor":
+                    url = "menuProfesor.jsp";
+                    break;
+                    default:
+                        url = "index.html";
+                    break;
+            }
         }
-       */
+       
         request.setAttribute("usuario", usuario);
-        url="/Informacion.jsp";
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
