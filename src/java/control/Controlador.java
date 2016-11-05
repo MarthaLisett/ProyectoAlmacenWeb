@@ -32,21 +32,43 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String url = "";
         String matricula = request.getParameter("matricula");
-        String nombre, apellidoP, apellidoM, correo;
+        String nombre, apellidoP, apellidoM, correo, tipo;
          // Crear nuevo usuario
         Usuario usuario = new Usuario(matricula);
-        /*
+        
+  
+        
+                       
         if (ManejoBasesDatos.existe(usuario)){
-            // obtener nombre, apellidos y correo
+            usuario.setTipo(ManejoBasesDatos.buscarTipo(usuario));
+           //usuario.setTipo("Alumno");
+            switch(usuario.getTipo()) {
+                case "alumno":
+                    url = "/prestamoProfe.jsp";
+                    break;
+                case "admin":
+                    url = "/prestamoProfe.jsp";
+                    break;
+                case "profesor":
+                    url = "/prestamoProfe.jsp";
+                    break;
+                    default:
+                        url = "/prestamosAlumno.jsp";
+                    break;
+            }
+        } else {
+            url = "/index.html";
         }
-       */
+       
         request.setAttribute("usuario", usuario);
-        url="/Informacion.jsp";
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
+        
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +83,13 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         processRequest(request, response);
+        
+        
+        
+        
     }
 
     /**

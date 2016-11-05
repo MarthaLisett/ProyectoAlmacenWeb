@@ -10,14 +10,15 @@ package informacion;
  * @author MarthaLisett
  */
 public class Usuario {
-    private String matricula, nombre, apellidoPaterno, apellidoMaterno, correo;
+    private String matricula, nombre, apellidoPaterno, apellidoMaterno, correo, tipo;
 
-    public Usuario(String matricula, String nombre, String apellidoPaterno, String apellidoMaterno, String correo) {
+    public Usuario(String matricula, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String tipo) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.correo = correo;
+        this.tipo = tipo;
     }
 
     public Usuario(String matricula) {
@@ -63,4 +64,13 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 }
