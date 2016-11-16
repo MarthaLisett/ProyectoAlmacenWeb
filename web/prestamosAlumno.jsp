@@ -151,7 +151,7 @@
                     <input placeholder="Observaciones" id="vale" name="observaciones" tabindex="16">
                 </label>
             </div>
-            
+            <button type="button" onclick="alert('Se a agregado el prestamos')">Agregar</button>
         </form>
     
     
