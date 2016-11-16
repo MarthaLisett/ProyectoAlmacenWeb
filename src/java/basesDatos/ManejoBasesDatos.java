@@ -54,10 +54,11 @@ public class ManejoBasesDatos {
     public static Boolean existe(Usuario user) {
         Boolean existe = false;
          try {
-            connection = DriverManager.getConnection("jdbc:mysql://10.15.249.224:3306/laboratorioquimica", "root", "");
-            //connection = DriverManager.getConnection("jdbc:mysql://localhost/laboratorioquimica","root", "");
+            //connection = DriverManager.getConnection("jdbc:mysql://10.15.249.224:3306/laboratorioquimica", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/labQuimica","root", "");
+            System.out.println("SELECT Matricula FROM usuarios");
              Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT Matricula FROM alumno");
+            ResultSet result = statement.executeQuery("SELECT Matricula FROM usuarios");
             while (result.next()) {
                 String matricula = result.getString(1);
                 if (user.getMatricula().equals(matricula)) {
@@ -71,14 +72,14 @@ public class ManejoBasesDatos {
         return existe;
      }
     
-    
+    // Se quitó el tipo de la tabla
     public static String buscarTipo(Usuario user) {
         String matricula = user.getMatricula();
         String tipo = "";
         try {
             Statement statement = connection.createStatement();
             
-            ResultSet result = statement.executeQuery("SELECT Tipo FROM usuario WHERE Matricula = '" + matricula + "'");
+            ResultSet result = statement.executeQuery("SELECT Tipo FROM usuarios WHERE Matricula = '" + matricula + "'");
             
             while (result.next()) {
                 tipo = result.getString(1);
@@ -91,8 +92,4 @@ public class ManejoBasesDatos {
         
          return tipo; 
     }
-
-
-
-
 }

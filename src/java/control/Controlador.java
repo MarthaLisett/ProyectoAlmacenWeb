@@ -41,7 +41,7 @@ public class Controlador extends HttpServlet {
         
   
         
-                       
+        System.out.println(matricula);
         if (ManejoBasesDatos.existe(usuario)){
             usuario.setTipo(ManejoBasesDatos.buscarTipo(usuario));
            //usuario.setTipo("Alumno");

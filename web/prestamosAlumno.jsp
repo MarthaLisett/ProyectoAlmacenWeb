@@ -3,7 +3,6 @@
     Created on : 2/11/2016, 08:41:42 AM
     Author     : Pedro
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,9 +11,9 @@
         <title>JSP Page</title>
         <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-        <link rel="stylesheet" type="text/css" media="all" href="../styles/styles.css">
-        <link rel="stylesheet" type="text/css" media="all" href="../styles/switchery.min.css">
-        <script type="text/javascript" src="../scripts/witchery.min.js"></script>
+        <link href="../src/java/style/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="../src/java/style/switchery.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../src/java/scripts/switchery.min.js" type="text/javascript"></script>
     </head>
 <body bgcolor="gray">
     
