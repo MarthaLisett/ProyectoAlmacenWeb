@@ -13,6 +13,10 @@
 <td><a href="porEntregar.jsp"><img src="../src/java/imagenes/porEntregar.png" alt="Por Entregar" style="width:304px;height:228px;"></td>
 <td><a href="porRegresar.jsp"><img src="../imagenes/porRegresar.png" alt="Por Regresar" style="width:304px;height:228px;"></td>
 </tr>
+<tr>
+<td><a href="agregarUsuarios.jsp"><img src="../imagenes/porEntregar.png" alt="Agregar Usuarios" style="width:304px;height:228px;"></td>
+<td><a href="borrarUsuarios.jsp"><img src="../imagenes/porEntregar.png" alt="Borrar Usuarios" style="width:304px;height:228px;"></td>
+</tr>
 </table>
 </body>
 </html>

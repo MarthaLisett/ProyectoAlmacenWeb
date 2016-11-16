@@ -52,5 +52,6 @@
 <tr>
 </table>
 </form>
+    <button type="button" onclick="alert('Se a agregado el prestamos')">Agregar</button>
 </body>
 </html>

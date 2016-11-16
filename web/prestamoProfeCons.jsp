@@ -49,6 +49,7 @@
 <td><textarea name="observ" placeholder="Observaciones" size="80" rows="5"></textarea></td>
 <tr>
 </table>
+   <button type="button" onclick="alert('Se a agregado el prestamos')">Agregar</button>
 </form>
 </body>
 </html>
