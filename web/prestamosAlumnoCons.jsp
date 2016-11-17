@@ -13,7 +13,7 @@
     </head>
 <body bgcolor="gray">
     <h1> Prestamos de Consumibles a Alumnos</h1>
-<form>
+<form action="ControladorFormas">
 <table border="1" bgcolor="red">
 <tr>
 <td> <input type="text" name="fecha" placeholder="Fecha">
@@ -50,8 +50,10 @@
 <tr>
 <td><textarea name="observ" placeholder="Observaciones" size="80" rows="5"></textarea></td>
 <tr>
+          <input type="hidden" name="tipo" value="Alumno2">
+
 </table>
 </form>
-    <button type="button" onclick="alert('Se a agregado el prestamos')">Agregar</button>
+    <button type="submit">Agregar</button>
 </body>
 </html>
