@@ -148,14 +148,13 @@ public class ManejoBasesDatos {
     }
 
     public static boolean insertarConsumible(Forma forma) {
-        
+       
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
                 return true;
-                INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
 
             }
 

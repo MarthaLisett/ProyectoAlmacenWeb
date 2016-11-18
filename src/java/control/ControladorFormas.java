@@ -7,7 +7,6 @@ package control;
 
 import informacion.Usuario;
 import basesDatos.ManejoBasesDatos;
-import static basesDatos.ManejoBasesDatos.insertarProfe;
 import informacion.Forma;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,6 +39,7 @@ public class ControladorFormas extends HttpServlet {
         String correo = request.getParameter("correo");
         String claveLab = request.getParameter("lab");
         String profe = request.getParameter("profe");
+        String id = request.getParameter("id");
         String descripcion = request.getParameter("desc");
         String capacidad = request.getParameter("cap");
         String marca = request.getParameter("marca");
@@ -49,7 +49,7 @@ public class ControladorFormas extends HttpServlet {
         String localizacion = request.getParameter("local");
         String tipo = request.getParameter("tipo");
         
-        Forma forma1 = new Forma(fecha, vale, usuario, correo, claveLab, profe, descripcion,
+        Forma forma1 = new Forma(id, fecha, vale, usuario, correo, claveLab, profe, descripcion,
          capacidad, marca, cantidad, status, observaciones, localizacion);
         String url="";
         /*if(tipo.equals("Profesor")){

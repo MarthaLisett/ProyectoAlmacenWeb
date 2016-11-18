@@ -78,14 +78,6 @@ public class Forma {
         return marca;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public String getCant() {
         return cant;
     }
