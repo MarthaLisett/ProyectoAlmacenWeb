@@ -11,9 +11,9 @@
         <title>JSP Page</title>
         <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
-        <link href="../src/java/style/styles.css" rel="stylesheet" type="text/css"/>
-        <link href="../src/java/style/switchery.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../src/java/scripts/switchery.min.js" type="text/javascript"></script>
+        <link href="style/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
+        <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
 <body bgcolor="gray">
     

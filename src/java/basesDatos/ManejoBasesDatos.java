@@ -95,7 +95,8 @@ public class ManejoBasesDatos {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = statement.executeQuery("INSERT INTO Equipo" + 
+                    " * * * nombres de atributos***" + "VALUES ("+ " ***forma.todo * * * " );
             while (result.next()) {
                 statement.close();
 
@@ -113,8 +114,8 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = null;
+//            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
 
@@ -132,8 +133,8 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+             ResultSet result = null;
+          //  ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
 
@@ -151,8 +152,8 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = null;
+        //   ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
 
@@ -170,8 +171,8 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = null;
+        //    ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
 
