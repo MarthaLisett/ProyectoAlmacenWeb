@@ -19,7 +19,7 @@
     
     
     <h1> Prestamos de Material y Equipo a Alumnos</h1>
-<form>
+<form action="ControladorFormas">
     <div class="col-4"></div>  
             <div class="col-4"></div> 
 
@@ -148,9 +148,10 @@
                 <label>
                     Observaciones
                     <input placeholder="Observaciones" id="vale" name="observaciones" tabindex="16">
+                          <input type="hidden" name="tipo" value="Alumno">
                 </label>
             </div>
-            <button type="button" onclick="alert('Se a agregado el prestamos')">Agregar</button>
+            <button type="submit">Agregar</button>
         </form>
     
     
