@@ -10,6 +10,7 @@ package informacion;
  * @author Pedro
  */
 public class Forma {
+    String id;
     String fecha;
     String vale;
     String usuario;
@@ -24,7 +25,8 @@ public class Forma {
     String obs;
     String local;
 
-    public Forma(String fecha, String vale, String usuario, String correo, String claveLab, String profe, String desc, String cap, String marca, String cant, String status, String obs, String local) {
+    public Forma(String id, String fecha, String vale, String usuario, String correo, String claveLab, String profe, String desc, String cap, String marca, String cant, String status, String obs, String local) {
+        this.id = id;
         this.fecha = fecha;
         this.vale = vale;
         this.usuario = usuario;
@@ -74,6 +76,14 @@ public class Forma {
 
     public String getMarca() {
         return marca;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getCant() {

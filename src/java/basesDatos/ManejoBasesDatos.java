@@ -53,7 +53,7 @@ public class ManejoBasesDatos {
         Boolean existe = false;
         try {
             //connection = DriverManager.getConnection("jdbc:mysql://10.15.249.224:3306/laboratorioquimica", "root", "");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/labQuimica", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
             System.out.println("SELECT Matricula FROM usuarios");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT Matricula FROM usuarios");
@@ -91,12 +91,11 @@ public class ManejoBasesDatos {
         return tipo;
     }
 
-    public static boolean insertarProfe(Forma forma) {
+    public static boolean insertarEquipo(Forma forma) {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" + 
-                    " * * * nombres de atributos***" + "VALUES ("+ " ***forma.todo * * * " );
+            ResultSet result = statement.executeQuery("INSERT INTO Equio"  );
             while (result.next()) {
                 statement.close();
 
@@ -110,7 +109,7 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarProfe2(Forma forma) {
+    public static boolean insertarMaterial(Forma forma) {
 
         try {
             Statement statement = connection.createStatement();
@@ -129,7 +128,7 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarProfe3(Forma forma) {
+    public static boolean insertarReactivo(Forma forma) {
 
         try {
             Statement statement = connection.createStatement();
@@ -148,16 +147,15 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarAlumno(Forma forma) {
-
+    public static boolean insertarConsumible(Forma forma) {
+        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = null;
-        //   ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
             while (result.next()) {
                 statement.close();
-
                 return true;
+                INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
 
             }
 
@@ -167,22 +165,4 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarAlumno2(Forma forma) {
-
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet result = null;
-        //    ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
-            while (result.next()) {
-                statement.close();
-
-                return true;
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
 }

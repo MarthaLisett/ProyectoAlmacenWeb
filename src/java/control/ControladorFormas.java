@@ -52,7 +52,7 @@ public class ControladorFormas extends HttpServlet {
         Forma forma1 = new Forma(fecha, vale, usuario, correo, claveLab, profe, descripcion,
          capacidad, marca, cantidad, status, observaciones, localizacion);
         String url="";
-        if(tipo.equals("Profesor")){
+        /*if(tipo.equals("Profesor")){
             //guardar base de datos de material y equipo
             if(ManejoBasesDatos.insertarProfe(forma1)){
                 url= "exito.jsp";
@@ -79,7 +79,7 @@ public class ControladorFormas extends HttpServlet {
             }
         }else{
             url = "/error.jsp";
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
