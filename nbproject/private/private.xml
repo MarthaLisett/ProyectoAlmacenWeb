@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/login1muestra.jsp</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/index.html</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/loginMuestra.jsp</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamoProfeCons.jsp</file>
             <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/MenuAlumno.jsp</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/Informacion.jsp</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/MenuAdmin.jsp</file>
             <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/basesDatos/ManejoBasesDatos.java</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/Controlador.java</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/ControladorFormas.java</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamosAlumno.jsp</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/ControladorLlenado.java</file>
         </group>
     </open-files>
 </project-private>

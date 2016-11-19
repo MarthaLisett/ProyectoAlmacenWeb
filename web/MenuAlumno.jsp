@@ -11,24 +11,24 @@
 <h1>Menu principal Alumno</h1>
 <table border="1" cellspacing="10">
 <tr>
-<td><a href="controladorLlenado"></td>
 
-<p>El usuario es: ${usuario.getMatricula()} </p>
-
+<td>
 <form action="ControladorLlenado" name="someForm">
 <a href="#" onclick="document.someForm.submit();"><img src="imagenes/rentaMaterial.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 <input type="hidden" name="destino" value="prestamosAlumno.jsp">
 </form>
+</td>
 
-
+<td>
 <form action="ControladorLlenado" name="someForm2">
 <a href="#" onclick="document.someForm2.submit();"><img src="imagenes/rentaEquipo.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 <input type="hidden" name="destino" value="prestamosAlumnoCons.jsp"> 
 </form>
-
+</td>
 </tr>
+
 </table>
 </body>
 </html>

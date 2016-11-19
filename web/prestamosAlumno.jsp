@@ -17,7 +17,7 @@
     </head>
 <body bgcolor="gray">
     
-    
+
     <h1> Prestamos de Material y Equipo a Alumnos</h1>
 <form action="ControladorFormas">
     <div class="col-4"></div>  
@@ -26,7 +26,8 @@
             <div class="col-4">
                 <label>
                     Fecha
-                    <input placeholder="Fecha" type="date" id="fecha" name="fecha" tabindex="1">
+                    <input placeholder="Fecha" type="date" id="fecha" name="fecha" tabindex="1"
+                           value="${fecha}">
                 </label>
             </div>
             <div class="col-4">
@@ -39,20 +40,23 @@
             <div class="col-3">
                 <label>
                     Matrícula
-                    <input placeholder="Matrícula" id="vale" name="matricula" tabindex="3">
+                    <input placeholder="Matrícula" id="vale" name="matricula" tabindex="3"
+                           value="${usuario.getMatricula().toUpperCase()}">
                 </label>
             </div>        
             <div class="col-3">
                 <label>
                     Nombre
-                    <input placeholder="Nombre" id="vale" name="nombre" tabindex="4">
+                    <input placeholder="Nombre" id="vale" name="nombre" tabindex="4"
+                            value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
                 </label>
             </div>
 
             <div class="col-3">
                 <label>
                     Correo
-                    <input placeholder="Correo" id="vale" name="correo" tabindex="5">
+                    <input placeholder="Correo" id="vale" name="correo" tabindex="5"
+                            value="${usuario.getCorreo()}">
                 </label>
             </div>
 

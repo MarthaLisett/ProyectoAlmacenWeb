@@ -39,6 +39,8 @@ public class ManejoBasesDatos {
 
     private static Connection connection;
 
+    
+    // TODO: esto es necesario?
     public ManejoBasesDatos() {
         try {
 
@@ -49,13 +51,42 @@ public class ManejoBasesDatos {
         }
     }
 
+    public static void iniciarConexion() throws SQLException {
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
+        System.out.println("conexion iniciada");
+    }
+    
+    public static StringBuilder obtenerDatos(String matricula) throws SQLException {
+         StringBuilder resultado = new StringBuilder();
+         
+         Statement statement = connection.createStatement();
+         String query = "SELECT * FROM usuarios WHERE Matricula = '" +
+                 matricula + "'"; 
+         
+         ResultSet result = statement.executeQuery(query);
+         
+         while(result.next()) {
+             resultado.append(result.getString(1));
+             resultado.append("-");
+             resultado.append(result.getString(2));
+             resultado.append("-");
+             resultado.append(result.getString(3));
+             resultado.append("-");
+             resultado.append(result.getString(4));
+             resultado.append("-");
+             resultado.append(result.getString(5));
+             resultado.append("-");
+         }
+        
+         System.out.println("resultado:" + resultado);
+         
+        return resultado;
+    }
+    
+    
     public static Boolean existe(Usuario user) {
         Boolean existe = false;
         try {
-            //connection = DriverManager.getConnection("jdbc:mysql://10.15.249.224:3306/laboratorioquimica", "root", "");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
-            
-            System.out.println("SELECT Matricula FROM usuarios");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT Matricula FROM usuarios");
             while (result.next()) {
