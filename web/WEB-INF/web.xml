@@ -4,10 +4,25 @@
         <servlet-name>Controlador</servlet-name>
         <servlet-class>control.Controlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorLlenado</servlet-name>
+        <servlet-class>control.ControladorLlenado</servlet-class>
+    </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>ControladorLlenado</servlet-name>
+        <url-pattern>/ControladorLlenado</url-pattern>
+    </servlet-mapping>
+    
+    
+    
     <session-config>
         <session-timeout>
             30

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MarthaLisett
  */
-public class Controlador extends HttpServlet {
+public class ControladorLlenado extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,26 +30,26 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "";
+        String url = "/prestamosAlumnoCons.jsp";
         String matricula = request.getParameter("matricula");
+         String destino = request.getParameter("destino");
          // Crear nuevo usuario
-        matricula = matricula.toLowerCase();
-        System.out.println(matricula);
-        Usuario usuario = new Usuario(matricula.toLowerCase());
-
+  
+         url = "/" + destino;
+         Usuario usuario = new Usuario(matricula);
+/*
         if (ManejoBasesDatos.existe(usuario)){
            // Checar que tipo de usuario es para darle acceso
            String mat = usuario.getMatricula().substring(0,1);
-           mat = mat.toLowerCase();
            if (usuario.getMatricula().equals("adminquimica")){
                url = "/MenuAdmin.jsp";
            }
            else{
             switch(mat) {
-                case "a":
+                case "A":
                     url = "/MenuAlumno.jsp";
                     break;
-                case "l":
+                case "L":
                     url = "/MenuProfesor.jsp";
                     break;
                     default:
@@ -60,7 +60,7 @@ public class Controlador extends HttpServlet {
         } else {
             url = "/index.html";
         }
-       
+       */
         request.setAttribute("usuario", usuario);
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);

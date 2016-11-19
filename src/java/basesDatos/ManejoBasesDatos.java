@@ -54,6 +54,7 @@ public class ManejoBasesDatos {
         try {
             //connection = DriverManager.getConnection("jdbc:mysql://10.15.249.224:3306/laboratorioquimica", "root", "");
             connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
+            
             System.out.println("SELECT Matricula FROM usuarios");
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT Matricula FROM usuarios");
