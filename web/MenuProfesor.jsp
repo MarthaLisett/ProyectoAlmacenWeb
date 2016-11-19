@@ -14,6 +14,7 @@
 <td><a href="prestamoProfe.jsp"><img src="../imagenes/rentaEquipo.jpg" alt="Rentar Equipo y Material" style="width:304px;height:228px;"></td>
 <td><a href="prestamoProfeCons.jsp"><img src="../imagenes/rentaMaterial.jpg" alt="Rentar Consumibles " style="width:304px;height:228px;"></td>
 <td><a href="prestamoProfeReact.jsp"><img src="../imagenes/rentarReacctivos.jpg" alt="Rentar Reactivos" style="width:304px;height:228px;"></td>
+<td><a href="prestamoProfeReact.jsp"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;"></td>
 </tr>
 </table>
 </body>

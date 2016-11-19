@@ -5,7 +5,13 @@
  */
 package basesDatos;
 
+import informacion.Consumible;
+import informacion.Equipo;
 import informacion.Forma;
+import informacion.Laboratorio;
+import informacion.Material;
+import informacion.Profesor;
+import informacion.Reactivo;
 import informacion.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -123,11 +129,28 @@ public class ManejoBasesDatos {
         return tipo;
     }
 
-    public static boolean insertarEquipo(Forma forma) {
+    public static boolean insertarEquipo(Equipo eq) {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("INSERT INTO Equio"  );
+            ResultSet result = statement.executeQuery("INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES (eq.getId(), eq.getNombre(), eq.getMarca(), eq.getInventario(), eq.getLocalizacion(), eq.getDisponibilidad())");
+            while (result.next()) {
+                statement.close();
+                return true;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public static boolean insertarMaterial(Material mat) {
+
+        try {
+            Statement statement = connection.createStatement();
+           ResultSet result = statement.executeQuery("INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (mat.getId(), mat.getNombre(), mat.getMarca(), mat.getLocalizacion(), mat.getCapacidad(), mat.getDisponibilidad())");
             while (result.next()) {
                 statement.close();
 
@@ -141,15 +164,13 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarMaterial(Forma forma) {
+    public static boolean insertarReactivo(Reactivo react) {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = null;
-//            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+          ResultSet result = statement.executeQuery("INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (react.getId(), react.getNombre(), react.getMarca(), react.getPresentacion(), react.getContenido(), react.getLocalizacion(), react.getDisponibilidad())");
             while (result.next()) {
                 statement.close();
-
                 return true;
 
             }
@@ -160,17 +181,13 @@ public class ManejoBasesDatos {
         return false;
     }
 
-    public static boolean insertarReactivo(Forma forma) {
-
+    public static boolean insertarConsumible(Consumible cons) {
         try {
             Statement statement = connection.createStatement();
-             ResultSet result = null;
-          //  ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = statement.executeQuery("INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES(cons.getId(), cons.getNombre(), cons.getMarca(), cons.getPresentacion(), cons.getContenido(), cons.getLocalizacion(), cons.getDisponibilidad())");
             while (result.next()) {
                 statement.close();
-
                 return true;
-
             }
 
         } catch (SQLException ex) {
@@ -178,22 +195,157 @@ public class ManejoBasesDatos {
         }
         return false;
     }
-
-    public static boolean insertarConsumible(Forma forma) {
-       /*
+    public static boolean insertarPrestado(Forma forma) {
+       
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
+            ResultSet result = statement.executeQuery("INSERT INTO `prestado`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
             while (result.next()) {
                 statement.close();
                 return true;
-
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         return false;
     }
+    public static boolean insertarPedido(Forma forma) {
+       
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("INSERT INTO `pedido`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
+            while (result.next()) {
+                statement.close();
+                return true;
+            }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public static boolean insertarReporte(Forma forma) {
+       
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("INSERT INTO `totales`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
+            while (result.next()) {
+                statement.close();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public static boolean insertarLab(Laboratorio lab) {
+       
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES (lab.getNombre(), lab.getClave())");
+            while (result.next()) {
+                statement.close();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public static boolean insertarProfe(Profesor profe) {
+       
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("INSERT INTO `profesor`(`Nombre`, `Correo`) VALUES (profe.getNombre(), profe.getCorreo())");
+            while (result.next()) {
+                statement.close();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+        public static boolean modif(Forma form, String tipo) {
+            //agarro la dispobinibilidad actual del inventario
+            String disp = "";
+            try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT Disponibilidad FROM `tipo` WHERE ID = forma.getId()");
+            while (result.next()) {
+                disp = result.getString(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            //checo que haya suficientes
+        int iDisp = Integer.parseInt(disp);
+        int iCant = Integer.parseInt(form.getCant());
+        iDisp = iDisp-iCant;
+        //si no hay, regreso falso para fallar
+        if(iDisp<0){
+            return false;
+        }else{
+            //si si hay, inserto la nueva dipobilidad en el inventario
+            disp = Integer.toString(iDisp);
+         try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("INSERT INTO `tipo`(`Disponibilidad`) VALUES (disp)");
+            while (result.next()) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+        }
+            
+         return false;
+        }
+       public static String[][] leerReportes() {
+       //saco el total de registros
+        int cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM totales");
+            while (result.next()) {
+            cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //matriz para guardar los registros
+           String[][] reporte = new String[cont][11];
+           cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM totales");
+            while (result.next()) {
+                //leolos registros y los guardo cada uno en un renglon de la matriz
+            reporte[cont][0] = result.getString(1);
+            reporte[cont][1] = result.getString(2);
+            reporte[cont][2] = result.getString(3);
+            reporte[cont][3] = result.getString(4);
+            reporte[cont][4] = result.getString(5);
+            reporte[cont][5] = result.getString(6);
+            reporte[cont][6] = result.getString(7);
+            reporte[cont][7] = result.getString(8);
+            reporte[cont][8] = result.getString(9);
+            reporte[cont][9] = result.getString(10);
+            reporte[cont][10] = result.getString(11);
+            cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //regreso reporte completo
+        return reporte;
+       }
 }

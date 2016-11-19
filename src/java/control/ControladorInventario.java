@@ -7,7 +7,13 @@ package control;
 
 import informacion.Usuario;
 import basesDatos.ManejoBasesDatos;
+import informacion.Consumible;
+import informacion.Equipo;
 import informacion.Forma;
+import informacion.Laboratorio;
+import informacion.Material;
+import informacion.Profesor;
+import informacion.Reactivo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MarthaLisett
  */
-public class ControladorFormas extends HttpServlet {
+public class ControladorInventario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,38 +39,57 @@ public class ControladorFormas extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //tomo todos los valores que puede hbaer en una forma
-        String fecha = request.getParameter("fecha");
-        String vale = request.getParameter("vale");
-        String usuario = request.getParameter("usuario");
-        String correo = request.getParameter("correo");
-        String claveLab = request.getParameter("lab");
-        String profe = request.getParameter("profe");
         String id = request.getParameter("id");
-        String descripcion = request.getParameter("desc");
-        String capacidad = request.getParameter("cap");
+        String nombre = request.getParameter("nombre");
         String marca = request.getParameter("marca");
-        String cantidad = request.getParameter("cant");
-        String status = request.getParameter("status");
-        String observaciones = request.getParameter("observ");
-        String localizacion = request.getParameter("local");
+        String presentacion = request.getParameter("presentacion");
+        String contenido = request.getParameter("contenido");
+        String localizacion = request.getParameter("localizacion");
+        String disponibilidad = request.getParameter("disponibilidad");
+        String inventario = request.getParameter("inventario");
+        String clave = request.getParameter("clave");
+        String correo = request.getParameter("correo");
+        String capacidad = request.getParameter("capacidad");
         String tipo = request.getParameter("tipo");
-        //creo la forma con los valores
-        Forma forma1 = new Forma(id, fecha, vale, usuario, correo, claveLab, profe, descripcion,
-         capacidad, marca, cantidad, status, observaciones, localizacion);
-        //creo el url de que algo salio mal
+        //url de que algo fallo
         String url="fallo.jsp";
-        //si se puede modificar la base de datos
-        if(ManejoBasesDatos.modif(forma1, tipo)){
-            //inserto la forma en el registro de pedidos
-        ManejoBasesDatos.insertarPedido(forma1);
-        //el url es ahora de exito
+        //si es material, hago un material nuevo, lo inserto en la base de datos y su un exito
+        if(tipo.equals("material")){
+            Material mat = new Material(id, nombre, marca, localizacion, capacidad, disponibilidad);
+            ManejoBasesDatos.insertarMaterial(mat);
+             url="exito.jsp";
+        //si es reactivo, hago un reactivo nuevo, lo inserto en la base de datos y su un exito
+        }else if(tipo.equals("reactivo")){
+            Reactivo reac = new Reactivo(id, nombre, marca, presentacion, contenido, localizacion, disponibilidad);
+            ManejoBasesDatos.insertarReactivo(reac);
+             url="exito.jsp";
+        //si es consumible, hago un consumible nuevo, lo inserto en la base de datos y su un exito
+        }else if(tipo.equals("consumible")){
+            Consumible cons = new Consumible(id, nombre, marca, presentacion, contenido, localizacion, disponibilidad);
+            ManejoBasesDatos.insertarConsumible(cons);
+             url="exito.jsp";
+        //si es equipo, hago un equipo nuevo, lo inserto en la base de datos y su un exito
+        }else if(tipo.equals("equipo")){
+            Equipo  eq = new Equipo(id, nombre, marca, inventario, localizacion, disponibilidad);
+            ManejoBasesDatos.insertarEquipo(eq);
+             url="exito.jsp";
+        //si es profesor, hago un profesor nuevo, lo inserto en la base de datos y su un exito
+        }else if(tipo.equals("profesor")){
+            Profesor profe = new Profesor(nombre, correo);
+            ManejoBasesDatos.insertarProfe(profe);
+            url="exito.jsp";
+        //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
+        }else if(tipo.equals("laboratorio")){
+            Laboratorio lab = new Laboratorio(nombre, clave);
+            ManejoBasesDatos.insertarLab(lab);
              url="exito.jsp";
         }
-        //me voy al url
-          RequestDispatcher dispatcher
+         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
+       
+        
+        
         /*if(tipo.equals("Profesor")){
             //guardar base de datos de material y equipo
             if(ManejoBasesDatos.insertarProfe(forma1)){

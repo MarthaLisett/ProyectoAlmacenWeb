@@ -27,6 +27,14 @@
 <input type="hidden" name="destino" value="prestamosAlumnoCons.jsp"> 
 </form>
 </td>
+
+<td>
+<form action="ControladorLlenado" name="someForm">
+<a href="#" onclick="document.someForm.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
+<input type="hidden" name="usuario" value="${usuario.getMatricula()}">
+<input type="hidden" name="destino" value="prestamosAlumno.jsp">
+</form>
+</td>
 </tr>
 
 </table>
