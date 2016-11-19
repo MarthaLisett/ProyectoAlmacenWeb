@@ -148,7 +148,7 @@ public class ManejoBasesDatos {
     }
 
     public static boolean insertarConsumible(Forma forma) {
-       
+       /*
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("INSERT INTO Equipo" * * * nombres de atributos*** "VALUES (" ***forma.todo * * * ")";
@@ -160,7 +160,7 @@ public class ManejoBasesDatos {
 
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         return false;
     }
 

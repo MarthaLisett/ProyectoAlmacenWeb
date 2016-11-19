@@ -39,26 +39,27 @@ public class Controlador extends HttpServlet {
          // Crear nuevo usuario
         Usuario usuario = new Usuario(matricula);
         
-  
-        
         System.out.println(matricula);
         if (ManejoBasesDatos.existe(usuario)){
             usuario.setTipo(ManejoBasesDatos.buscarTipo(usuario));
-           //usuario.setTipo("Alumno");
-            switch(usuario.getTipo()) {
-                case "alumno":
-                    url = "/prestamoProfe.jsp";
+           // Checar que tipo de usuario es para darle acceso
+           String mat = usuario.getMatricula().substring(0,1);
+           if (usuario.getMatricula().equals("adminquimica")){
+               url = "/MenuAdmin.jsp";
+           }
+           else{
+            switch(mat) {
+                case "A":
+                    url = "/MenuAlumno.jsp";
                     break;
-                case "admin":
-                    url = "/prestamoProfe.jsp";
-                    break;
-                case "profesor":
-                    url = "/prestamoProfe.jsp";
+                case "L":
+                    url = "/MenuProfesor.jsp";
                     break;
                     default:
-                        url = "/prestamosAlumno.jsp";
+                        url = "/index.html";
                     break;
             }
+           }
         } else {
             url = "/index.html";
         }
