@@ -9,14 +9,82 @@ and open the template in the editor.
         <title>Préstamo Almacén Química</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: #E0E6F8;
+                font-family: "Roboto", sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            form {
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 300px;
+                margin: 0 auto 100px;
+                padding: 30px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+                text-align: center;
+            }
+            input {
+                outline: 0;
+                background: #E0E6F8;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                padding: 15px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }
+            .button {
+                outline: 0;
+                background: #848484;
+                width: 100%;
+                border: 0;
+                padding: 15px;
+                border-top-left-radius: 3px;
+                border-top-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }
+            .thumbnail {
+                background: #848484;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 30px;
+                padding: 27px 30px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%;
+                border-bottom-left-radius: 100%;
+                border-bottom-right-radius: 100%;
+                box-sizing: border-box;
+            }
+            .thumbnail img {
+                display: block;
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
-        <h1>Préstamo Almacén Química</h1>
+        <h1 align="center">Préstamo Almacén Química</h1>
         <form action="Controlador">
-            <h1>Ingresa tu Matrícula</h1><br><br>
-            Matricula: <input type="text" name="matricula"><br>
+            <h1>Ingresa tu Matrícula</h1><br>
+            <div class="thumbnail"><img src="imagenes/Logo.png"/></div>
+            <input type="text" name="matricula" placeholder="Matrícula"><br>
             <br>
-            <input type="submit" name="submit" value="Ingresar">
+            <input class="button" type="submit" name="submit" value="Ingresar">
         </form>
     </body>
 </html>
