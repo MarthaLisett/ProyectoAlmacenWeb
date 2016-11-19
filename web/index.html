@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Referencia para el css = https://colorlib.com/wp/html5-and-css3-login-forms/
 -->
 <html>
     <head>
@@ -22,7 +20,7 @@ and open the template in the editor.
                 background: #FFFFFF;
                 max-width: 300px;
                 margin: 0 auto 100px;
-                padding: 30px;
+                padding: 10px 30px 10px 30px;
                 border-top-left-radius: 3px;
                 border-top-right-radius: 3px;
                 border-bottom-left-radius: 3px;
@@ -75,16 +73,23 @@ and open the template in the editor.
                 display: block;
                 width: 100%;
             }
+            .message {
+                margin: 15px 0 0;
+                color: #b3b3b3;
+                font-size: 12px;
+            }
         </style>
     </head>
     <body>
-        <h1 align="center">Préstamo Almacén Química</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 10px; color:#FFFFFF; border-radius: 5px" align="center">
+            Préstamo Almacén Química</h1>
         <form action="Controlador">
             <h1>Ingresa tu Matrícula</h1><br>
             <div class="thumbnail"><img src="imagenes/Logo.png"/></div>
             <input type="text" name="matricula" placeholder="Matrícula"><br>
             <br>
             <input class="button" type="submit" name="submit" value="Ingresar">
+            <p class="message">Tecnológico de Monterrey</p>
         </form>
     </body>
 </html>
