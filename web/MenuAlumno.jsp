@@ -16,7 +16,7 @@
 <form action="ControladorLlenado" name="someForm">
 <a href="#" onclick="document.someForm.submit();"><img src="imagenes/rentaMaterial.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-<input type="hidden" name="destino" value="prestamosAlumno.jsp">
+<input type="hidden" name="destino" value="prestamosAlumnoMaterial.jsp">
 </form>
 </td>
 
@@ -24,15 +24,14 @@
 <form action="ControladorLlenado" name="someForm2">
 <a href="#" onclick="document.someForm2.submit();"><img src="imagenes/rentaEquipo.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-<input type="hidden" name="destino" value="prestamosAlumnoCons.jsp"> 
+<input type="hidden" name="destino" value="prestamosAlumnoEquipo.jsp"> 
 </form>
 </td>
 
 <td>
 <form action="ControladorLlenado" name="someForm3">
-<a href="#" onclick="document.someForm3.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
+<a href="index.html" onclick="document.someForm3.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-<input type="hidden" name="destino" value="prestamosAlumno.jsp">
 </form>
 </td>
 </tr>

@@ -40,59 +40,38 @@ public class ControladorFormas extends HttpServlet {
         String correo = request.getParameter("correo");
         String claveLab = request.getParameter("lab");
         String profe = request.getParameter("profe");
+        
+        // TODO: modificar sistema de id
         String id = request.getParameter("id");
-        String descripcion = request.getParameter("desc");
+        String cantidad = request.getParameter("cantidad2");
+        String descripcion = request.getParameter("descripcion1");
+        
         String capacidad = request.getParameter("cap");
         String marca = request.getParameter("marca");
-        String cantidad = request.getParameter("cant");
         String status = request.getParameter("status");
         String observaciones = request.getParameter("observ");
         String localizacion = request.getParameter("local");
         String tipo = request.getParameter("tipo");
+        
         //creo la forma con los valores
-        Forma forma1 = new Forma(id, fecha, vale, usuario, correo, claveLab, profe, descripcion,
+        Forma forma1 = new Forma("1", fecha, vale, usuario, correo, claveLab, profe, descripcion,
          capacidad, marca, cantidad, status, observaciones, localizacion);
         //creo el url de que algo salio mal
         String url="fallo.jsp";
         //si se puede modificar la base de datos
         if(ManejoBasesDatos.modif(forma1, tipo)){
             //inserto la forma en el registro de pedidos
-        ManejoBasesDatos.insertarPedido(forma1);
+            ManejoBasesDatos.insertarPedido(forma1);
         //el url es ahora de exito
              url="exito.jsp";
         }
+        
+        url = "/exito.jsp";
         //me voy al url
-          RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-        /*if(tipo.equals("Profesor")){
-            //guardar base de datos de material y equipo
-            if(ManejoBasesDatos.insertarProfe(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Profesor2")){
-            //consumibles
-            if(ManejoBasesDatos.insertarProfe2(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Profesor3")){
-            //reactivos
-            if(ManejoBasesDatos.insertarProfe3(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Alumno")){
-            //material
-            if(ManejoBasesDatos.insertarAlumno(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Alumno2")){
-            //consumibles
-            if(ManejoBasesDatos.insertarAlumno2(forma1)){
-                url= "exito.jsp";
-            }
-        }else{
-            url = "/error.jsp";
-        }*/
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

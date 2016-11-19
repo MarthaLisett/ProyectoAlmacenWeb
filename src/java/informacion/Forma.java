@@ -93,6 +93,10 @@ public class Forma {
     public String getLocal() {
         return local;
     }
+    
+    public String getId() {
+        return id;
+    }
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
@@ -146,7 +150,9 @@ public class Forma {
         this.local = local;
     }
 
-
+    public void setId(String id) {
+        this.id = id;
+    }
 
 }
         

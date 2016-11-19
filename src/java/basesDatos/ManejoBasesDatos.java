@@ -31,6 +31,7 @@ import java.util.logging.Logger;
 import informacion.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -172,9 +173,7 @@ public class ManejoBasesDatos {
             while (result.next()) {
                 statement.close();
                 return true;
-
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -270,44 +269,59 @@ public class ManejoBasesDatos {
         }
         return false;
     }
-        public static boolean modif(Forma form, String tipo) {
-            //agarro la dispobinibilidad actual del inventario
-            String disp = "";
-            try {
+    /*
+    *
+    *
+    */
+    public static boolean modif(Forma form, String tipo) {
+        //agarro la dispobinibilidad actual del inventario
+        String disp =  "";
+        String tabla = "";
+        String query = "";
+        
+        if(tipo.equals("alumnoMaterial")) {
+            tabla = "material";
+        } else {
+            tabla = "equipo";
+        }
+        try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT Disponibilidad FROM `tipo` WHERE ID = forma.getId()");
+            query = "SELECT Disponibilidad FROM " + tabla + 
+                    " WHERE Id = '" + form.getId() + "'";
+            ResultSet result = statement.executeQuery(query);
             while (result.next()) {
                 disp = result.getString(1);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-            //checo que haya suficientes
+        //checo que haya suficientes
         int iDisp = Integer.parseInt(disp);
         int iCant = Integer.parseInt(form.getCant());
-        iDisp = iDisp-iCant;
+        iDisp = iDisp - iCant;
         //si no hay, regreso falso para fallar
-        if(iDisp<0){
+        if(iDisp < 0) {
             return false;
-        }else{
+        } else {
             //si si hay, inserto la nueva dipobilidad en el inventario
-            disp = Integer.toString(iDisp);
-         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `tipo`(`Disponibilidad`) VALUES (disp)");
-            while (result.next()) {
-                return true;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+            try {
+                query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setInt   (1, iDisp);
+                preparedStmt.setString(2, form.getDesc());
+                preparedStmt.executeUpdate();
+                
+                if (preparedStmt.executeUpdate() == 1) {
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }   
         }
-            
          return false;
-        }
-       public static String[][] leerReportes() {
+    }
+    
+    public static String[][] leerReportes() {
        //saco el total de registros
         int cont = 0;
         try {
@@ -328,18 +342,18 @@ public class ManejoBasesDatos {
             ResultSet result = statement.executeQuery("SELECT * FROM totales");
             while (result.next()) {
                 //leolos registros y los guardo cada uno en un renglon de la matriz
-            reporte[cont][0] = result.getString(1);
-            reporte[cont][1] = result.getString(2);
-            reporte[cont][2] = result.getString(3);
-            reporte[cont][3] = result.getString(4);
-            reporte[cont][4] = result.getString(5);
-            reporte[cont][5] = result.getString(6);
-            reporte[cont][6] = result.getString(7);
-            reporte[cont][7] = result.getString(8);
-            reporte[cont][8] = result.getString(9);
-            reporte[cont][9] = result.getString(10);
-            reporte[cont][10] = result.getString(11);
-            cont++;
+                reporte[cont][0] = result.getString(1);
+                reporte[cont][1] = result.getString(2);
+                reporte[cont][2] = result.getString(3);
+                reporte[cont][3] = result.getString(4);
+                reporte[cont][4] = result.getString(5);
+                reporte[cont][5] = result.getString(6);
+                reporte[cont][6] = result.getString(7);
+                reporte[cont][7] = result.getString(8);
+                reporte[cont][8] = result.getString(9);
+                reporte[cont][9] = result.getString(10);
+                reporte[cont][10] = result.getString(11);
+                cont++;
             }
 
         } catch (SQLException ex) {
