@@ -6,8 +6,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-        <style>
-                body{
+    <style>
+        body{
             background-color: #E0E6F8;
             font-family: "Roboto", sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -45,32 +45,61 @@
             display:block;
             text-align: center;
         }
-</style>        
-<body>
- <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Menu Principal</h1>
-<a href="porEntregar.jsp">
-    <img src="../src/java/imagenes/porEntregar.png" alt="Por Entregar" style="width:304px;height:228px;">
-<a href="porRegresar.jsp">
-    <img src="../imagenes/porRegresar.png" alt="Por Regresar" style="width:304px;height:228px;">
-
-<a href="agregarUsuarios.jsp">
-    <img src="../imagenes/porEntregar.png" alt="Agregar Usuarios" style="width:304px;height:228px;">
-<a href="borrarUsuarios.jsp">
-    <img src="../imagenes/porEntregar.png" alt="Borrar Usuarios" style="width:304px;height:228px;">
-
-<a href="agregarMaterial.jsp">
-    <img src="" alt="Agregar Material" style="width:304px;height:228px;">
-<a href="agregarEquipo.jsp">
-    <img src="" alt="Agregar Equipo" style="width:304px;height:228px;">
-<a href="agregarReactivo.jsp">
-    <img src="" alt="Agregar Reactivo" style="width:304px;height:228px;">
-<a href="agregarconsumible.jsp">
-    <img src="" alt="Agregar Consumible" style="width:304px;height:228px;">
-<a href="agregarProfe.jsp">
-    <img src="" alt="Agregar Profesor" style="width:304px;height:228px;">
-<a href="agregarLab.jsp">
-    <img src="" alt="Agregar Laboratorio" style="width:304px;height:228px;">
-
-</body>
+    </style>        
+    <body>
+        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+                color:#FFFFFF; border-radius: 10px" align="center">Menú Principal</h1>
+        <span>
+            <form>            
+                <a href="porEntregar.jsp">
+                <div class="thumbnail"><img src="imagenes/Reloj.png"/></div>
+                <p>Artículos por Entregar</p>
+            </form>
+            <form>
+                <a href="porRegresar.jsp">
+                <div class="thumbnail"><img src="imagenes/Return.png"/></div>
+                <p>Artículos por Regresar</p>
+            </form>
+            <form>
+                <a href="agregarUsuario.jsp">
+                <div class="thumbnail"><img src="imagenes/Usuario.png"/></div>
+                <p>Agregar Usuarios</p>
+            </form>
+            <form>
+                <a href="borrarUsuarios.jsp">
+                <div class="thumbnail"><img src="imagenes/Borrar.png"/></div>
+                <p>Borrar Usuarios</p>
+            </form> 
+            <form>
+                <a href="agregarMaterial.jsp">
+                <div class="thumbnail"><img src="imagenes/Material.png"/></div>
+                <p>Agregar Material</p>
+            </form>
+            <form>
+                <a href="agregarEquipo.jsp">
+                <div class="thumbnail"><img src="imagenes/Mechero.png"/></div>
+                <p>Agregar Equipo</p>
+            </form>
+            <form>
+                <a href="agregarReactivo.jsp">
+                <div class="thumbnail"><img src="imagenes/Atom.png"/></div>
+                <p>Agregar Reactivo</p>
+            </form>
+            <form>
+                <a href="agregarConsumible.jsp">
+                <div class="thumbnail"><img src="imagenes/Jeringa.png"/></div>
+                <p>Agregar Consumible</p>
+            </form>
+            <form>
+                <a href="agregarLab.jsp">
+                <div class="thumbnail"><img src="imagenes/Lab.png"/></div>
+                <p>Agregar Laboratorio</p>
+            </form>
+            <form action="ControladorLlenado" name="someForm5">
+                <a href="index.html" onclick="document.someForm5.submit();">
+                <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
+                <p>Cancelar</p>
+            </form>
+        </span>
+    </body>
 </html>

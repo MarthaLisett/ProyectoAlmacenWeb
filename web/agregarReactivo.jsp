@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Dar de alta Reactivo</title>
+        <title>Alta de Reactivos</title>
         <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
@@ -17,7 +17,8 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
-        <h1>Dar de alta Reactivo</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Reactivo</h1>
         <form action="ControladorInventario">       
             <div class="col-3">
                 <label>

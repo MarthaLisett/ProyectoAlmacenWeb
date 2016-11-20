@@ -9,10 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Baja de Usuarios</title>
     </head>
     <body>
-        <h1>Borrar Usuarios</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+            color:#FFFFFF; border-radius: 10px" align="center">Dar de Baja Usuarios</h1>
         <table>
             <tr>
                 <th>Matricula</th>
