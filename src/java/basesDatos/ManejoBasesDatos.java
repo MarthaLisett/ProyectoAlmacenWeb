@@ -212,7 +212,7 @@ public class ManejoBasesDatos {
        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `pedido`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
+            ResultSet result = statement.executeQuery("INSERT INTO `pedido`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"','"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+ forma.getObs()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -227,7 +227,7 @@ public class ManejoBasesDatos {
        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `totales`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
+            ResultSet result = statement.executeQuery("INSERT INTO `totales`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"', '"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+forma.getObs()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -242,7 +242,7 @@ public class ManejoBasesDatos {
        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES (lab.getNombre(), lab.getClave())");
+            ResultSet result = statement.executeQuery("INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES ('" + lab.getNombre()+"', '" +  lab.getClave()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -257,7 +257,7 @@ public class ManejoBasesDatos {
        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `profesor`(`Nombre`, `Correo`) VALUES (profe.getNombre(), profe.getCorreo())");
+            ResultSet result = statement.executeQuery("INSERT INTO `profesor`(`Nombre`, `Correo`) VALUES ('" + profe.getNombre() + "', '" + profe.getCorreo() +"')");
             while (result.next()) {
                 statement.close();
                 return true;
