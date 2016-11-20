@@ -209,20 +209,41 @@ public class ManejoBasesDatos {
         return false;
     }
     public static boolean insertarPedido(Forma forma) {
-       
+       String query = "";
+        
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `pedido`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"','"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+ forma.getObs()+"')");
-            while (result.next()) {
-                statement.close();
+            
+            iniciarConexion();
+            
+             query = "INSERT INTO pedido (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, forma.getUsuario());
+             preparedStmt.setString   (2, forma.getFecha());
+             preparedStmt.setString   (3, forma.getCorreo());
+             preparedStmt.setString   (4, forma.getLocal());
+             preparedStmt.setString   (5, forma.getDesc());
+             preparedStmt.setString   (6, forma.getCap());
+             preparedStmt.setString   (7, forma.getMarca());
+             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+             preparedStmt.setString   (9, forma.getStatus());
+             preparedStmt.setString   (10, forma.getObs());
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-            }
-
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
+    
+    
+    public static String buscaLocalizacion (String nombre) {
+        return "local";
+    }
+    
     public static boolean insertarReporte(Forma forma) {
        
         try {
