@@ -41,7 +41,9 @@ public class ControladorLlenado extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        String url = "/prestamosAlumnoCons.jsp";
+        
+        String url = "";
+        
         String matricula = request.getParameter("usuario");
         String destino = request.getParameter("destino");
         

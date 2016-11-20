@@ -50,7 +50,6 @@ public class ManejoBasesDatos {
     // TODO: esto es necesario?
     public ManejoBasesDatos() {
         try {
-
             //connection = DriverManager.getConnection("jdbc:mysql://10.12.172.100", "root", "");
             // connection = DriverManager.getConnection("jdbc:mysql://localhost/laboratorioqumica", "root", "");
         } catch (Exception e) {
