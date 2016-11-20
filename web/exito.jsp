@@ -74,7 +74,7 @@
     <body>    
         <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
             color:#FFFFFF; border-radius: 10px" align="center">¡Tu reporte se 
-            registró con éxito!</h1>
+            registró con Éxito!</h1>
         <form>
                 <div class="thumbnail"><img src="imagenes/Correcto.png"/></div>
                 <a href="index.html"><button class="button">Regresar a la Pantalla Principal</button></a>
