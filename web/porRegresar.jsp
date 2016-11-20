@@ -13,36 +13,41 @@
     </head>
     <body>
         <h1>Articulos por prestar</h1>
+    <form action="ControladorInventario">
         <table>
             <tr>
                 <th>Matricula</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Correo</th>
+                <th>Lab</th>
+                <th>Profesor</th>
                 <th>Articulo Rentado</th>
                 <th>Cantidad</th>
+                <th>Capacidad</th>
+                <th>Marca</th>
+                <th>Observaciones</th>
                 <th>Fecha</th>
                 <th>Numero de vale</th>
+                <th>Localización</th>
             </tr>
             <tr>
-                <td>A01280126</td>
-                <td>Pedro</td>
-                <td>Esparza</td>
-                <td>Matraz</td>
-                <td>1</td>
-                <td>16/11/2016</td>
-                <td>3</td>
-                <td><button type="button" onclick="alert('Se a regresado')">Regresado</button></td>
-
-            </tr>
-            <tr>
-                <td>A01280115</td>
-                <td>Martiwuis</td>
-                <td>Benavides</td>
-                <td>Tubo de ensayo</td>
-                <td>3</td>
-                <td>16/11/2016</td>
-                <td>4</td>
-                <td><button type="button" onclick="alert('Se a regresado')">Regresado</button></td>
+                <td name ="matricula" >A01280126</td>
+                <td name ="nombre" >Pedro</td>
+                <td namme = "apellido">Esparza</td>
+                <td namme = "correo">Esparza</td>
+                <td namme = "lab">Esparza</td>
+                <td namme = "profesor">Esparza</td>
+                <td name = "descripcion">Matraz</td>
+                <td name ="cantidad">1</td>
+                <td namme = "capacidad">Esparza</td>
+                <td namme = "marca">Esparza</td>
+                <td namme = "obs">Esparza</td>
+                <td name = "fecha">16/11/2016</td>
+                <td name = "vale">3</td>
+                <td name="loc">Estante 1</td>
+                <td name = "regresado"><button type="Submit" onclick="alert('Se a regresado')">Regresado</button></td>
+                <td name = "destruido"><button type="Submit" onclick="alert('Se a roto')">Destruido</button></td>
             </tr>
         </table>
     </body>
