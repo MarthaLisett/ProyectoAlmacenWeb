@@ -272,8 +272,9 @@ public class ManejoBasesDatos {
     *
     *
     */
-    public static boolean modif(Forma form, String tipo) {
+    public static boolean modif(Forma form, String tipo, String operador) {
         //agarro la dispobinibilidad actual del inventario
+        if(operador.equals("resta")){
         String disp =  "";
         String tabla = "";
         String query = "";
@@ -309,7 +310,6 @@ public class ManejoBasesDatos {
         } else {
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
-                
                 System.out.println("tabla: " + tabla);
                 System.out.println("disponible: " + iDisp);
                 System.out.println("nombre: " + form.getDesc());
@@ -328,6 +328,59 @@ public class ManejoBasesDatos {
             }   
         }
          return false;
+    }else{
+            String disp =  "";
+        String tabla = "";
+        String query = "";
+        
+        if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
+            tabla = "material";
+        } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
+            tabla = "equipo";
+        } else if (tipo.equals("profeConsumible")) {
+            tabla = "consumible";
+        } else if (tipo.equals("profeReactivo")) {
+            tabla = "reactivo";
+        }
+        
+        try {
+            Statement statement = connection.createStatement();
+            query = "SELECT Disponibilidad FROM " + tabla + 
+                    " WHERE Id = '" + form.getId() + "'";
+            ResultSet result = statement.executeQuery(query);
+            while (result.next()) {
+                disp = result.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //checo que haya suficientes
+        int iDisp = Integer.parseInt(disp);
+        int iCant = Integer.parseInt(form.getCant());
+        iDisp = iDisp + iCant;
+       
+            //si si hay, inserto la nueva dipobilidad en el inventario
+            try {
+                
+                System.out.println("tabla: " + tabla);
+                System.out.println("disponible: " + iDisp);
+                System.out.println("nombre: " + form.getDesc());
+                
+                query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setInt   (1, iDisp);
+                preparedStmt.setString(2, form.getDesc());
+                preparedStmt.executeUpdate();
+                
+                if (preparedStmt.executeUpdate() == 1) {
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+        
+         return false;
+        }
     }
     
     public static String[][] leerReportes() {
@@ -337,7 +390,7 @@ public class ManejoBasesDatos {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM totales");
             while (result.next()) {
-            cont++;
+             cont++;
             }
 
         } catch (SQLException ex) {

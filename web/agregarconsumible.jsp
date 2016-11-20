@@ -1,6 +1,6 @@
 <%-- 
-    Document   : agregarconsumible
-    Created on : 19/11/2016, 07:09:02 AM
+    Document   : agregarConsumible
+    Created on : 19/11/2016, 07:08:35 AM
     Author     : Pedro
 --%>
 
@@ -9,9 +9,53 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dar de alta Consumible</title>
+        <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+        <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+        <link href="style/styles.css" rel="stylesheet" type="text/css"/>
+        <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
+        <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body bgcolor="gray">     
+        <h1>Dar de alta Consumible</h1>
+        <form action="ControladorFormas">       
+            <div class="col-3">
+                <label>
+                    Nombre
+                    <input placeholder="Nombre del consumible" name="nombre">
+                </label>
+            </div>    
+            <div class="col-3">
+                <label>
+                    Marca
+                    <input placeholder="Marca del consumible" name="marca">
+                </label>
+            </div>
+            <div class="col-3">
+                <label>
+                    Presentación
+                    <input placeholder="Presentación del consumible" name="presentacion">
+                </label>
+            </div>
+            <div class="col-3">
+                <label>
+                    Contenido
+                    <input placeholder="Contenido del consumible" name="contenido">
+                </label>
+            </div>
+            <div class="col-3">
+                <label>
+                    Localización
+                    <input placeholder="Ubicación del consumible" name="localizacion">
+                </label>
+            </div>    
+            <div class="col-3">
+                <label>
+                    Disponibilidad
+                    <input placeholder="Disponibilidad del consumible" name="disponibilidad">
+                </label>
+            </div>
+            <button type="submit">Agregar</button>
+        </form>
     </body>
 </html>

@@ -7,35 +7,77 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Menu principal Alumno</h1>
-<table border="1" cellspacing="10">
-<tr>
-
-<td>
-<form action="ControladorLlenado" name="someForm">
-<a href="#" onclick="document.someForm.submit();"><img src="imagenes/rentaMaterial.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
-<input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-<input type="hidden" name="destino" value="prestamosAlumnoMaterial.jsp">
-</form>
-</td>
-
-<td>
-<form action="ControladorLlenado" name="someForm2">
-<a href="#" onclick="document.someForm2.submit();"><img src="imagenes/rentaEquipo.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
-<input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-<input type="hidden" name="destino" value="prestamosAlumnoEquipo.jsp"> 
-</form>
-</td>
-
-<td>
-<form action="ControladorLlenado" name="someForm3">
-<a href="index.html" onclick="document.someForm3.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
-<input type="hidden" name="usuario" value="${usuario.getMatricula()}">
-</form>
-</td>
-</tr>
-
-</table>
-</body>
+    <style>
+        body{
+            background-color: #E0E6F8;
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        form {
+            position: relative;
+            z-index: 1;
+            background: #FFFFFF;
+            max-width: 300px;
+            margin: 0 auto 100px;
+            padding: 10px 30px 10px 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: inline-block;
+            margin:20px;
+        }
+        .thumbnail {
+            background: #848484;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            padding: 27px 30px;
+            border-radius: 100%;
+            box-sizing: border-box;
+        }
+        .thumbnail img {
+            display: block;
+            width: 100%;
+        }
+        p{
+            color: #848484;
+        }
+        span{
+            display:block;
+            text-align: center;
+        }
+        div{
+            width: inherit;
+            heigth:inherit;
+        }
+    </style>
+    <body>
+    <div>
+        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+            color:#FFFFFF; border-radius: 10px" align="center">Menú Principal</h1>
+            <span>     
+            <form action="ControladorLlenado" name="someForm">
+                <a href="#" onclick="document.someForm.submit();">
+                <div class="thumbnail"><img src="imagenes/Material.png"/></div>
+                <p>Rentar Material</p>
+                <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
+                <input type="hidden" name="destino" value="prestamosAlumnoMaterial.jsp">
+            </form>
+            <form action="ControladorLlenado" name="someForm2">
+                <a href="#" onclick="document.someForm2.submit();">
+                <div class="thumbnail"><img src="imagenes/Mechero.png"/></div>
+                <p>Rentar Equipo</p>
+                <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
+                <input type="hidden" name="destino" value="prestamosAlumnoEquipo.jsp"> 
+            </form>    
+            <form action="ControladorLlenado" name="someForm3">
+                <a href="index.html" onclick="document.someForm3.submit();">
+                <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
+                <p>Cancelar</p>
+                <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
+                <input type="hidden">
+            </form>
+            </span>
+    </div>   
+    </body>
 </html>

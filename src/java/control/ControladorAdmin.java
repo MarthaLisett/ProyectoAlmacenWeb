@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MarthaLisett
  */
-public class ControladorFormas extends HttpServlet {
+public class ControladorAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,33 +37,36 @@ public class ControladorFormas extends HttpServlet {
         String fecha = request.getParameter("fecha");
         String vale = request.getParameter("vale");
         String usuario = request.getParameter("usuario");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
         String correo = request.getParameter("correo");
         String claveLab = request.getParameter("lab");
         String profe = request.getParameter("profe");
         
         // TODO: modificar sistema de id
-        String id = request.getParameter("id");
         String cantidad = request.getParameter("cantidad2");
         String descripcion = request.getParameter("descripcion1");
-        
         String capacidad = request.getParameter("cap");
         String marca = request.getParameter("marca");
-        String status = request.getParameter("status");
         String observaciones = request.getParameter("observ");
         String localizacion = request.getParameter("local");
-        String tipo = request.getParameter("tipo");
-        
+        String status = request.getParameter("status");
         //creo la forma con los valores
         Forma forma1 = new Forma("1", fecha, vale, usuario, correo, claveLab, profe, descripcion,
-         capacidad, marca, cantidad, status, observaciones, localizacion);
+         capacidad, marca, cantidad, "prestado", observaciones, localizacion);
         //creo el url de que algo salio mal
         String url="fallo.jsp";
         //si se puede modificar la base de datos
-        if(ManejoBasesDatos.modif(forma1, tipo, "resta")){
+        if(status.equals("regresado")){
+            //sumar al inventario
+            ManejoBasesDatos.modif(forma1, "tipo", "suma");
             //inserto la forma en el registro de pedidos
-            ManejoBasesDatos.insertarPedido(forma1);
+            ManejoBasesDatos.insertarReporte(forma1);
         //el url es ahora de exito
              url="exito.jsp";
+        }
+        else{
+            ManejoBasesDatos.insertarReporte(forma1);
         }
         
         url = "/exito.jsp";
