@@ -82,10 +82,6 @@
                 <label>
                     Descripción del Consumible
                     <input placeholder="Descripción" name="descripcion" >
-                    <input name="descripcion2">
-                    <input name="descripcion3">
-                    <input name="descripcion4">
-                    <input name="descripcion5">
                 </label>
             </div>
 
@@ -93,32 +89,6 @@
                 <label>
                     Capacidad
                     <select name="capacidad" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    
-                    <select name="capacidad2" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                
-                    <select name="capacidad3" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    <select name="capacidad4" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    <select name="capacidad5" >
                         <option>25 ml.</option>
                         <option>50 ml.</option>
                         <option>125 ml.</option>
@@ -135,36 +105,12 @@
                         <option>Marca 2</option>
                         <option>Marca 3</option>
                     </select>
-                    <select  name="marca2">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca3">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca4">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca5">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
                 </label>
             </div>
             <div class="col-8">
                 <label>
                     Cantidad
                     <input placeholder="Cantidad" name="cantidad" >
-                    <input name="cantidad2" >
-                    <input name="cantidad3" >
-                    <input name="cantidad4" >
-                    <input name="cantidad5" >
                 </label>
             </div>
             
@@ -173,25 +119,26 @@
                 <label>
                     Observaciones
                     <input placeholder="Observaciones" name="observaciones" >
-                    <input name="observaciones2" >
-                    <input name="observaciones3" >
-                    <input name="observaciones4" >
-                    <input name="observaciones5" >
                 </label>
             </div> 
-            
             
             <button type="submit">Agregar</button>
 
             <input type="hidden" name="tipo" value="profeConsumible">
             
             <input type="hidden" name="status">
-            <input type="hidden" name="status2">
-            <input type="hidden" name="status3">
-            <input type="hidden" name="status4">
-            <input type="hidden" name="status5">
-            
             <input type="hidden" name="ubicacion">
             <input type="hidden" name="inventario">
             <input type="hidden" name="profesor">
         </form>
+        <!--  
+        <div style="width: 200px; text-align: center; margin: 0 auto">
+            <a href="MenuProfesor.jsp"><button type="submit">Regresar</button></a>     
+        </div>
+        -->
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
+    </body>
+</html>

@@ -111,11 +111,6 @@
                 <label>
                     Descripción del Material
                     <input placeholder="Descripción" name="descripcion" >
-                    <!-- TODO: quitar hardcodeo de value's -->
-                    <input name="descripcion1"  value="nombre">
-                    <input name="descripcion2">
-                    <input name="descripcion3">
-                    <input name="descripcion4">
                 </label>
             </div>
 
@@ -123,32 +118,6 @@
                 <label>
                     Capacidad
                     <select name="capacidad">
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    
-                    <select name="capacidad2" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                
-                    <select name="capacidad3" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    <select name="capacidad4" >
-                        <option>25 ml.</option>
-                        <option>50 ml.</option>
-                        <option>125 ml.</option>
-                        <option>250 ml.</option>
-                    </select>
-                    <select name="capacidad5" >
                         <option>25 ml.</option>
                         <option>50 ml.</option>
                         <option>125 ml.</option>
@@ -165,36 +134,12 @@
                         <option>Marca 2</option>
                         <option>Marca 3</option>
                     </select>
-                    <select  name="marca2">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca3">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca4">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
-                    <select  name="marca5">
-                        <option>Marca 1</option>
-                        <option>Marca 2</option>
-                        <option>Marca 3</option>
-                    </select>
                 </label>
             </div>
             <div class="col-8">
                 <label>
                     Cantidad
                     <input placeholder="Cantidad" name="cantidad">
-                    <input name="cantidad2" value="1" >
-                    <input name="cantidad3" >
-                    <input name="cantidad4" >
-                    <input name="cantidad5" >
                 </label>
             </div>
             <div class="col-8">
@@ -205,36 +150,12 @@
                         <option>Cancelación devolución</option>
                         <option>Cancelación por ticket</option>
                     </select>
-                    <select name="status2">
-                        <option>Préstamo</option>
-                        <option>Cancelación devolución</option>
-                        <option>Cancelación por ticket</option>
-                    </select>
-                    <select name="status3">
-                        <option>Préstamo</option>
-                        <option>Cancelación devolución</option>
-                        <option>Cancelación por ticket</option>
-                    </select>
-                    <select name="status4">
-                        <option>Préstamo</option>
-                        <option>Cancelación devolución</option>
-                        <option>Cancelación por ticket</option>
-                    </select>
-                    <select name="status5">
-                        <option>Préstamo</option>
-                        <option>Cancelación devolución</option>
-                        <option>Cancelación por ticket</option>
-                    </select>
                 </label>
             </div>
             <div class="col-4">
                 <label>
                     Observaciones
                     <input placeholder="Observaciones" name="observaciones" >
-                    <input name="observaciones2" >
-                    <input name="observaciones3" >
-                    <input name="observaciones4" >
-                    <input name="observaciones5" >
                 </label>
             </div> 
             
@@ -245,3 +166,14 @@
             <input type="hidden" name="ubicacion">
             <input type="hidden" name="inventario">
         </form>
+        <!--  
+            <div style="width: 200px; text-align: center; margin: 0 auto">
+                    <a href="MenuAlumno.jsp"><button type="submit">Regresar</button></a>     
+            </div>
+        -->
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
+    </body>
+</html>
