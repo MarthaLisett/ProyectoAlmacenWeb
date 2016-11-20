@@ -16,7 +16,8 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">
-        <h1> Prestamos de Consumibles a Profesores</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
+            color:#FFFFFF; border-radius: 10px" align="center"> Préstamo de Consumibles a Profesores</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
@@ -32,7 +33,7 @@
                 <label>
                     Folio
                     <input placeholder="Folio" name="folio"
-                           value="${usuario.getMatricula().toUpperCase()}">
+                           value="">
                 </label>
             </div>
 
@@ -40,21 +41,21 @@
                 <label>
                     Matrícula
                     <input placeholder="Matrícula" name="matricula"
-                           value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
+                           value="${usuario.getMatricula().toUpperCase()}">
                 </label>
             </div>        
             <div class="col-3">
                 <label>
                     Nombre
                     <input placeholder="Nombre" name="nombre"
-                           value="${usuario.getCorreo()}">
+                           value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
                 </label>
             </div>
 
             <div class="col-3">
                 <label>
                     Correo
-                    <input placeholder="Correo" name="correo">
+                    <input placeholder="Correo" name="correo" value="${usuario.getCorreo()}">
                 </label>
             </div>
 

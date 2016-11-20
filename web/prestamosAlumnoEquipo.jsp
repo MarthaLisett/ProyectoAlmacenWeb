@@ -19,7 +19,8 @@
     <body bgcolor="gray">
 
 
-        <h1> Prestamos de Equipo a Alumnos</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
+            color:#FFFFFF; border-radius: 10px" align="center"> Préstamo de Equipo a Alumnos</h1>
         <form action="ControladorFormas" name="formaEquipo">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
