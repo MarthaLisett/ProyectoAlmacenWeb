@@ -180,7 +180,6 @@
                 </label>
             </div> 
             
-            
             <button type="submit">Agregar</button>
 
             <input type="hidden" name="tipo" value="profeReactivo">

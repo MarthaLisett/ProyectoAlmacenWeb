@@ -310,7 +310,6 @@ public class ManejoBasesDatos {
         } else {
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
-                
                 System.out.println("tabla: " + tabla);
                 System.out.println("disponible: " + iDisp);
                 System.out.println("nombre: " + form.getDesc());
@@ -391,7 +390,7 @@ public class ManejoBasesDatos {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM totales");
             while (result.next()) {
-            cont++;
+             cont++;
             }
 
         } catch (SQLException ex) {
