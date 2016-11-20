@@ -41,6 +41,9 @@ public class ControladorInventario extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("id");
         String nombre = request.getParameter("nombre");
+        String matricula = request.getParameter("matricula");
+        String apellido1 = request.getParameter("apellidoPat");
+        String apellido2 = request.getParameter("apellidoMat");
         String marca = request.getParameter("marca");
         String presentacion = request.getParameter("presentacion");
         String contenido = request.getParameter("contenido");
@@ -51,38 +54,39 @@ public class ControladorInventario extends HttpServlet {
         String correo = request.getParameter("correo");
         String capacidad = request.getParameter("capacidad");
         String tipo = request.getParameter("tipo");
+        id = "1";
         //url de que algo fallo
-        String url="fallo.jsp";
+        String url="/error.jsp";
         //si es material, hago un material nuevo, lo inserto en la base de datos y su un exito
         if(tipo.equals("material")){
-            Material mat = new Material(id, nombre, marca, localizacion, capacidad, disponibilidad);
-            ManejoBasesDatos.insertarMaterial(mat);
-             url="exito.jsp";
+            Material mat = new Material("1", nombre, marca, localizacion, capacidad, disponibilidad);
+            if(ManejoBasesDatos.insertarMaterial(mat))
+             url="/exito.jsp";
         //si es reactivo, hago un reactivo nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("reactivo")){
             Reactivo reac = new Reactivo(id, nombre, marca, presentacion, contenido, localizacion, disponibilidad);
-            ManejoBasesDatos.insertarReactivo(reac);
-             url="exito.jsp";
+            if(ManejoBasesDatos.insertarReactivo(reac))
+             url="/exito.jsp";
         //si es consumible, hago un consumible nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("consumible")){
             Consumible cons = new Consumible(id, nombre, marca, presentacion, contenido, localizacion, disponibilidad);
-            ManejoBasesDatos.insertarConsumible(cons);
-             url="exito.jsp";
+            if(ManejoBasesDatos.insertarConsumible(cons))
+             url="/exito.jsp";
         //si es equipo, hago un equipo nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("equipo")){
             Equipo  eq = new Equipo(id, nombre, marca, inventario, localizacion, disponibilidad);
-            ManejoBasesDatos.insertarEquipo(eq);
-             url="exito.jsp";
+            if(ManejoBasesDatos.insertarEquipo(eq))
+             url="/exito.jsp";
         //si es profesor, hago un profesor nuevo, lo inserto en la base de datos y su un exito
-        }else if(tipo.equals("profesor")){
-            Profesor profe = new Profesor(nombre, correo);
-            ManejoBasesDatos.insertarProfe(profe);
-            url="exito.jsp";
+        }else if(tipo.equals("usuario")){
+            Usuario user = new Usuario(matricula, nombre, apellido1, apellido2, correo);
+            if(ManejoBasesDatos.insertarUsuario(user))
+            url="/exito.jsp";
         //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("laboratorio")){
             Laboratorio lab = new Laboratorio(nombre, clave);
-            ManejoBasesDatos.insertarLab(lab);
-             url="exito.jsp";
+            if(ManejoBasesDatos.insertarLab(lab))
+             url="/exito.jsp";
         }
          RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);

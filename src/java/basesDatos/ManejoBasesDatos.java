@@ -160,15 +160,16 @@ public class ManejoBasesDatos {
          
             iniciarConexion();
             query =  "INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
-
+            
+            
+            
              PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
              preparedStmt.setString   (1, mat.getId());
              preparedStmt.setString   (2, mat.getNombre());
              preparedStmt.setString   (3, mat.getMarca());
              preparedStmt.setString   (4, mat.getLocalizacion());
              preparedStmt.setString   (5, mat.getCapacidad());
-             preparedStmt.setString   (6, mat.getDisponibilidad());
+             preparedStmt.setInt      (6, Integer.parseInt(mat.getDisponibilidad()));
              
              if (preparedStmt.executeUpdate() == 1) {
                 return true;
@@ -194,7 +195,7 @@ public class ManejoBasesDatos {
              preparedStmt.setString   (4, react.getPresentacion());
              preparedStmt.setString   (5, react.getContenido());
              preparedStmt.setString   (6, react.getLocalizacion());
-             preparedStmt.setString   (6, react.getDisponibilidad());
+             preparedStmt.setString   (7, react.getDisponibilidad());
 
              
              if (preparedStmt.executeUpdate() == 1) {
@@ -212,7 +213,7 @@ public class ManejoBasesDatos {
        try {
          
             iniciarConexion();
-            query ="INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            query ="INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
              PreparedStatement preparedStmt = connection.prepareStatement(query);
              
@@ -222,7 +223,7 @@ public class ManejoBasesDatos {
              preparedStmt.setString   (4, cons.getPresentacion());
              preparedStmt.setString   (5, cons.getContenido());
              preparedStmt.setString   (6, cons.getLocalizacion());
-             preparedStmt.setString   (6, cons.getDisponibilidad());
+             preparedStmt.setString   (7, cons.getDisponibilidad());
 
              
              if (preparedStmt.executeUpdate() == 1) {
@@ -353,20 +354,23 @@ public class ManejoBasesDatos {
         }
         return false;
     }
-    public static boolean insertarProfe(Profesor profe) {
+    public static boolean insertarUsuario(Usuario user) {
        String query = "";
         
         try {
             
             iniciarConexion();
             
-             query = "INSERT INTO `profesores`(`Nombre`, `Correo`) VALUES (?, ?)";
+             query = "INSERT INTO `usuarios`(`Matricula`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`) VALUES (?, ?, ?, ?, ?)";
 
             
              PreparedStatement preparedStmt = connection.prepareStatement(query);
              
-             preparedStmt.setString   (1, profe.getNombre());
-             preparedStmt.setString   (2, profe.getCorreo());
+             preparedStmt.setString   (1, user.getMatricula());
+             preparedStmt.setString   (2, user.getNombre());
+             preparedStmt.setString   (3, user.getApellidoPaterno());
+             preparedStmt.setString   (4, user.getApellidoMaterno());
+             preparedStmt.setString   (5, user.getCorreo());
 
              if (preparedStmt.executeUpdate() == 1) {
                 return true;
