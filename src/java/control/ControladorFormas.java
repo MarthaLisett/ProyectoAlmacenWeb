@@ -39,21 +39,15 @@ public class ControladorFormas extends HttpServlet {
         String correo = request.getParameter("correo");
         String claveLab = request.getParameter("laboratorio");
         String profe = request.getParameter("profesor");
-        
         // TODO: modificar sistema de id
-
         String cantidad = request.getParameter("cantidad");
         String descripcion = request.getParameter("descripcion");
-        
         String capacidad = request.getParameter("capacidad");
-        
         String marca = request.getParameter("marca");
         String status = request.getParameter("status");
         String observaciones = request.getParameter("observaciones");
-
-        String tipo = request.getParameter("tipo");
-        
         String localizacion = ManejoBasesDatos.buscaLocalizacion(descripcion);
+        
         
         //creo la forma con los valores
         Forma forma1 = new Forma("1", fecha, "1", usuario, correo, claveLab, profe, descripcion,

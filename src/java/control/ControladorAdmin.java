@@ -33,44 +33,29 @@ public class ControladorAdmin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //tomo todos los valores que puede hbaer en una forma
-        String fecha = request.getParameter("fecha");
-        String vale = request.getParameter("vale");
-        String usuario = request.getParameter("usuario");
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String correo = request.getParameter("correo");
-        String claveLab = request.getParameter("lab");
-        String profe = request.getParameter("profe");
+        String url = "";
         
-        // TODO: modificar sistema de id
-        String cantidad = request.getParameter("cantidad2");
-        String descripcion = request.getParameter("descripcion1");
-        String capacidad = request.getParameter("cap");
-        String marca = request.getParameter("marca");
-        String observaciones = request.getParameter("observ");
-        String localizacion = request.getParameter("local");
-        String status = request.getParameter("status");
-        //creo la forma con los valores
-        Forma forma1 = new Forma("1", fecha, vale, usuario, correo, claveLab, profe, descripcion,
-         capacidad, marca, cantidad, "prestado", observaciones, localizacion);
-        //creo el url de que algo salio mal
-        String url="fallo.jsp";
-        //si se puede modificar la base de datos
-        if(status.equals("regresado")){
-            //sumar al inventario
-            ManejoBasesDatos.modif(forma1, "tipo", "suma");
-            //inserto la forma en el registro de pedidos
-            ManejoBasesDatos.insertarReporte(forma1);
-        //el url es ahora de exito
-             url="exito.jsp";
-        }
-        else{
-            ManejoBasesDatos.insertarReporte(forma1);
-        }
+        String[][] pedidos = ManejoBasesDatos.leerPedidos();
         
-        url = "/exito.jsp";
-        //me voy al url
+        
+        /*
+        for(int i = 0; i < pedidos.length; i++) {
+            for (int j = 0; j < pedidos[0].length; j++) {
+               
+            }
+        }
+        */
+        
+        System.out.println("PEDIDOS");
+
+        
+        
+        
+        String destino = request.getParameter("destino");
+        
+        url = "/" + destino;
+        
+        request.setAttribute("pedidos", pedidos);
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

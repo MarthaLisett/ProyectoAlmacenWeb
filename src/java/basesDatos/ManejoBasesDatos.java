@@ -210,15 +210,10 @@ public class ManejoBasesDatos {
     }
     public static boolean insertarPedido(Forma forma) {
        String query = "";
-        
         try {
-            
-            iniciarConexion();
-            
+             iniciarConexion();
              query = "INSERT INTO pedido (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            
              PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
              preparedStmt.setString   (1, forma.getUsuario());
              preparedStmt.setString   (2, forma.getFecha());
              preparedStmt.setString   (3, forma.getCorreo());
@@ -229,7 +224,6 @@ public class ManejoBasesDatos {
              preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
              preparedStmt.setString   (9, forma.getStatus());
              preparedStmt.setString   (10, forma.getObs());
-             
              if (preparedStmt.executeUpdate() == 1) {
                 return true;
              }
@@ -445,4 +439,51 @@ public class ManejoBasesDatos {
         //regreso reporte completo
         return reporte;
        }
+    
+    
+     public static String[][] leerPedidos() {
+       //saco el total de registros
+        int cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM pedido");
+            while (result.next()) {
+             cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //matriz para guardar los registros
+           String[][] reporte = new String[cont][11];
+           cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM pedido");
+            while (result.next()) {
+                //leolos registros y los guardo cada uno en un renglon de la matriz
+                System.out.println("ResultSet: " + result.getString(1));
+                
+                reporte[cont][0] = result.getString(1);
+                reporte[cont][1] = result.getString(2);
+                reporte[cont][2] = result.getString(3);
+                reporte[cont][3] = result.getString(4);
+                reporte[cont][4] = result.getString(5);
+                reporte[cont][5] = result.getString(6);
+                reporte[cont][6] = result.getString(7);
+                reporte[cont][7] = result.getString(8);
+                reporte[cont][8] = result.getString(9);
+                reporte[cont][9] = result.getString(10);
+                reporte[cont][10] = result.getString(11);
+                cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //regreso reporte completo
+        return reporte;
+       }
+    
+    
 }
