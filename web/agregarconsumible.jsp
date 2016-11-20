@@ -54,6 +54,7 @@
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del consumible" name="disponibilidad">
+                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="consumible">
                 </label>
             </div>
             <button type="submit">Agregar</button>
