@@ -1,5 +1,5 @@
 <%-- 
-    Document   : prestamosProfeEquipo
+    Document   : prestamosProfeMaterial
     Created on : 2/11/2016, 08:41:42 AM
     Author     : Pedro
 --%>
@@ -18,7 +18,7 @@
     <body bgcolor="gray">
 
 
-        <h1> Prestamos de Equipo a Profesores</h1>
+        <h1> Prestamos de Material a Profesores</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
@@ -56,9 +56,10 @@
                 <label>
                     Correo
                     <input placeholder="Correo" name="correo"
-                            value="${usuario.getCorreo()}">
+                           value="${usuario.getCorreo()}">
                 </label>
             </div>
+
 
             <div class="col-2">
                 <label>
@@ -77,14 +78,53 @@
                 </label>
             </div>
             
+            
             <div class="col-4">
                 <label>
-                    Descripción del Equipo
+                    Descripción del Material
                     <input placeholder="Descripción" name="descripcion" >
-                    <input name="descripcion1">
                     <input name="descripcion2">
                     <input name="descripcion3">
                     <input name="descripcion4">
+                    <input name="descripcion5">
+                </label>
+            </div>
+
+            <div class="col-8">
+                <label>
+                    Capacidad
+                    <select name="capacidad" >
+                        <option>25 ml.</option>
+                        <option>50 ml.</option>
+                        <option>125 ml.</option>
+                        <option>250 ml.</option>
+                    </select>
+                    
+                    <select name="capacidad2" >
+                        <option>25 ml.</option>
+                        <option>50 ml.</option>
+                        <option>125 ml.</option>
+                        <option>250 ml.</option>
+                    </select>
+                
+                    <select name="capacidad3" >
+                        <option>25 ml.</option>
+                        <option>50 ml.</option>
+                        <option>125 ml.</option>
+                        <option>250 ml.</option>
+                    </select>
+                    <select name="capacidad4" >
+                        <option>25 ml.</option>
+                        <option>50 ml.</option>
+                        <option>125 ml.</option>
+                        <option>250 ml.</option>
+                    </select>
+                    <select name="capacidad5" >
+                        <option>25 ml.</option>
+                        <option>50 ml.</option>
+                        <option>125 ml.</option>
+                        <option>250 ml.</option>
+                    </select>
                 </label>
             </div>
 
@@ -172,13 +212,7 @@
             
             <button type="submit">Agregar</button>
 
-            <input type="hidden" name="tipo" value="profeEquipo">
-            
-            <input type="hidden" name="capacidad">
-            <input type="hidden" name="capacidad2">
-            <input type="hidden" name="capacidad3">
-            <input type="hidden" name="capacidad4">
-            <input type="hidden" name="capacidad5">
+            <input type="hidden" name="tipo" value="profeMaterial">
             
             <input type="hidden" name="ubicacion">
             <input type="hidden" name="inventario">

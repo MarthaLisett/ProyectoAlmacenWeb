@@ -16,8 +16,6 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">
-
-
         <h1> Prestamos de Consumibles a Profesores</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  

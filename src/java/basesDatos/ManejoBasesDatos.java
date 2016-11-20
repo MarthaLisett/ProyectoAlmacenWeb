@@ -278,11 +278,16 @@ public class ManejoBasesDatos {
         String tabla = "";
         String query = "";
         
-        if(tipo.equals("alumnoMaterial")) {
+        if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
             tabla = "material";
-        } else {
+        } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
             tabla = "equipo";
+        } else if (tipo.equals("profeConsumible")) {
+            tabla = "consumible";
+        } else if (tipo.equals("profeReactivo")) {
+            tabla = "reactivo";
         }
+        
         try {
             Statement statement = connection.createStatement();
             query = "SELECT Disponibilidad FROM " + tabla + 
@@ -304,6 +309,11 @@ public class ManejoBasesDatos {
         } else {
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
+                
+                System.out.println("tabla: " + tabla);
+                System.out.println("disponible: " + iDisp);
+                System.out.println("nombre: " + form.getDesc());
+                
                 query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
                 PreparedStatement preparedStmt = connection.prepareStatement(query);
                 preparedStmt.setInt   (1, iDisp);

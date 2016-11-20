@@ -15,7 +15,7 @@
 
 <td>
 <form action="ControladorLlenado" name="someForm">
-<a href="#" onclick="document.someForm.submit();"><img src="imagenes/rentaEquipo.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
+<a href="#" onclick="document.someForm.submit();"><img src="imagenes/rentaEquipo.JPG" alt="Rentar equipo" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 <input type="hidden" name="destino" value="prestamoProfeEquipo.jsp">
 </form>
@@ -23,7 +23,7 @@
 
 <td>
 <form action="ControladorLlenado" name="someForm2">
-<a href="#" onclick="document.someForm2.submit();"><img src="imagenes/rentaMaterial.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
+<a href="#" onclick="document.someForm2.submit();"><img src="" alt="Rentar consumibles" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 <input type="hidden" name="destino" value="prestamoProfeCons.jsp">
 </form>
@@ -31,7 +31,7 @@
 
 <td>
 <form action="ControladorLlenado" name="someForm3">
-<a href="#" onclick="document.someForm3.submit();"><img src="imagenes/rentarReacctivos.JPG" alt="Rentar equipo y material" style="width:304px;height:228px;">
+<a href="#" onclick="document.someForm3.submit();"><img src="imagenes/rentarReacctivos.JPG" alt="Rentar reactivos" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 <input type="hidden" name="destino" value="prestamoProfeReact.jsp">
 </form>
@@ -39,7 +39,15 @@
 
 <td>
 <form action="ControladorLlenado" name="someForm4">
-<a href="index.html" onclick="document.someForm4.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
+<a href="#" onclick="document.someForm4.submit();"><img src="imagenes/rentaMaterial.JPG" alt="Rentar material" style="width:304px;height:228px;">
+<input type="hidden" name="usuario" value="${usuario.getMatricula()}">
+<input type="hidden" name="destino" value="prestamoProfeMaterial.jsp">
+</form>
+</td>
+
+<td>
+<form action="ControladorLlenado" name="someForm5">
+<a href="index.html" onclick="document.someForm5.submit();"><img src="" alt="Cancelar Pedido" style="width:304px;height:228px;">
 <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
 </form>
 </td>

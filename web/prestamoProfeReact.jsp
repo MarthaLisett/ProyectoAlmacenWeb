@@ -60,7 +60,6 @@
                 </label>
             </div>
 
-
             <div class="col-2">
                 <label>
                     Laboratorio
@@ -77,7 +76,6 @@
                     <input placeholder="Clave" name="clave">
                 </label>
             </div>
-            
             
             <div class="col-4">
                 <label>
