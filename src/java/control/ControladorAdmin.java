@@ -37,20 +37,7 @@ public class ControladorAdmin extends HttpServlet {
         
         String[][] pedidos = ManejoBasesDatos.leerPedidos();
         
-        
-        /*
-        for(int i = 0; i < pedidos.length; i++) {
-            for (int j = 0; j < pedidos[0].length; j++) {
-               
-            }
-        }
-        */
-        
         System.out.println("PEDIDOS");
-
-        
-        
-        
         String destino = request.getParameter("destino");
         
         url = "/" + destino;
