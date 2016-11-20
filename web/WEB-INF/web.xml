@@ -12,6 +12,7 @@
         <servlet-name>ControladorFormas</servlet-name>
         <servlet-class>control.ControladorFormas</servlet-class>
     </servlet>
+<<<<<<< HEAD
     <servlet>
         <servlet-name>ControladorAdmin</servlet-name>
         <servlet-class>control.ControladorAdmin</servlet-class>
@@ -20,6 +21,16 @@
         <servlet-name>ControladorInventario</servlet-name>
         <servlet-class>control.ControladorInventario</servlet-class>
     </servlet>
+=======
+      <servlet>
+        <servlet-name>ControladorInventario</servlet-name>
+        <servlet-class>control.ControladorInventario</servlet-class>
+    </servlet>
+      <servlet>
+        <servlet-name>ControladorAdmin</servlet-name>
+        <servlet-class>control.ControladorAdmin</servlet-class>
+    </servlet>
+>>>>>>> 4c22fbff82d2415762f40238794c962024b9fb94
     
     <servlet-mapping>
         <servlet-name>ControladorAdmin</servlet-name>
@@ -40,6 +51,14 @@
     <servlet-mapping>
         <servlet-name>ControladorFormas</servlet-name>
         <url-pattern>/ControladorFormas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorInventario</servlet-name>
+        <url-pattern>/ControladorInventario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAdmin</servlet-name>
+        <url-pattern>/ControladorAdmin</url-pattern>
     </servlet-mapping>
     
 

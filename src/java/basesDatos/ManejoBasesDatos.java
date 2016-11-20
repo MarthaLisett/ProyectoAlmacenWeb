@@ -130,16 +130,24 @@ public class ManejoBasesDatos {
     }
 
     public static boolean insertarEquipo(Equipo eq) {
+        String query ="";
         try {
-            Statement statement = connection.createStatement();
-
-            ResultSet result = statement.executeQuery("INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES ('"+eq.getId()+"','"+eq.getNombre()+"','"+eq.getMarca()+"','"+eq.getInventario()+"','"+eq.getLocalizacion()+"','"+eq.getDisponibilidad()+"')");
-            while (result.next()) {
-                statement.close();
+         
+            iniciarConexion();
+            
+            query = "INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, eq.getId());
+             preparedStmt.setString   (2, eq.getNombre());
+             preparedStmt.setString   (3, eq.getMarca());
+             preparedStmt.setString   (4, eq.getInventario());
+             preparedStmt.setString   (5, eq.getLocalizacion());
+             preparedStmt.setString   (6, eq.getDisponibilidad());
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-
-            }
-
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -147,17 +155,25 @@ public class ManejoBasesDatos {
     }
 
     public static boolean insertarMaterial(Material mat) {
-
+            String query ="";
         try {
-            Statement statement = connection.createStatement();
-           ResultSet result = statement.executeQuery("INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES ('"+mat.getId()+"','"+mat.getNombre()+"','"+mat.getMarca()+"','"+mat.getLocalizacion()+"','"+mat.getCapacidad()+"','"+mat.getDisponibilidad()+"')");
-            while (result.next()) {
-                statement.close();
-
+         
+            iniciarConexion();
+            query =  "INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
+            
+            
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             preparedStmt.setString   (1, mat.getId());
+             preparedStmt.setString   (2, mat.getNombre());
+             preparedStmt.setString   (3, mat.getMarca());
+             preparedStmt.setString   (4, mat.getLocalizacion());
+             preparedStmt.setString   (5, mat.getCapacidad());
+             preparedStmt.setInt      (6, Integer.parseInt(mat.getDisponibilidad()));
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-
-            }
-
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -165,44 +181,84 @@ public class ManejoBasesDatos {
     }
 
     public static boolean insertarReactivo(Reactivo react) {
+        String query ="";
+       try {
+         
+            iniciarConexion();
+            query ="INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try {
-            Statement statement = connection.createStatement();
-          ResultSet result = statement.executeQuery("INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ('"+react.getId()+"','"+react.getNombre()+"','"+react.getMarca()+"','"+react.getPresentacion()+"','"+react.getContenido()+"','"+react.getLocalizacion()+"','"+react.getDisponibilidad()+"')");
-            while (result.next()) {
-                statement.close();
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, react.getId());
+             preparedStmt.setString   (2, react.getNombre());
+             preparedStmt.setString   (3, react.getMarca());
+             preparedStmt.setString   (4, react.getPresentacion());
+             preparedStmt.setString   (5, react.getContenido());
+             preparedStmt.setString   (6, react.getLocalizacion());
+             preparedStmt.setString   (7, react.getDisponibilidad());
+
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-            }
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+            
     }
 
     public static boolean insertarConsumible(Consumible cons) {
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ('"+cons.getId()+"','"+cons.getNombre()+"','"+cons.getMarca()+"','"+cons.getPresentacion()+"','"+cons.getContenido()+"','"+cons.getLocalizacion()+"','"+cons.getDisponibilidad()+"')");
-            while (result.next()) {
-                statement.close();
-                return true;
-            }
+       String query ="";
+       try {
+         
+            iniciarConexion();
+            query ="INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, cons.getId());
+             preparedStmt.setString   (2, cons.getNombre());
+             preparedStmt.setString   (3, cons.getMarca());
+             preparedStmt.setString   (4, cons.getPresentacion());
+             preparedStmt.setString   (5, cons.getContenido());
+             preparedStmt.setString   (6, cons.getLocalizacion());
+             preparedStmt.setString   (7, cons.getDisponibilidad());
+
+             
+             if (preparedStmt.executeUpdate() == 1) {
+                return true;
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarPrestado(Forma forma) {
-       
+       String query = "";
+        
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `prestado`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"','"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+ forma.getObs()+"')");
-            while (result.next()) {
-                statement.close();
+            
+            iniciarConexion();
+            
+             query = "INSERT INTO prestado (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, forma.getUsuario());
+             preparedStmt.setString   (2, forma.getFecha());
+             preparedStmt.setString   (3, forma.getCorreo());
+             preparedStmt.setString   (4, forma.getLocal());
+             preparedStmt.setString   (5, forma.getDesc());
+             preparedStmt.setString   (6, forma.getCap());
+             preparedStmt.setString   (7, forma.getMarca());
+             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+             preparedStmt.setString   (9, forma.getStatus());
+             preparedStmt.setString   (10, forma.getObs());
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-            }
-
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -240,44 +296,79 @@ public class ManejoBasesDatos {
     
     public static boolean insertarReporte(Forma forma) {
        
+      String query = "";
+        
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `totales`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"', '"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+forma.getObs()+"')");
-            while (result.next()) {
-                statement.close();
+            
+            iniciarConexion();
+            
+             query = "INSERT INTO totales (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, forma.getUsuario());
+             preparedStmt.setString   (2, forma.getFecha());
+             preparedStmt.setString   (3, forma.getCorreo());
+             preparedStmt.setString   (4, forma.getLocal());
+             preparedStmt.setString   (5, forma.getDesc());
+             preparedStmt.setString   (6, forma.getCap());
+             preparedStmt.setString   (7, forma.getMarca());
+             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+             preparedStmt.setString   (9, forma.getStatus());
+             preparedStmt.setString   (10, forma.getObs());
+             
+             if (preparedStmt.executeUpdate() == 1) {
                 return true;
-            }
-
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarLab(Laboratorio lab) {
-       
+ String query = "";
+        
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES ('" + lab.getNombre()+"', '" +  lab.getClave()+"')");
-            while (result.next()) {
-                statement.close();
-                return true;
-            }
+            
+            iniciarConexion();
+            
+             query = "INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES (?, ?)";
 
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, lab.getNombre());
+             preparedStmt.setString   (2, lab.getClave());
+
+             if (preparedStmt.executeUpdate() == 1) {
+                return true;
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-    public static boolean insertarProfe(Profesor profe) {
-       
+    public static boolean insertarUsuario(Usuario user) {
+       String query = "";
+        
         try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `profesor`(`Nombre`, `Correo`) VALUES ('" + profe.getNombre() + "', '" + profe.getCorreo() +"')");
-            while (result.next()) {
-                statement.close();
-                return true;
-            }
+            
+            iniciarConexion();
+            
+             query = "INSERT INTO `usuarios`(`Matricula`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`) VALUES (?, ?, ?, ?, ?)";
 
+            
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             
+             preparedStmt.setString   (1, user.getMatricula());
+             preparedStmt.setString   (2, user.getNombre());
+             preparedStmt.setString   (3, user.getApellidoPaterno());
+             preparedStmt.setString   (4, user.getApellidoMaterno());
+             preparedStmt.setString   (5, user.getCorreo());
+
+             if (preparedStmt.executeUpdate() == 1) {
+                return true;
+             }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }

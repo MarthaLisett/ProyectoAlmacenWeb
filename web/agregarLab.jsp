@@ -30,6 +30,8 @@
                 <label>
                     Clave
                     <input placeholder="Clave del laboratorio" name="clave">
+                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="laboratorio">
+
                 </label>
             </div>
             <button type="submit">Agregar</button>

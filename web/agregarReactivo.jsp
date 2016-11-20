@@ -54,6 +54,8 @@
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del reactivo" name="disponibilidad">
+                                        <input type="hidden" placeholder="Correo del usuario" name="tipo" value="reactivo">
+
                 </label>
             </div>
             <button type="submit">Agregar</button>

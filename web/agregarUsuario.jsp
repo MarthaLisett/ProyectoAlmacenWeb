@@ -49,6 +49,7 @@
                 <label>
                     Correo
                     <input placeholder="Correo del usuario" name="correo">
+                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="usuario">
                 </label>
             </div>
             <button type="submit">Agregar</button>

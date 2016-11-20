@@ -48,6 +48,7 @@
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del material" name="disponibilidad">
+                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="material">
                 </label>
             </div>
             <button type="submit">Agregar</button>
