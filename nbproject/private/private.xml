@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamoProfeEquipo.jsp</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamoProfeReact.jsp</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamoProfeCons.jsp</file>
             <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/basesDatos/ManejoBasesDatos.java</file>
             <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/ControladorFormas.java</file>
-            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamosAlumnoMaterial.jsp</file>
             <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/prestamosAlumnoEquipo.jsp</file>
         </group>
     </open-files>
