@@ -12,7 +12,7 @@
         <title>Exito</title>
     </head>
     <body>
-        <h1>Tu reporte se registro con exito!</h1>
+        <h1>Tu reporte se registró con éxito!</h1>
                 <p><a href="index.html"></a>Regresar a la pantalla principal</a></p>
 
     </body>

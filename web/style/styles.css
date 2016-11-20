@@ -17,8 +17,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 html { overflow-y: scroll; }
 body {
-  font-family: Arial, Tahoma, sans-serif;
-  background: #e2eef4;
+  font-family: "Roboto", sans-serif;
+  background: #E0E6F8;;
   font-size: 62.5%;
   line-height: 1;
   padding-top: 40px;
@@ -38,13 +38,12 @@ h1 {
   display: block;
   font-size: 3.1em;
   line-height: 1.45em;
-  font-family: 'Laila', serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: bold;
   color: #555;
   text-shadow: 1px 1px 0 #fff;
 }
-
 
 /** form field **/
 form {
@@ -52,8 +51,8 @@ form {
   margin: 30px;
   overflow: hidden;
   background: #fff;
-  border: 1px solid #e4e4e4;
-  border-radius: 5px;
+  border: 1px solid #000000;
+  border-radius: 10px;
   font-size: 0;
 }
 
@@ -64,7 +63,7 @@ form > div > label {
   font-size: 13px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #939393;
+  color: #000000;
   cursor: pointer;
 }
 form > div.switch > label {
@@ -72,7 +71,7 @@ form > div.switch > label {
 }
 
 .col-1, col-2, .col-3, .col-4, .col-8 { 
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid  #848484;
 }
 
 form > div > .col-4 {
@@ -90,7 +89,7 @@ label > input {
   border: none;
   outline: none;
   color: #555;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 14px;
   opacity: .6;
@@ -101,7 +100,6 @@ label > input {
   text-align: center;
   padding: 20px;
 }
-
 label > select {
   display: block;
   width: 100%;
@@ -112,7 +110,7 @@ label > select {
   background: transparent;
   border: none;
   outline: none;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   opacity: .4;
   transition: all linear .3s;
@@ -122,17 +120,16 @@ label > input:focus, label > select:focus {
   opacity: 1;
 }
 
-
-
 /** button design based on http://codepen.io/guvootes/pen/eyDAb **/
 button {
   width: 100%;
   height: 35px;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 0 0 15px 0;
   font-size: 14px;
-  color: #fff;
+  color: #FFFFFF;
+  background: #848484;
   font-weight: bold;
   text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
   overflow: hidden;
@@ -145,7 +142,7 @@ button.submitbtn {
   background-image: linear-gradient(#97c16b, #8ab959);
   border-bottom: 1px solid #648c3a;
   cursor: pointer;
-  color: #fff;
+  color: #FFFFFF;
 }
 button.submitbtn:hover {
   background-image: -moz-linear-gradient(#8ab959, #7eaf4a);
@@ -164,13 +161,12 @@ button.submitbtn:active {
   box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
-
 /** responsive design **/
 @media(min-width: 850px){
   form > div { display: inline-block; }
   .col-submit { display: block; }
   
-  .col-1, col-2, .col-3, .col-4, .col-8 { box-shadow: 1px 1px #e4e4e4; border: none; }
+  .col-1, col-2, .col-3, .col-4, .col-8 { box-shadow: 1px 1px #000000; border: none; }
   
   .col-1 { width: 100% }
   .col-2 { width: 50% }

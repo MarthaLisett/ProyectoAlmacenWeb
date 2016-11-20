@@ -17,7 +17,8 @@
         <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
     <body bgcolor="#848484">
-        <h1> Prestamos de Material a Alumnos</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
+            color:#FFFFFF; border-radius: 10px" align="center"> Préstamo de Material a Alumnos</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
@@ -237,8 +238,7 @@
                 </label>
             </div> 
             
-            
-            <button type="submit" onClick="validar()">Agregar</button>
+                <button type="submit" onClick="validar()">Agregar</button>
 
             <input type="hidden" name="tipo" value="alumnoMaterial">
             

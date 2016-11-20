@@ -18,7 +18,8 @@
     <body bgcolor="gray">
 
 
-        <h1> Prestamos de Reactivos a Profesores</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
+            color:#FFFFFF; border-radius: 10px" align="center"> Préstamo de Reactivos a Profesores</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
