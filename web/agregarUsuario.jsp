@@ -18,7 +18,7 @@
     </head>
     <body bgcolor="gray">     
         <h1>Dar de alta Usuario</h1>
-        <form action="ControladorFormas">       
+        <form action="ControladorInventario">       
             <div class="col-2">
                 <label>
                     Nombre

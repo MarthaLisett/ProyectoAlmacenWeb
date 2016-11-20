@@ -18,7 +18,7 @@
     </head>
     <body bgcolor="gray">     
         <h1>Dar de alta Consumible</h1>
-        <form action="ControladorFormas">       
+        <form action="ControladorInventario">       
             <div class="col-3">
                 <label>
                     Nombre

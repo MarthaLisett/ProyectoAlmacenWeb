@@ -133,7 +133,7 @@ public class ManejoBasesDatos {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet result = statement.executeQuery("INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES (eq.getId(), eq.getNombre(), eq.getMarca(), eq.getInventario(), eq.getLocalizacion(), eq.getDisponibilidad())");
+            ResultSet result = statement.executeQuery("INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES ('"+eq.getId()+"','"+eq.getNombre()+"','"+eq.getMarca()+"','"+eq.getInventario()+"','"+eq.getLocalizacion()+"','"+eq.getDisponibilidad()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -150,7 +150,7 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-           ResultSet result = statement.executeQuery("INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (mat.getId(), mat.getNombre(), mat.getMarca(), mat.getLocalizacion(), mat.getCapacidad(), mat.getDisponibilidad())");
+           ResultSet result = statement.executeQuery("INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES ('"+mat.getId()+"','"+mat.getNombre()+"','"+mat.getMarca()+"','"+mat.getLocalizacion()+"','"+mat.getCapacidad()+"','"+mat.getDisponibilidad()+"')");
             while (result.next()) {
                 statement.close();
 
@@ -168,7 +168,7 @@ public class ManejoBasesDatos {
 
         try {
             Statement statement = connection.createStatement();
-          ResultSet result = statement.executeQuery("INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (react.getId(), react.getNombre(), react.getMarca(), react.getPresentacion(), react.getContenido(), react.getLocalizacion(), react.getDisponibilidad())");
+          ResultSet result = statement.executeQuery("INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ('"+react.getId()+"','"+react.getNombre()+"','"+react.getMarca()+"','"+react.getPresentacion()+"','"+react.getContenido()+"','"+react.getLocalizacion()+"','"+react.getDisponibilidad()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -182,7 +182,7 @@ public class ManejoBasesDatos {
     public static boolean insertarConsumible(Consumible cons) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES(cons.getId(), cons.getNombre(), cons.getMarca(), cons.getPresentacion(), cons.getContenido(), cons.getLocalizacion(), cons.getDisponibilidad())");
+            ResultSet result = statement.executeQuery("INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES ('"+cons.getId()+"','"+cons.getNombre()+"','"+cons.getMarca()+"','"+cons.getPresentacion()+"','"+cons.getContenido()+"','"+cons.getLocalizacion()+"','"+cons.getDisponibilidad()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
@@ -197,7 +197,7 @@ public class ManejoBasesDatos {
        
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("INSERT INTO `prestado`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES (forma.getUsuario(),forma.getFecha(),forma.getVale(),forma.getCorreo(),forma.getLab(),forma.getDesc(),forma.getCap(),forma.getMarca(),forma.getCant(),forma.getStatus(), forma.getObs())");
+            ResultSet result = statement.executeQuery("INSERT INTO `prestado`(`Matricula`, `Fecha`, `Vale`, `Correo`, `Lab`, `Descripcion`, `Capacidad`, `Marca`, `Cantidad`, `Estatus`, `Observaciones`) VALUES ('"+forma.getUsuario()+"','"+forma.getFecha()+"','"+forma.getVale()+"','"+forma.getCorreo()+"','"+forma.getLocal()+"','"+forma.getDesc()+"','"+forma.getCap()+"','"+forma.getMarca()+"','"+forma.getCant()+"','"+forma.getStatus()+"','"+ forma.getObs()+"')");
             while (result.next()) {
                 statement.close();
                 return true;
