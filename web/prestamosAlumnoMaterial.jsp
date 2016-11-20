@@ -14,8 +14,9 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
-    <body bgcolor="gray">
+    <body bgcolor="#848484">
         <h1> Prestamos de Material a Alumnos</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
@@ -62,7 +63,7 @@
             <div class="col-3">
                 <label>
                     Laboratorio
-                    <select name ="laboratorio">
+                    <select name ="laboratorio" id="laboratorio">
                         <option>Química Experimental</option>
                         <option>Química Orgánica General</option>
                         <option>Semana i</option>
@@ -72,13 +73,13 @@
             <div class="col-3">
                 <label>
                     Clave
-                    <input placeholder="Clave" name="clave">
+                    <input placeholder="Clave" name="clave" id="clave">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Profesor
-                    <select name="profesor">
+                    <select name="profesor" id="profesor">
                         <option></option>
                         <option>Prof1</option>
                         <option>Prof2</option>
@@ -120,7 +121,7 @@
             <div class="col-8">
                 <label>
                     Capacidad
-                    <select name="capacidad" >
+                    <select name="capacidad">
                         <option>25 ml.</option>
                         <option>50 ml.</option>
                         <option>125 ml.</option>
@@ -237,7 +238,7 @@
             </div> 
             
             
-            <button type="submit">Agregar</button>
+            <button type="submit" onClick="validar()">Agregar</button>
 
             <input type="hidden" name="tipo" value="alumnoMaterial">
             
