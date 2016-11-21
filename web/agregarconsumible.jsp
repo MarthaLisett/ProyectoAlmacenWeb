@@ -22,7 +22,7 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Consumible
         </h1>
         <form action="ControladorInventario">       
