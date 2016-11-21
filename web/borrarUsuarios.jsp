@@ -130,9 +130,15 @@ input{
                 for(String usuario : usuarios) {
                     out.println("<form action=\"ControladorInventario\">");
                     out.println("<tr>");
-                    out.println("<td><input name=\"matricula\" value=\"" +  usuario  + "\"> </td>");
+                    out.print("<td>" + usuario + "</td>");
                     out.println("<td><button type=\"submit\">Eliminar</button></td>");
                     out.println("</tr>");
+                    
+                    //out.println("<tr>");
+                    //out.println("<td><input name=\"matricula\" value=\"" +  usuario  + " \"> </td>");
+                    //out.println("<td><button type=\"submit\">Eliminar</button></td>");
+                    //out.println("</tr>");
+                    out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  usuario  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"eliminar\">");
                     out.println("</form>");
                 }
