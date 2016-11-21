@@ -235,16 +235,11 @@ public class ManejoBasesDatos {
         return false;
     }
     public static boolean insertarPrestado(Forma forma) {
-       String query = "";
-        
+     String query = "";
         try {
-            
-            iniciarConexion();
-            
+             iniciarConexion();
              query = "INSERT INTO prestado (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            
              PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
              preparedStmt.setString   (1, forma.getUsuario());
              preparedStmt.setString   (2, forma.getFecha());
              preparedStmt.setString   (3, forma.getCorreo());
@@ -255,7 +250,6 @@ public class ManejoBasesDatos {
              preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
              preparedStmt.setString   (9, forma.getStatus());
              preparedStmt.setString   (10, forma.getObs());
-             
              if (preparedStmt.executeUpdate() == 1) {
                 return true;
              }
@@ -289,6 +283,11 @@ public class ManejoBasesDatos {
         return false;
     }
     
+    public static boolean autorizarPrestamo(String nombre) {
+        
+        
+        return true;
+    }
     
     public static String buscaLocalizacion (String nombre) {
         return "local";
@@ -378,13 +377,35 @@ public class ManejoBasesDatos {
     *
     *
     */
+    public static String buscar(String nombre){
+        String[] tablas = {"equipo", "material", "reactivo", "consumible"};
+        
+        try {
+            iniciarConexion();
+            for(String tabla : tablas) {
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM "+ tabla + " WHERE Nombre = '" + nombre + "'";
+                ResultSet result = statement.executeQuery(query);
+                while (result.next()) {
+                    System.out.println(tabla);
+                   return tabla;
+                }
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
+    
+    
     public static boolean modif(Forma form, String tipo, String operador) {
         //agarro la dispobinibilidad actual del inventario
         if(operador.equals("resta")){
         String disp =  "";
-        String tabla = "";
+        String tabla = tipo;
         String query = "";
-        
+        /*
         if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
             tabla = "material";
         } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
@@ -394,6 +415,8 @@ public class ManejoBasesDatos {
         } else if (tipo.equals("profeReactivo")) {
             tabla = "reactivo";
         }
+        */
+        System.out.println("tabla en MODIF: " + tabla);
         
         try {
             Statement statement = connection.createStatement();
@@ -407,6 +430,7 @@ public class ManejoBasesDatos {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //checo que haya suficientes
+        System.out.println("DISP: " + disp);
         int iDisp = Integer.parseInt(disp);
         int iCant = Integer.parseInt(form.getCant());
         iDisp = iDisp - iCant;
@@ -576,5 +600,18 @@ public class ManejoBasesDatos {
         return reporte;
        }
     
-    
+       public static void eliminar(String vale) {
+            String query = "";
+        
+            try {
+                iniciarConexion();
+                query = "DELETE FROM pedido WHERE Vale = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+
+                preparedStmt.setInt   (1, Integer.parseInt(vale));
+                preparedStmt.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
 }

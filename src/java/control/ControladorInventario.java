@@ -39,8 +39,13 @@ public class ControladorInventario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
         String id = request.getParameter("id");
         String nombre = request.getParameter("nombre");
+        String descripcion = request.getParameter("descripcion");
+        
+        
+
         String matricula = request.getParameter("matricula");
         String apellido1 = request.getParameter("apellidoPat");
         String apellido2 = request.getParameter("apellidoMat");
@@ -54,6 +59,32 @@ public class ControladorInventario extends HttpServlet {
         String correo = request.getParameter("correo");
         String capacidad = request.getParameter("capacidad");
         String tipo = request.getParameter("tipo");
+        String observaciones = request.getParameter("observaciones");
+        String cantidad = request.getParameter("cantidad");
+        String status = request.getParameter("status");
+        String fecha = request.getParameter("fecha");
+        String profe = request.getParameter("profesor");
+        
+        String seleccionado = request.getParameter("seleccionado");
+
+
+        System.out.println("VALORES");
+        System.out.println("mat: " + matricula);
+        System.out.println("fecha: " + fecha);
+        System.out.println("vale/seleccionado: " + seleccionado);
+        System.out.println("correo: " + correo);
+        System.out.println("local: " + localizacion);
+        System.out.println("desc: " + descripcion);
+        System.out.println("capacidad: " + capacidad);
+        System.out.println("marca: " + marca);
+        System.out.println("cantidad: " + cantidad);
+        System.out.println("status: " + status);
+        System.out.println("obs: " + observaciones);
+        System.out.println("tipo: " + tipo);
+
+        
+        
+        
         id = "1";
         //url de que algo fallo
         String url="/error.jsp";
@@ -83,45 +114,29 @@ public class ControladorInventario extends HttpServlet {
             if(ManejoBasesDatos.insertarUsuario(user))
             url="/exito.jsp";
         //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
-        }else if(tipo.equals("laboratorio")){
+        }else if(tipo.equals("laboratorio")) {
             Laboratorio lab = new Laboratorio(nombre, clave);
             if(ManejoBasesDatos.insertarLab(lab))
              url="/exito.jsp";
+        } else if(tipo.equals("prestado")) {
+            
+            Forma forma1 = new Forma("1", fecha, "1", matricula, correo, localizacion, profe, descripcion, 
+                    capacidad, marca, cantidad, status, observaciones, localizacion);
+            
+
+            
+            System.out.println("Output: " + ManejoBasesDatos.insertarPrestado(forma1));
+            
+            String tabla = ManejoBasesDatos.buscar(descripcion);
+            
+            ManejoBasesDatos.modif(forma1, tabla, "resta");
+            ManejoBasesDatos.eliminar(seleccionado);
+            url = "/exito.jsp";
+            
         }
          RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-       
-        
-        
-        /*if(tipo.equals("Profesor")){
-            //guardar base de datos de material y equipo
-            if(ManejoBasesDatos.insertarProfe(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Profesor2")){
-            //consumibles
-            if(ManejoBasesDatos.insertarProfe2(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Profesor3")){
-            //reactivos
-            if(ManejoBasesDatos.insertarProfe3(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Alumno")){
-            //material
-            if(ManejoBasesDatos.insertarAlumno(forma1)){
-                url= "exito.jsp";
-            }
-        }else if(tipo.equals("Alumno2")){
-            //consumibles
-            if(ManejoBasesDatos.insertarAlumno2(forma1)){
-                url= "exito.jsp";
-            }
-        }else{
-            url = "/error.jsp";
-        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
