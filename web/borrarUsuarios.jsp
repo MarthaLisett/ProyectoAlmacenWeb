@@ -1,5 +1,5 @@
 <%-- 
-    Document   : porRegresar
+    Document   : porEntregar
     Created on : 16/11/2016, 09:21:04 AM
     Author     : Pedro
 --%>
@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Baja de Usuarios</title>
+        <title>Artículos por Entregar</title>
+        
 <!--
 RESPONSTABLE 2.0 by jordyvanraaij
   Designed mobile first!
@@ -102,67 +103,33 @@ h1 span {
 }
 th, td{
     align: center;
-    font-size: 1vw;
-}
-.button {
-                outline: 0;
-                background: #848484;
-                width: 200px;
-                border: 0;
-                padding: 15px;
-                border-radius: 3px;;
-                color: #FFFFFF;
-                font-size: 16px;
-                -webkit-transition: all 0.3 ease;
-                transition: all 0.3 ease;
-                cursor: pointer;
-                text-align: center;
-                margin: 0 auto;
-                position: relative;
+    font-size: .9vw;
 }
 </style>
     </head>
     <body>
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Dar de Baja Usuarios</h1>
+        <h1>Artículos por Devolver</h1>
+    <form action="ControladorInventario">
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Articulo Rentado</th>
-                <th>Cantidad</th>
-                <th>Fecha</th>
-                <th>Número de Vale</th>
-                <th>Eliminar</th>
             </tr>
-            <tr>
-                <td>A01280126</td>
-                <td>Pedro</td>
-                <td>Esparza</td>
-                <td>Matraz</td>
-                <td>1</td>
-                <td>16/11/2016</td>
-                <td>3</td>
-                <td><input type="checkbox" ></button></td>
-            </tr>
-            <tr>
-                <td>A01280115</td>
-                <td>Martiwuis</td>
-                <td>Benavides</td>
-                <td>Tubo de ensayo</td>
-                <td>3</td>
-                <td>16/11/2016</td>
-                <td>4</td>
-                <td><input type="checkbox" ></button></td>               
-            </tr>
+              <%
+                String[] usuarios = (String[])request.getAttribute("usuarios");
+                
+                for(String usuario : usuarios) {
+                   
+                    out.println("<form action=\"ControladorInventario\">");
+                    out.println("<tr>");
+                    out.println("<td><input name=\"matricula\" value=\"" +  usuario  + "\"> </td>");
+                    out.println("<td><button type=\"submit\">Eliminar</button></td>");
+                    out.println("</tr>");
+                    out.println("<input type=\"hidden\"  name=\"tipo\" value=\"eliminar\">");
+                    out.println("</form>");
+                }
+            %>
         </table>
-        <div style="text-align:center;">
-            <button class="button" type="button" onclick="alert('Se han eliminado los usuarios')">Eliminar</button></div>
-          <br><br>
-          <p style="background-color:#848484; height:30px; padding-top: 6px; 
-            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
-            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
-            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
+       
+    </form>
     </body>
 </html>

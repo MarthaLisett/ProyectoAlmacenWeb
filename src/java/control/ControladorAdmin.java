@@ -41,11 +41,15 @@ public class ControladorAdmin extends HttpServlet {
         
         String[][] pedidos = ManejoBasesDatos.leerPedidos();
         
+        String[][] prestados = ManejoBasesDatos.leerPrestados();
+        String[] usuarios = ManejoBasesDatos.leerUsuarios();
+
         System.out.println("PEDIDOS");
         String destino = request.getParameter("destino");
         
         url = "/" + destino;
-        
+        request.setAttribute("prestados", prestados);
+        request.setAttribute("usuarios", usuarios);
         request.setAttribute("pedidos", pedidos);
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);

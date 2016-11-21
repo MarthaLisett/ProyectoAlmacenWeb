@@ -1,5 +1,5 @@
 <%-- 
-    Document   : porRegresar
+    Document   : porEntregar
     Created on : 16/11/2016, 09:21:04 AM
     Author     : Pedro
 --%>
@@ -9,8 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Artículos por Regresar</title>
-        <!--
+        <title>Artículos por Entregar</title>
+        
+<!--
 RESPONSTABLE 2.0 by jordyvanraaij
   Designed mobile first!
 If you like this solution, you might also want to check out the 1.0 version:
@@ -107,49 +108,52 @@ th, td{
 </style>
     </head>
     <body>
-        <h1>Artículos por Regresar</h1>
+        <h1>Artículos por Devolver</h1>
     <form action="ControladorInventario">
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Fecha</th>
+                <th>Vale</th>
                 <th>Correo</th>
-                <th>Laboratorio</th>
-                <th>Profesor</th>
-                <th>Artículo Rentado</th>
-                <th>Cantidad</th>
+                <th>Localización</th>
+                <th>Nombre</th>
                 <th>Capacidad</th>
                 <th>Marca</th>
+                <th>Cantidad</th>
+                <th>Status</th>
                 <th>Observaciones</th>
-                <th>Fecha</th>
-                <th>Número de Vale</th>
-                <th>Localización</th>
-                <th>Regresado</th>
-                <th>Destruido</th>
             </tr>
-            <tr>
-                <td name ="matricula" >A01280126</td>
-                <td name ="nombre" >Pedro</td>
-                <td namme = "apellido">Esparza</td>
-                <td namme = "correo">Esparza</td>
-                <td namme = "lab">Esparza</td>
-                <td namme = "profesor">Esparza</td>
-                <td name = "descripcion">Matraz</td>
-                <td name ="cantidad">1</td>
-                <td namme = "capacidad">Esparza</td>
-                <td namme = "marca">Esparza</td>
-                <td namme = "obs">Esparza</td>
-                <td name = "fecha">16/11/2016</td>
-                <td name = "vale">3</td>
-                <td name="loc">Estante 1</td>
-                <td name = "regresado"><button type="Submit" onclick="alert('Se ha regresado')">Regresado</button></td>
-                <td name = "destruido"><button type="Submit" onclick="alert('Se ha roto')">Destruido</button></td>
-            </tr>
+              <%
+                String[][] prestado = (String[][])request.getAttribute("prestados");
+                
+                for(String[] elements : prestado) {
+                   
+                    out.println("<form action=\"ControladorInventario\">");
+                    out.println("<tr>");
+                    for(String innerElements : elements) {
+                        out.print("<td>" + innerElements + "</td>");
+                    }
+                    out.println("<td><input type=\"radio\" name=\"estado\" value=\"roto\">Roto/Consumible<br><input type=\"radio\" name=\"estado\" value=\"devuelto\">Devuelto<br></td>");
+                    out.println("<td><button type=\"submit\">Devolver</button></td>");
+                    out.println("</tr>");
+                    out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
+                    out.println("<input type=\"hidden\"  name=\"tipo\" value=\"devuelto\">");
+                    out.println("<input type=\"hidden\"  name=\"descripcion\" value=\"" +  elements[5]  + "\">");
+                    out.println("<input type=\"hidden\"  name=\"fecha\" value=\"" +  elements[1]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"seleccionado\" value=\"" +  elements[2]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"correo\" value=\"" +  elements[3]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"localizacion\" value=\"" +  elements[4]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"capacidad\" value=\"" +  elements[6]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"marca\" value=\"" +  elements[7]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"cantidad\" value=\"" +  elements[8]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"status\" value=\"prestado\">");
+                    out.println("<input type=\"hidden\"  name=\"observaciones\" value=\"" +  elements[10]  +  "\">");
+                    out.println("</form>");
+                }
+            %>
         </table>
-        <p style="background-color:#848484; height:30px; padding-top: 6px; 
-            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
-            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
-            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
+       
+    </form>
     </body>
 </html>

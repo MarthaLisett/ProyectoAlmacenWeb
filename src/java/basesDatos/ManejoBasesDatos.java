@@ -421,7 +421,7 @@ public class ManejoBasesDatos {
         try {
             Statement statement = connection.createStatement();
             query = "SELECT Disponibilidad FROM " + tabla + 
-                    " WHERE Id = '" + form.getId() + "'";
+                    " WHERE Nombre = '" + form.getDesc() + "'";
             ResultSet result = statement.executeQuery(query);
             while (result.next()) {
                 disp = result.getString(1);
@@ -460,9 +460,9 @@ public class ManejoBasesDatos {
          return false;
     }else{
             String disp =  "";
-        String tabla = "";
+        String tabla = tipo;
         String query = "";
-        
+        /*
         if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
             tabla = "material";
         } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
@@ -472,11 +472,13 @@ public class ManejoBasesDatos {
         } else if (tipo.equals("profeReactivo")) {
             tabla = "reactivo";
         }
+        */
+        System.out.println("tabla en MODIF: " + tabla);
         
         try {
             Statement statement = connection.createStatement();
             query = "SELECT Disponibilidad FROM " + tabla + 
-                    " WHERE Id = '" + form.getId() + "'";
+                    " WHERE Nombre = '" + form.getDesc() + "'";
             ResultSet result = statement.executeQuery(query);
             while (result.next()) {
                 disp = result.getString(1);
@@ -485,13 +487,14 @@ public class ManejoBasesDatos {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //checo que haya suficientes
+        System.out.println("DISP: " + disp);
         int iDisp = Integer.parseInt(disp);
         int iCant = Integer.parseInt(form.getCant());
         iDisp = iDisp + iCant;
+        //si no hay, regreso falso para fallar
        
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
-                
                 System.out.println("tabla: " + tabla);
                 System.out.println("disponible: " + iDisp);
                 System.out.println("nombre: " + form.getDesc());
@@ -508,9 +511,8 @@ public class ManejoBasesDatos {
             } catch (SQLException ex) {
                 Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
             }   
-        
-         return false;
         }
+         return false;
     }
     
     public static String[][] leerReportes() {
@@ -600,6 +602,50 @@ public class ManejoBasesDatos {
         return reporte;
        }
     
+     public static String[][] leerPrestados() {
+       //saco el total de registros
+        int cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM prestado");
+            while (result.next()) {
+             cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //matriz para guardar los registros
+           String[][] reporte = new String[cont][11];
+           cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM prestado");
+            while (result.next()) {
+                //leolos registros y los guardo cada uno en un renglon de la matriz
+                System.out.println("ResultSet: " + result.getString(1));
+                
+                reporte[cont][0] = result.getString(1);
+                reporte[cont][1] = result.getString(2);
+                reporte[cont][2] = result.getString(3);
+                reporte[cont][3] = result.getString(4);
+                reporte[cont][4] = result.getString(5);
+                reporte[cont][5] = result.getString(6);
+                reporte[cont][6] = result.getString(7);
+                reporte[cont][7] = result.getString(8);
+                reporte[cont][8] = result.getString(9);
+                reporte[cont][9] = result.getString(10);
+                reporte[cont][10] = result.getString(11);
+                cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //regreso reporte completo
+        return reporte;
+       }
+     
        public static void eliminar(String vale) {
             String query = "";
         
@@ -614,4 +660,69 @@ public class ManejoBasesDatos {
                 Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
             }
          }
+       
+       public static String[] leerUsuarios() {
+           //saco el total de registros
+        int cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM usuarios");
+            while (result.next()) {
+             cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //matriz para guardar los registros
+           String[] usuarios = new String[cont];
+           cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM usuarios");
+            while (result.next()) {
+                //leolos registros y los guardo cada uno en un renglon de la matriz
+                System.out.println("ResultSet: " + result.getString(1));                
+                usuarios[cont] = result.getString(1);
+                cont++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //regreso reporte completo
+          return usuarios;
+       }
+       
+       public static void eliminarUsuario(String mat) {
+           String query = "";
+        
+            try {
+                iniciarConexion();
+                query = "DELETE FROM usuarios WHERE Matricula = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+
+                preparedStmt.setString (1, mat);
+                preparedStmt.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+       
+       
+       public static void eliminarDevueltos(String vale) {
+            String query = "";
+        
+            try {
+                iniciarConexion();
+                query = "DELETE FROM prestado WHERE Vale = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+
+                preparedStmt.setInt   (1, Integer.parseInt(vale));
+                preparedStmt.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+       
 }

@@ -65,6 +65,9 @@ public class ControladorInventario extends HttpServlet {
         String fecha = request.getParameter("fecha");
         String profe = request.getParameter("profesor");
         
+        String estado = request.getParameter("estado");
+        
+        
         String seleccionado = request.getParameter("seleccionado");
 
 
@@ -125,7 +128,7 @@ public class ControladorInventario extends HttpServlet {
             
 
             
-            System.out.println("Output: " + ManejoBasesDatos.insertarPrestado(forma1));
+           ManejoBasesDatos.insertarPrestado(forma1);
             
             String tabla = ManejoBasesDatos.buscar(descripcion);
             
@@ -133,6 +136,21 @@ public class ControladorInventario extends HttpServlet {
             ManejoBasesDatos.eliminar(seleccionado);
             url = "/exito.jsp";
             
+        } else if(tipo.equals("devuelto")) {
+            Forma forma = new Forma("1", fecha, "1", matricula, correo, localizacion, profe, descripcion, 
+                    capacidad, marca, cantidad, status, observaciones, localizacion);
+             String tabla = ManejoBasesDatos.buscar(descripcion);
+             
+             if(estado.equals("devuelto")) {
+                 ManejoBasesDatos.modif(forma, tabla, "suma");
+             }
+            ManejoBasesDatos.eliminarDevueltos(seleccionado);
+            ManejoBasesDatos.insertarReporte(forma);
+            url = "/exito.jsp";
+
+        } else if (tipo.equals("eliminar")) {
+            ManejoBasesDatos.eliminarUsuario(matricula);
+            url = "/exito.jsp";
         }
          RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
