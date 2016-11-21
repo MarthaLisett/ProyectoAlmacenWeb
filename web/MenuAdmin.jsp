@@ -113,7 +113,7 @@
             <form action="ControladorLlenado" name="someForm10">
                 <a href="index.html" onclick="document.someForm10.submit();">
                 <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
-                <p>Cancelar</p>
+                <p>Salir</p>
             </form>
         </span>
     </body>

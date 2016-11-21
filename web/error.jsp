@@ -1,7 +1,12 @@
 <%-- 
-    Document   : exito
-    Created on : 17/11/2016, 10:12:30 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -77,9 +82,9 @@
             ¡Ocurrió un Error!</h1>
         <form>
                 <div class="thumbnail"><img src="imagenes/Correcto.png"/></div>
-                <a href="index.html"><button class="button">
+                <a href="index.html" class="button">
                         Regresar a la Pantalla Principal</button></a>
-                <br>
+                <br><br>
                 <div style="padding-top:15px;">
                     <img src="imagenes/logoTecGris.png" height="100" width="300"/>
                 </div>

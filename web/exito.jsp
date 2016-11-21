@@ -82,11 +82,11 @@
             registró con Éxito!</h1>
         <form>
                 <div class="thumbnail"><img src="imagenes/Correcto.png"/></div>
-                <a href="index.html"><button class="button">
-                        Regresar a la Pantalla Principal</button></a>
-                <br>
+                <a href="index.html" class="button">
+                        Regresar a la Pantalla Principal</a>
+                <br><br>
                 <div style="padding-top:15px;">
-                    <img src="imagenes/logoTecGris.png" height="100" width="300"/>
+                    <img src="imagenes/logoTecGris.png" height="60" width="250"/>
                 </div>
                 <p class="message">Departamento de Química</p>
         </form>

@@ -1,7 +1,13 @@
 <%-- 
-    Document   : porEntregar
-    Created on : 16/11/2016, 09:21:04 AM
-    Author     : Pedro
+Referencia para el css = https://colorlib.com/wp/html5-and-css3-login-forms/
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -129,7 +135,6 @@ th, td{
     }
 </script>
 
-
     </head>
     <body>
         <h1>Artículos por Entregar</h1>
@@ -147,6 +152,7 @@ th, td{
                 <th>Cantidad</th>
                 <th>Status</th>
                 <th>Observaciones</th>
+                <th>Autorizar</th>
             </tr>
               <%
                 
@@ -178,7 +184,10 @@ th, td{
                 }
             %>
         </table>
-       
     </form>
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>

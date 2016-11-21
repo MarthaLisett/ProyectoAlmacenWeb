@@ -1,9 +1,4 @@
 <%-- 
-<<<<<<< HEAD
-    Document   : porEntregar
-    Created on : 16/11/2016, 09:21:04 AM
-    Author     : Pedro
-=======
 /*
  * Proyecto Desarrollo de Aplicaciones Web
  * José González Ayerdi A01036121
@@ -12,7 +7,6 @@
  * Adrián Martínez Quiroga A01280252
  * 21 Noviembre 2016
  */
->>>>>>> 248b60f1ec697d6499746e1528dd2f406c1fd226
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -134,7 +128,8 @@ th, td{
                 <th>Cantidad</th>
                 <th>Status</th>
                 <th>Observaciones</th>
-
+                <th>Condición</th>
+                <th>Devolver</th>
             </tr>
               <%
                 String[][] prestado = (String[][])request.getAttribute("prestados");
@@ -165,7 +160,10 @@ th, td{
                 }
             %>
         </table>
-       
     </form>
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>

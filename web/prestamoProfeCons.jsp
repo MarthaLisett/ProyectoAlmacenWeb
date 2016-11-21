@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Rentar Consumible</title>
         <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
         <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">      
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
@@ -54,9 +54,7 @@
                 <label>
                     Nombre
                     <input placeholder="Nombre" name="nombre"
-                           value="${usuario.getNombre()} 
-                           ${usuario.getApellidoPaterno()} 
-                           ${usuario.getApellidoMaterno()}">
+                           value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
                 </label>
             </div>
 

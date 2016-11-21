@@ -37,13 +37,13 @@
             <div style="border-bottom: 1px solid  #848484;" class="col-2">
                 <label>
                     Matrícula
-                    <input placeholder="Matrícula del usuario" name="matricula">
+                    <input placeholder="Matrícula" name="matricula">
                 </label>
             </div>   
             <div class="col-3">
                 <label>
                     Apellido Paterno
-                    <input placeholder="Apellido paterno del usuario" 
+                    <input placeholder="Apellido Paterno" 
                            name="apellidoPat">
                 </label>
             </div>   
@@ -51,15 +51,15 @@
             <div class="col-3">
                 <label>
                     Apellido Materno
-                    <input placeholder="Apellido materno del usuario" 
+                    <input placeholder="Apellido Materno" 
                            name="apellidoMat">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Correo
-                    <input placeholder="Correo del usuario" name="correo">
-                    <input type="hidden" placeholder="Correo del usuario" 
+                    <input placeholder="Correo" name="correo">
+                    <input type="hidden" placeholder="Correo" 
                            name="tipo" value="usuario">
                 </label>
             </div>
