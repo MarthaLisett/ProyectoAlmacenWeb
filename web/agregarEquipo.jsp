@@ -1,7 +1,12 @@
 <%-- 
-    Document   : agregarEquipo
-    Created on : 19/11/2016, 07:08:45 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,8 +25,8 @@
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Equipo</h1>
         <form action="ControladorInventario">       
-            <div style="border-bottom: 1px solid  #848484; border-right: 1px solid  #848484;" 
-                 class="col-2">
+            <div style="border-bottom: 1px solid  #848484; 
+                 border-right: 1px solid  #848484;" class="col-2">
                 <label>
                     Nombre
                     <input placeholder="Nombre del equipo" name="nombre">
@@ -44,14 +49,17 @@
             <div class="col-3">
                 <label>
                     Localización
-                    <input placeholder="Localización del equipo" name="localizacion">
+                    <input placeholder="Localización del equipo" 
+                           name="localizacion">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Disponibilidad
-                    <input placeholder="Disponibilidad del equipo" name="disponibilidad">
-                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="equipo">
+                    <input placeholder="Disponibilidad del equipo" 
+                           name="disponibilidad">
+                    <input type="hidden" placeholder="Correo del usuario" 
+                           name="tipo" value="equipo">
 
                 </label>
             </div>

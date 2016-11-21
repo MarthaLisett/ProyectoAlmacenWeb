@@ -1,7 +1,12 @@
 <%-- 
-    Document   : porRegresar
-    Created on : 16/11/2016, 09:21:04 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -143,8 +148,12 @@ th, td{
                 <td name = "fecha">16/11/2016</td>
                 <td name = "vale">3</td>
                 <td name="loc">Estante 1</td>
-                <td name = "regresado"><button type="Submit" onclick="alert('Se ha regresado')">Regresado</button></td>
-                <td name = "destruido"><button type="Submit" onclick="alert('Se ha roto')">Destruido</button></td>
+                <td name = "regresado"><button type="Submit" 
+                                               onclick="alert('Se ha regresado')">
+                        Regresado</button></td>
+                <td name = "destruido"><button type="Submit" 
+                                               onclick="alert('Se ha roto')">
+                        Destruido</button></td>
             </tr>
         </table>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 

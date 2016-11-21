@@ -1,7 +1,12 @@
 <%-- 
-    Document   : agregarLab
-    Created on : 19/11/2016, 07:08:35 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,7 +23,8 @@
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Laboratorio</h1>
+            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Laboratorio
+        </h1>
         <form action="ControladorInventario">       
             <div class="col-2" style="border-right: 1px solid  #848484;">
                 <label>
@@ -30,7 +36,8 @@
                 <label>
                     Clave
                     <input placeholder="Clave del laboratorio" name="clave">
-                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="laboratorio">
+                    <input type="hidden" placeholder="Correo del usuario" 
+                           ame="tipo" value="laboratorio">
 
                 </label>
             </div>
