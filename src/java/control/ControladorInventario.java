@@ -115,7 +115,7 @@ public class ControladorInventario extends HttpServlet {
              url="/exito.jsp";
         //si es profesor, hago un profesor nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("usuario")){
-            Usuario user = new Usuario(matricula, nombre, apellido1, apellido2, correo);
+            Usuario user = new Usuario(matricula.toLowerCase(), nombre, apellido1, apellido2, correo);
             if(ManejoBasesDatos.insertarUsuario(user))
             url="/exito.jsp";
         //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
