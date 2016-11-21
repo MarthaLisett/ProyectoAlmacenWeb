@@ -134,36 +134,7 @@ th, td{
                 <th>Cantidad</th>
                 <th>Status</th>
                 <th>Observaciones</th>
-<<<<<<< HEAD
-=======
-                <th>Fecha</th>
-                <th>Número de Vale</th>
-                <th>Localización</th>
-                <th>Regresado</th>
-                <th>Destruido</th>
-            </tr>
-            <tr>
-                <td name ="matricula" >A01280126</td>
-                <td name ="nombre" >Pedro</td>
-                <td namme = "apellido">Esparza</td>
-                <td namme = "correo">Esparza</td>
-                <td namme = "lab">Esparza</td>
-                <td namme = "profesor">Esparza</td>
-                <td name = "descripcion">Matraz</td>
-                <td name ="cantidad">1</td>
-                <td namme = "capacidad">Esparza</td>
-                <td namme = "marca">Esparza</td>
-                <td namme = "obs">Esparza</td>
-                <td name = "fecha">16/11/2016</td>
-                <td name = "vale">3</td>
-                <td name="loc">Estante 1</td>
-                <td name = "regresado"><button type="Submit" 
-                                               onclick="alert('Se ha regresado')">
-                        Regresado</button></td>
-                <td name = "destruido"><button type="Submit" 
-                                               onclick="alert('Se ha roto')">
-                        Destruido</button></td>
->>>>>>> 248b60f1ec697d6499746e1528dd2f406c1fd226
+
             </tr>
               <%
                 String[][] prestado = (String[][])request.getAttribute("prestados");

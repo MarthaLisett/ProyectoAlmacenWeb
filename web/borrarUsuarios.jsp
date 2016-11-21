@@ -115,14 +115,8 @@ th, td{
 </style>
     </head>
     <body>
-<<<<<<< HEAD
         <h1>Artículos por Devolver</h1>
     <form action="ControladorInventario">
-=======
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Dar de Baja Usuarios
-        </h1>
->>>>>>> 248b60f1ec697d6499746e1528dd2f406c1fd226
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
@@ -131,7 +125,6 @@ th, td{
                 String[] usuarios = (String[])request.getAttribute("usuarios");
                 
                 for(String usuario : usuarios) {
-                   
                     out.println("<form action=\"ControladorInventario\">");
                     out.println("<tr>");
                     out.println("<td><input name=\"matricula\" value=\"" +  usuario  + "\"> </td>");
@@ -142,19 +135,7 @@ th, td{
                 }
             %>
         </table>
-<<<<<<< HEAD
        
     </form>
-=======
-        <div style="text-align:center;">
-            <button class="button" type="button" 
-                    onclick="alert('Se han eliminado los usuarios')">
-                Eliminar</button></div>
-          <br><br>
-          <p style="background-color:#848484; height:30px; padding-top: 6px; 
-            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
-            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
-            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
->>>>>>> 248b60f1ec697d6499746e1528dd2f406c1fd226
     </body>
 </html>

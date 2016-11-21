@@ -39,7 +39,9 @@ public class ControladorInventario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
+        
+        response.setContentType( "text/html; charset=iso-8859-1" );
+
         String id = request.getParameter("id");
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
@@ -85,7 +87,7 @@ public class ControladorInventario extends HttpServlet {
         System.out.println("obs: " + observaciones);
         System.out.println("tipo: " + tipo);
 
-        
+
         
         
         id = "1";
@@ -151,6 +153,10 @@ public class ControladorInventario extends HttpServlet {
         } else if (tipo.equals("eliminar")) {
             ManejoBasesDatos.eliminarUsuario(matricula);
             url = "/exito.jsp";
+        } else if (tipo.equals("checar")) {
+            PrintWriter out = response.getWriter();
+            String[] mensaje = ManejoBasesDatos.checarCantidades();
+            out.println(mensaje);
         }
          RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);

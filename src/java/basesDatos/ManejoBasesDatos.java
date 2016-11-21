@@ -710,6 +710,49 @@ public class ManejoBasesDatos {
          }
        
        
+       public static String[] checarCantidades() {
+         
+         int contador = 0;
+         String[] tablas = {"equipo", "material", "reactivo", "consumible"};
+        
+        try {
+            iniciarConexion();
+            for(String tabla : tablas) {
+                Statement statement = connection.createStatement();
+                String query = "SELECT * FROM "+ tabla + " WHERE Disponibilidad > 5";
+                ResultSet result = statement.executeQuery(query);
+                while (result.next()) {
+                    contador ++;
+                }
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String[] resultado = new String[contador];
+        int i = 0;
+        try {
+            iniciarConexion();
+            for(String tabla : tablas) {
+                Statement statement = connection.createStatement();
+                String query = "SELECT Nombre FROM "+ tabla + " WHERE Disponibilidad > 5";
+                ResultSet result = statement.executeQuery(query);
+                while (result.next()) {
+                    resultado[i] = result.getString(1);
+                    i ++;
+                }
+            }
+             return resultado;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+               String[] resultadoAux = new String[1];
+            resultadoAux[0] = "Hay suficientes";
+            return resultadoAux;
+       } 
+       
        public static void eliminarDevueltos(String vale) {
             String query = "";
         

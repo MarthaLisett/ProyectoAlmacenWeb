@@ -106,6 +106,24 @@ th, td{
     font-size: .9vw;
 }
 </style>
+
+<script src="http://code.jquery.com/jquery-latest.js">
+
+</script>
+<script>
+	$(document).ready(function() {
+		function(event) {
+			// Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
+			$.get('ControladorInventario', {
+				tipo : "checar"
+			}, function(responseText) {
+				alert("Faltan: " + responseText);
+			});
+		};
+	});
+</script>
+
+
     </head>
     <body>
         <h1>Artículos por Entregar</h1>
@@ -125,6 +143,7 @@ th, td{
                 <th>Observaciones</th>
             </tr>
               <%
+                
                 String[][] pedidos = (String[][])request.getAttribute("pedidos");
                 
                 for(String[] elements : pedidos) {
@@ -134,7 +153,7 @@ th, td{
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
                     }
-                    out.println("<td><button type=\"submit\">Autorizar</button></td>");
+                    out.println("<td><button id=\"submit\" type=\"submit\">Autorizar</button></td>");
 
                     out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
