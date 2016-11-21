@@ -83,7 +83,7 @@
             <form action="ControladorLlenado" name="someForm3">
                 <a href="index.html" onclick="document.someForm3.submit();">
                 <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
-                <p>Cancelar</p>
+                <p>Salir</p>
                 <input type="hidden" name="usuario" 
                        value="${usuario.getMatricula()}">
                 <input type="hidden">

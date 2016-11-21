@@ -8,7 +8,6 @@
  * Adrián Martínez Quiroga A01280252
  * 21 Noviembre 2016
  */
->>>>>>> 248b60f1ec697d6499746e1528dd2f406c1fd226
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Artículos por Entregar</title>
+        <title>Borrar Usuarios</title>
         
 <!--
 RESPONSTABLE 2.0 by jordyvanraaij
@@ -110,16 +109,20 @@ h1 span {
 }
 th, td{
     align: center;
-    font-size: .9vw;
+    font-size: 1ev;
+}
+input{
+    text-align: center;
 }
 </style>
     </head>
     <body>
-        <h1>Artículos por Devolver</h1>
+        <h1>Borrar Usuarios</h1>
     <form action="ControladorInventario">
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
+                <th>Eliminar</th>
             </tr>
               <%
                 String[] usuarios = (String[])request.getAttribute("usuarios");
@@ -135,7 +138,10 @@ th, td{
                 }
             %>
         </table>
-       
     </form>
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>
