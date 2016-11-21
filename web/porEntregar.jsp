@@ -124,14 +124,12 @@ th, td{
                 <th>Status</th>
                 <th>Observaciones</th>
             </tr>
-            </table>
               <%
                 String[][] pedidos = (String[][])request.getAttribute("pedidos");
                 
                 for(String[] elements : pedidos) {
                    
                     out.println("<form action=\"ControladorInventario\">");
-                    out.println("<table>");
                     out.println("<tr>");
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
@@ -139,7 +137,6 @@ th, td{
                     out.println("<td><button type=\"submit\">Autorizar</button></td>");
 
                     out.println("</tr>");
-                    out.println("</table>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"prestado\">");
                     out.println("<input type=\"hidden\"  name=\"descripcion\" value=\"" +  elements[5]  + "\">");
@@ -155,7 +152,7 @@ th, td{
                     out.println("</form>");
                 }
             %>
-        
+        </table>
        
     </form>
     </body>
