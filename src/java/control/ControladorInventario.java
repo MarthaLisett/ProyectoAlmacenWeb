@@ -116,11 +116,12 @@ public class ControladorInventario extends HttpServlet {
             Equipo  eq = new Equipo(id, nombre, marca, inventario, localizacion, disponibilidad);
             if(ManejoBasesDatos.insertarEquipo(eq))
              url="/exito.jsp";
-        //si es profesor, hago un profesor nuevo, lo inserto en la base de datos y su un exito
+        //si es profesor/alumno, hago un profesor/alumno nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("usuario")){
             Usuario user = new Usuario(matricula.toLowerCase(), nombre, apellido1, apellido2, correo);
-            if(ManejoBasesDatos.insertarUsuario(user))
-            url="/exito.jsp";
+            if(ManejoBasesDatos.insertarUsuario(user)) {
+                url="/exito.jsp";
+            }
         //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("laboratorio")) {
             Laboratorio lab = new Laboratorio(nombre, clave);
@@ -156,7 +157,6 @@ public class ControladorInventario extends HttpServlet {
             ManejoBasesDatos.eliminarUsuario(matricula);
             url = "/exito.jsp";
         } 
-        
         
         if (!tipo.equals("checar")) {
            RequestDispatcher dispatcher

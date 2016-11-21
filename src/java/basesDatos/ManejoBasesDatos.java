@@ -343,7 +343,7 @@ public class ManejoBasesDatos {
         return false;
     }
     public static boolean insertarLab(Laboratorio lab) {
- String query = "";
+                String query = "";
         
         try {
             
@@ -787,4 +787,23 @@ public class ManejoBasesDatos {
             }
          }
        
+       /*
+       *
+       */
+      public static String obtenerLista (String tipo) {
+          StringBuilder sb = new StringBuilder();
+          try {
+            iniciarConexion();
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM " + tipo;
+            ResultSet result = statement.executeQuery(query);
+            while (result.next()) {
+                sb.append(result.getString(2));
+                sb.append(" ");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sb.toString();
+      }
 }

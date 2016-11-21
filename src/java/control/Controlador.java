@@ -53,7 +53,7 @@ public class Controlador extends HttpServlet {
            if (usuario.getMatricula().equals("adminquimica")){
                url = "/MenuAdmin.jsp";
            }
-           else{
+           else {
             switch(mat) {
                 case "a":
                     url = "/MenuAlumno.jsp";

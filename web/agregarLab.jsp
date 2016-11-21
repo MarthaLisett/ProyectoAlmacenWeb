@@ -42,7 +42,7 @@
                 </label>
             </div>
             <input type="hidden" placeholder="Correo del usuario" 
-                           ame="tipo" value="laboratorio">
+                           name="tipo" value="laboratorio">
             <input type="button" value="Agregar" onclick ="validarLab()">
         </form>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 

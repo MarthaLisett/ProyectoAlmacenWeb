@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Pedro/Desktop/proyecto%20WEB/ProyectoAlmacenWeb/web/index.html</file>
-            <file>file:/C:/Users/Pedro/Desktop/proyecto%20WEB/ProyectoAlmacenWeb/src/java/control/Controlador.java</file>
-            <file>file:/C:/Users/Pedro/Desktop/proyecto%20WEB/ProyectoAlmacenWeb/web/porEntregar.jsp</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/conf/MANIFEST.MF</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/WEB-INF/web.xml</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/ControladorAdmin.java</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/src/java/control/Controlador.java</file>
+            <file>file:/opt/lampp/htdocs/apps_web/ProyectoAlmacenWeb/web/META-INF/context.xml</file>
         </group>
     </open-files>
 </project-private>

@@ -52,7 +52,7 @@
         <input type="hidden" name="destino" value="prestamoProfeMaterial.jsp">
     </form>
 
-    <form action="ControladorLlenado" name="someForm5">
+    <form name="someForm5">
         <a href="index.html" onclick="document.someForm5.submit();">
         <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
          <p>Salir</p>

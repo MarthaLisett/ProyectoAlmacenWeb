@@ -21,6 +21,10 @@
         <servlet-name>ControladorInventario</servlet-name>
         <servlet-class>control.ControladorInventario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorSelectProductos</servlet-name>
+        <servlet-class>control.ControladorSelectProductos</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>ControladorAdmin</servlet-name>
@@ -41,6 +45,10 @@
     <servlet-mapping>
         <servlet-name>ControladorFormas</servlet-name>
         <url-pattern>/ControladorFormas</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ControladorSelectProductos</servlet-name>
+        <url-pattern>/ControladorSelectProductos</url-pattern>
     </servlet-mapping>
     
     <welcome-file-list>

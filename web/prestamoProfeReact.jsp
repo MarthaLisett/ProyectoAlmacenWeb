@@ -19,7 +19,31 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
-         <script src="scripts/validar.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
+        <script>
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    var data = xhr.responseText;
+                    if(data.length > 0) {
+                        crearSelect(data);
+                    }
+                }
+            }
+            xhr.open('GET', 'ControladorSelectProductos?tipo=reactivo', true);
+            xhr.send(null);
+
+            function crearSelect(productos) {
+                var nombres = productos.split(' ');
+                for(var i = 0; i < nombres.length - 1; i++) {
+                    node = document.createElement("OPTION");
+                    node.setAttribute("value", nombres[i]);
+                    txt = document.createTextNode(nombres[i]);
+                    node.appendChild(txt);
+                    document.getElementById("descripcion").appendChild(node);
+                }
+            }
+        </script> 
     </head>
     <body bgcolor="gray">
 
@@ -90,8 +114,7 @@
             <div class="col-4">
                 <label>
                     Descripción del Reactivo
-                    <input placeholder="Descripción" name="descripcion" 
-                           id="descripcion">
+                     <select  name="descripcion" id="descripcion"></select>
                 </label>
             </div>
 
