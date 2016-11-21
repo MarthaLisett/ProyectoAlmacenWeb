@@ -128,12 +128,11 @@ public class ControladorInventario extends HttpServlet {
             Forma forma1 = new Forma("1", fecha, "1", matricula, correo, localizacion, profe, descripcion, 
                     capacidad, marca, cantidad, status, observaciones, localizacion);
             
-
+            ManejoBasesDatos.insertarPrestado(forma1);
             
-           ManejoBasesDatos.insertarPrestado(forma1);
-            
+            System.out.println("nombre antes de buscar: " + descripcion);
             String tabla = ManejoBasesDatos.buscar(descripcion);
-            
+            System.out.println("tabla despues de buscar: " + tabla);
             ManejoBasesDatos.modif(forma1, tabla, "resta");
             ManejoBasesDatos.eliminar(seleccionado);
             url = "/exito.jsp";
@@ -153,14 +152,26 @@ public class ControladorInventario extends HttpServlet {
         } else if (tipo.equals("eliminar")) {
             ManejoBasesDatos.eliminarUsuario(matricula);
             url = "/exito.jsp";
-        } else if (tipo.equals("checar")) {
-            PrintWriter out = response.getWriter();
-            String[] mensaje = ManejoBasesDatos.checarCantidades();
-            out.println(mensaje);
+        } 
+        
+        if (!tipo.equals("checar")) {
+            RequestDispatcher dispatcher
+                   = getServletContext().getRequestDispatcher(url);
+           dispatcher.forward(request, response);
+        } else {
+            String[] data2 = ManejoBasesDatos.checarCantidades();
+            StringBuilder resultado = new StringBuilder();
+             
+            for(int i = 0; i < data2.length; i++) {
+                resultado.append(data2[i]);
+                resultado.append("\n");
+               // System.out.println("datos: " + data2[i]);
+            }
+            System.out.println("dentro de checar");
+            String data = "Hello World!";
+            response.getWriter().write(resultado.toString());
+            
         }
-         RequestDispatcher dispatcher
-                = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -176,7 +187,7 @@ public class ControladorInventario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+
         processRequest(request, response);
         
         

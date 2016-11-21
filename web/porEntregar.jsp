@@ -107,20 +107,26 @@ th, td{
 }
 </style>
 
-<script src="http://code.jquery.com/jquery-latest.js">
-
 </script>
+
 <script>
-	$(document).ready(function() {
-		function(event) {
-			// Si en vez de por post lo queremos hacer por get, cambiamos el $.post por $.get
-			$.get('ControladorInventario', {
-				tipo : "checar"
-			}, function(responseText) {
-				alert("Faltan: " + responseText);
-			});
-		};
-	});
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            var data = xhr.responseText;
+            if(data.length > 0) {
+                desplegarInfo(data);
+            }
+        }
+    }
+    xhr.open('GET', 'ControladorInventario?tipo=checar', true);
+    xhr.send(null);
+
+    function desplegarInfo(productos) {
+        var mensaje1 = "Los siguientes productos están por acabarse:\n";
+        mensaje2 = mensaje1.concat(productos);
+        alert(mensaje2);
+    }
 </script>
 
 

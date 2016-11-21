@@ -383,11 +383,13 @@ public class ManejoBasesDatos {
         try {
             iniciarConexion();
             for(String tabla : tablas) {
-                Statement statement = connection.createStatement();
-                String query = "SELECT * FROM "+ tabla + " WHERE Nombre = '" + nombre + "'";
-                ResultSet result = statement.executeQuery(query);
+                String query = "SELECT * FROM "+ tabla + " WHERE Nombre = ?";
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setString   (1, nombre);
+                System.out.println("query buscar: " + query);
+                ResultSet result = preparedStmt.executeQuery();
                 while (result.next()) {
-                    System.out.println(tabla);
+                    System.out.println("tabla hasta el momento:" + tabla);
                    return tabla;
                 }
             }
@@ -405,7 +407,7 @@ public class ManejoBasesDatos {
         String disp =  "";
         String tabla = tipo;
         String query = "";
-        /*
+        
         if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
             tabla = "material";
         } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
@@ -415,7 +417,7 @@ public class ManejoBasesDatos {
         } else if (tipo.equals("profeReactivo")) {
             tabla = "reactivo";
         }
-        */
+        
         System.out.println("tabla en MODIF: " + tabla);
         
         try {
@@ -711,21 +713,20 @@ public class ManejoBasesDatos {
        
        
        public static String[] checarCantidades() {
-         
-         int contador = 0;
-         String[] tablas = {"equipo", "material", "reactivo", "consumible"};
+        
+        int contador = 0;
+        String[] tablas = {"equipo", "material", "reactivo", "consumible"};
         
         try {
             iniciarConexion();
             for(String tabla : tablas) {
                 Statement statement = connection.createStatement();
-                String query = "SELECT * FROM "+ tabla + " WHERE Disponibilidad > 5";
+                String query = "SELECT * FROM "+ tabla + " WHERE Disponibilidad < 5";
                 ResultSet result = statement.executeQuery(query);
                 while (result.next()) {
                     contador ++;
                 }
-            }
-             
+            } 
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -736,7 +737,7 @@ public class ManejoBasesDatos {
             iniciarConexion();
             for(String tabla : tablas) {
                 Statement statement = connection.createStatement();
-                String query = "SELECT Nombre FROM "+ tabla + " WHERE Disponibilidad > 5";
+                String query = "SELECT Nombre FROM "+ tabla + " WHERE Disponibilidad < 5";
                 ResultSet result = statement.executeQuery(query);
                 while (result.next()) {
                     resultado[i] = result.getString(1);
@@ -748,7 +749,7 @@ public class ManejoBasesDatos {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-               String[] resultadoAux = new String[1];
+            String[] resultadoAux = new String[1];
             resultadoAux[0] = "Hay suficientes";
             return resultadoAux;
        } 
