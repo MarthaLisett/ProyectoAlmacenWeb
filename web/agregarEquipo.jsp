@@ -20,50 +20,52 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Equipo</h1>
-        <form action="ControladorInventario">       
+        <form action="ControladorInventario" id="form">       
             <div style="border-bottom: 1px solid  #848484; 
                  border-right: 1px solid  #848484;" class="col-2">
                 <label>
                     Nombre
-                    <input placeholder="Nombre del equipo" name="nombre">
+                    <input placeholder="Nombre del equipo" name="nombre"
+                           id="nombre">
                 </label>
             </div>    
             <div style="border-bottom: 1px solid  #848484;" 
                  class="col-2">
                 <label>
                     Marca
-                    <input placeholder="Marca del equipo" name="marca">
+                    <input placeholder="Marca del equipo" name="marca" id="marca">
                 </label>
             </div>   
             <div class="col-3">
                 <label>
                     Inventario
-                    <input placeholder="Inventario del equipo" name="inventario">
+                    <input placeholder="Inventario del equipo" name="inventario"
+                           id="inventario">
                 </label>
             </div>   
-
             <div class="col-3">
                 <label>
                     Localización
                     <input placeholder="Localización del equipo" 
-                           name="localizacion">
+                           name="localizacion" id="localizacion">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del equipo" 
-                           name="disponibilidad">
-                    <input type="hidden" placeholder="Correo del usuario" 
-                           name="tipo" value="equipo">
-
+                           name="disponibilidad" id="disponibilidad">
                 </label>
             </div>
-            <button type="submit">Agregar</button>
+            <input type="hidden" placeholder="Correo del usuario" 
+                           name="tipo" value="equipo">
+            <input type="hidden" id="capacidad" value="1">
+            <input type="button" value="Agregar" onclick ="validarMaterialEq()">
         </form>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 

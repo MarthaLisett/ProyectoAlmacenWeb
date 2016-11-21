@@ -20,54 +20,58 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Reactivo
         </h1>
-        <form action="ControladorInventario">       
+        <form action="ControladorInventario" id="form">       
             <div class="col-3">
                 <label>
                     Nombre
-                    <input placeholder="Nombre del reactivo" name="nombre">
+                    <input placeholder="Nombre del reactivo" name="nombre"
+                           id="nombre">
                 </label>
             </div>    
             <div class="col-3">
                 <label>
                     Marca
-                    <input placeholder="Marca del reactivo" name="marca">
+                    <input placeholder="Marca del reactivo" name="marca"
+                           id="marca">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Presentación
                     <input placeholder="Presentación del reactivo" 
-                           name="presentacion">
+                           name="presentacion" id="presentacion">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Contenido
-                    <input placeholder="Contenido del reactivo" name="contenido">
+                    <input placeholder="Contenido del reactivo" name="contenido"
+                           id="contenido">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Localización
                     <input placeholder="Ubicación del reactivo" 
-                           name="localizacion">
+                           name="localizacion" id="localizacion">
                 </label>
             </div>    
             <div class="col-3">
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del reactivo" 
-                           name="disponibilidad">
-                    <input type="hidden" placeholder="Correo del usuario" 
-                           name="tipo" value="reactivo">
+                           name="disponibilidad" id="disponibilidad">
                 </label>
             </div>
-            <button type="submit">Agregar</button>
+            <input type="hidden" placeholder="Correo del usuario" 
+                           name="tipo" value="reactivo">
+            <input type="button" value="Agregar" onclick ="validarConsReact()">
         </form>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 

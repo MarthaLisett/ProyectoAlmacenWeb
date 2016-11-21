@@ -20,50 +20,53 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Usuario
         </h1>
-        <form action="ControladorInventario">       
+        <form action="ControladorInventario" id="form">       
             <div style="border-bottom: 1px solid  #848484; 
                  border-right: 1px solid  #848484;" 
                  class="col-2">
                 <label>
                     Nombre
-                    <input placeholder="Nombre del usuario" name="nombre">
+                    <input placeholder="Nombre del usuario" name="nombre" 
+                           id="nombre">
                 </label>
             </div>    
             <div style="border-bottom: 1px solid  #848484;" class="col-2">
                 <label>
                     Matrícula
-                    <input placeholder="Matrícula" name="matricula">
+                    <input placeholder="Matrícula del usuario" name="matricula"
+                           id="matricula">
                 </label>
             </div>   
             <div class="col-3">
                 <label>
                     Apellido Paterno
-                    <input placeholder="Apellido Paterno" 
-                           name="apellidoPat">
+                    <input placeholder="Apellido paterno del usuario" 
+                           name="apellidoPat" id="apellidoPat">
                 </label>
             </div>   
 
             <div class="col-3">
                 <label>
                     Apellido Materno
-                    <input placeholder="Apellido Materno" 
-                           name="apellidoMat">
+                    <input placeholder="Apellido materno del usuario" 
+                           name="apellidoMat" id="apellidoMat">
                 </label>
             </div>
             <div class="col-3">
                 <label>
                     Correo
-                    <input placeholder="Correo" name="correo">
-                    <input type="hidden" placeholder="Correo" 
-                           name="tipo" value="usuario">
+                    <input placeholder="Correo del usuario" name="correo">
+                    <input type="hidden" placeholder="Correo del usuario" 
+                           name="tipo" value="usuario" id="correo">
                 </label>
             </div>
-            <button style="height: 34px;" type="submit">Agregar</button>
+            <input type="button" value="Agregar" onclick ="validarUsuario()">
         </form>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 

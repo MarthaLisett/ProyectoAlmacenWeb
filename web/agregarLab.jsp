@@ -20,28 +20,30 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Laboratorio
         </h1>
-        <form action="ControladorInventario">       
+        <form action="ControladorInventario" id="form">       
             <div class="col-2" style="border-right: 1px solid  #848484;">
                 <label>
                     Nombre
-                    <input placeholder="Nombre del laboratorio" name="nombre">
+                    <input placeholder="Nombre del laboratorio" name="nombre"
+                           id="nombre">
                 </label>
             </div>    
             <div class="col-2">
                 <label>
                     Clave
-                    <input placeholder="Clave del laboratorio" name="clave">
-                    <input type="hidden" placeholder="Correo del usuario" 
-                           ame="tipo" value="laboratorio">
-
+                    <input placeholder="Clave del laboratorio" name="clave"
+                           id="clave">
                 </label>
             </div>
-            <button type="submit">Agregar</button>
+            <input type="hidden" placeholder="Correo del usuario" 
+                           ame="tipo" value="laboratorio">
+            <input type="button" value="Agregar" onclick ="validarLab()">
         </form>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
