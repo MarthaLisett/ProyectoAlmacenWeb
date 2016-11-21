@@ -17,7 +17,7 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Reactivo</h1>
         <form action="ControladorInventario">       
             <div class="col-3">
@@ -54,11 +54,14 @@
                 <label>
                     Disponibilidad
                     <input placeholder="Disponibilidad del reactivo" name="disponibilidad">
-                                        <input type="hidden" placeholder="Correo del usuario" name="tipo" value="reactivo">
-
+                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="reactivo">
                 </label>
             </div>
             <button type="submit">Agregar</button>
         </form>
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>

@@ -17,16 +17,17 @@
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
     </head>
     <body bgcolor="gray">     
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Dar de Usuario</h1>
+        <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
+            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Usuario</h1>
         <form action="ControladorInventario">       
-            <div class="col-2">
+            <div style="border-bottom: 1px solid  #848484; border-right: 1px solid  #848484;" 
+                 class="col-2">
                 <label>
                     Nombre
                     <input placeholder="Nombre del usuario" name="nombre">
                 </label>
             </div>    
-            <div class="col-2">
+            <div style="border-bottom: 1px solid  #848484;" class="col-2">
                 <label>
                     Matrícula
                     <input placeholder="Matrícula del usuario" name="matricula">
@@ -52,7 +53,11 @@
                     <input type="hidden" placeholder="Correo del usuario" name="tipo" value="usuario">
                 </label>
             </div>
-            <button type="submit">Agregar</button>
+            <button style="height: 34px;" type="submit">Agregar</button>
         </form>
+        <p style="background-color:#848484; height:30px; padding-top: 6px; 
+            color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
+            align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
+            en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>
