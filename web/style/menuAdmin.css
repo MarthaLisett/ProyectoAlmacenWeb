@@ -1,0 +1,48 @@
+/*
+Referencia para el css = https://colorlib.com/wp/html5-and-css3-login-forms/
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+*/
+body{
+    background-color: #E0E6F8;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 300px;
+    margin: 0 auto 100px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    margin:20px;
+}
+.thumbnail {
+    background: #848484;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 30px;
+    padding: 27px 30px;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+.thumbnail img {
+    display: block;
+    width: 100%;
+}
+p{
+    color: #848484;
+}
+span{
+    display:block;
+    text-align: center;
+}
