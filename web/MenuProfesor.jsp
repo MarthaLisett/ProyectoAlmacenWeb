@@ -1,7 +1,12 @@
 <%-- 
-    Document   : MenuProfesor
-    Created on : 16/11/2016, 09:17:45 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -50,7 +55,8 @@
         
 <body>
     <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Menú Principal</h1>
+            color:#FFFFFF; border-radius: 10px" align="center">Menú Principal
+    </h1>
     <span>            
     <form action="ControladorLlenado" name="someForm">
         <a href="#" onclick="document.someForm.submit();">

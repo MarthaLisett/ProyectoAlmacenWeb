@@ -1,7 +1,12 @@
 <%-- 
-    Document   : prestamosProfeMaterial
-    Created on : 2/11/2016, 08:41:42 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +22,8 @@
     </head>
     <body bgcolor="gray">
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
-            color:#FFFFFF; border-radius: 10px" align="center"> Préstamo de Consumibles a Profesores</h1>
+            color:#FFFFFF; border-radius: 10px" align="center">
+            Préstamo de Consumibles a Profesores</h1>
         <form action="ControladorFormas">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
@@ -48,14 +54,17 @@
                 <label>
                     Nombre
                     <input placeholder="Nombre" name="nombre"
-                           value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
+                           value="${usuario.getNombre()} 
+                           ${usuario.getApellidoPaterno()} 
+                           ${usuario.getApellidoMaterno()}">
                 </label>
             </div>
 
             <div class="col-3">
                 <label>
                     Correo
-                    <input placeholder="Correo" name="correo" value="${usuario.getCorreo()}">
+                    <input placeholder="Correo" name="correo" 
+                           value="${usuario.getCorreo()}">
                 </label>
             </div>
 

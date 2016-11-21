@@ -1,7 +1,12 @@
 <%-- 
-    Document   : agregarReactivo
-    Created on : 19/11/2016, 07:08:35 AM
-    Author     : Pedro
+/*
+ * Proyecto Desarrollo de Aplicaciones Web
+ * José González Ayerdi A01036121
+ * Pedro Mauricio Esparza García A01280126
+ * Martha Lisett Benavides Martínez A01280115
+ * Adrián Martínez Quiroga A01280252
+ * 21 Noviembre 2016
+ */
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,7 +23,8 @@
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
-            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Reactivo</h1>
+            color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Reactivo
+        </h1>
         <form action="ControladorInventario">       
             <div class="col-3">
                 <label>
@@ -35,7 +41,8 @@
             <div class="col-3">
                 <label>
                     Presentación
-                    <input placeholder="Presentación del reactivo" name="presentacion">
+                    <input placeholder="Presentación del reactivo" 
+                           name="presentacion">
                 </label>
             </div>
             <div class="col-3">
@@ -47,14 +54,17 @@
             <div class="col-3">
                 <label>
                     Localización
-                    <input placeholder="Ubicación del reactivo" name="localizacion">
+                    <input placeholder="Ubicación del reactivo" 
+                           name="localizacion">
                 </label>
             </div>    
             <div class="col-3">
                 <label>
                     Disponibilidad
-                    <input placeholder="Disponibilidad del reactivo" name="disponibilidad">
-                    <input type="hidden" placeholder="Correo del usuario" name="tipo" value="reactivo">
+                    <input placeholder="Disponibilidad del reactivo" 
+                           name="disponibilidad">
+                    <input type="hidden" placeholder="Correo del usuario" 
+                           name="tipo" value="reactivo">
                 </label>
             </div>
             <button type="submit">Agregar</button>
