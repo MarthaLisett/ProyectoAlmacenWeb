@@ -23,17 +23,21 @@ import javax.servlet.http.HttpServletResponse;
 public class ControladorFormas extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * processRequest
+     * 
+     * Manda los datos de la forma y envía al usuario a la página de éxito
+     * si funcionó o la página de fallo si hubo un error.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet, recibiendo los
+     * datos de la forma que el usuario llenó
+     * @param response es la respuesta que se recibe del servlet de acuerdo
+     * a si llenó bien la forma o no.
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //tomo todos los valores que puede hbaer en una forma
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException {
+        //tomo todos los valores que puede haber en una forma
         String fecha = request.getParameter("fecha");
         String usuario = request.getParameter("matricula");
         String correo = request.getParameter("correo");
@@ -50,8 +54,9 @@ public class ControladorFormas extends HttpServlet {
         
         
         //creo la forma con los valores
-        Forma forma1 = new Forma("1", fecha, "1", usuario, correo, claveLab, profe, descripcion,
-         capacidad, marca, cantidad, status, observaciones, localizacion);
+        Forma forma1 = new Forma("1", fecha, "1", usuario, correo, claveLab, 
+                profe, descripcion, capacidad, marca, cantidad, status, 
+                observaciones, localizacion);
         //creo el url de que algo salio mal
         String url="fallo.jsp";
        
@@ -60,55 +65,52 @@ public class ControladorFormas extends HttpServlet {
             //inserto la forma en el registro de pedidos
         //el url es ahora de exito
              url="exito.jsp";
-        }
-        
+        }    
         url = "/exito.jsp";
         //me voy al url
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-        
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        
-        processRequest(request, response);
-        
-        
-        
-        
+        dispatcher.forward(request, response);   
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * doGet
+     * 
+     * Maneja el método <code>GET</code> de HTTP.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse 
+            response) throws ServletException, IOException {
+        processRequest(request, response);    
+    }
+
+    /**
+     * doPost
+     * 
+     * Maneja el método <code>POST</code> de HTTP.
+     *
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
     /**
-     * Returns a short description of the servlet.
+     * getServletInfo
+     * 
+     * Regresa una descripción corta del servlet
      *
-     * @return a String containing servlet description
+     * @return una string con la descripción del servlet
      */
     @Override
     public String getServletInfo() {

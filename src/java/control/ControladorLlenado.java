@@ -31,16 +31,21 @@ import java.util.Locale;
 public class ControladorLlenado extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * processRequest
+     * 
+     * Busca la matrícula del usuario en la base de datos y llena de forma
+     * automática el nombre, correo y fecha actual en la forma.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet, pidiendo los datos
+     * del usuario en base a su matrícula
+     * @param response es la respuesta que se recibe del servlet de acuerdo
+     * al usuario solicitado.
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException,
+            SQLException {
         
         String url = "";
         
@@ -55,7 +60,8 @@ public class ControladorLlenado extends HttpServlet {
         url = "/" + destino;
    
         Date fechaActual = new Date();
-        String fechaConFormato = new SimpleDateFormat("yyyy-MM-dd',' HH:mm").format(fechaActual);
+        String fechaConFormato = new 
+        SimpleDateFormat("yyyy-MM-dd',' HH:mm").format(fechaActual);
         
         Usuario usuario = new Usuario(matricula);
         usuario.setNombre(partes[1]);
@@ -71,18 +77,19 @@ public class ControladorLlenado extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * doGet
+     * 
+     * Maneja el método <code>GET</code> de HTTP.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
@@ -91,27 +98,32 @@ public class ControladorLlenado extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * doPost
+     * 
+     * Maneja el método <code>POST</code> de HTTP.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(ControladorLlenado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorLlenado.class.getName()).
+                    log(Level.SEVERE, null, ex);
         }
     }
 
     /**
-     * Returns a short description of the servlet.
+     * getServletInfo
+     * 
+     * Regresa una descripción corta del servlet
      *
-     * @return a String containing servlet description
+     * @return una string con la descripción del servlet
      */
     @Override
     public String getServletInfo() {

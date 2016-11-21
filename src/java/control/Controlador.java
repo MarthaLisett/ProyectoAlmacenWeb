@@ -23,16 +23,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * processRequest
+     * 
+     * Le da acceso al usuario dependiendo de qué tipo es: alumno, profesor
+     * o administrador.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet, mandando la
+     * matrícula que se recibe del usuario.
+     * @param response es la respuesta que se recibe del servlet de acuerdo
+     * al usuario que se envio.
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+    protected void processRequest(HttpServletRequest request, 
+            HttpServletResponse response) throws ServletException, IOException, 
+            SQLException {
         ManejoBasesDatos.iniciarConexion();
         String url = "";
         String matricula = request.getParameter("matricula");
@@ -73,47 +78,55 @@ public class Controlador extends HttpServlet {
        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * doGet
+     * 
+     * Maneja el método <code>GET</code> de HTTP.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse 
+            response) throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, 
+                    null, ex);
         }
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * doPost
+     * 
+     * Maneja el método <code>POST</code> de HTTP.
      *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @param request es la petición que se hace al servlet
+     * @param response es la respuesta que se recibe del servlet
+     * @throws ServletException cuando ocurre un error de servlet
+     * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse 
+            response) throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, 
+                    null, ex);
         }
     }
 
     /**
-     * Returns a short description of the servlet.
+     * getServletInfo
+     * 
+     * Regresa una descripción corta del servlet
      *
-     * @return a String containing servlet description
+     * @return una string con la descripción del servlet
      */
     @Override
     public String getServletInfo() {
