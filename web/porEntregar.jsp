@@ -165,7 +165,8 @@ th, td{
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
                     }
-                    out.println("<td><button id=\"submit\" type=\"submit\">Autorizar</button></td>");
+                    out.println("<td><button name=\"submit\" id=\"submit\" type=\"submit\" value = \"autorizar\">Autorizar</button></td>");
+                    out.println("<td><button name=\"submit\" id=\"cancel\" type=\"submit\" value=\"cancelar\">Cancelar</button></td>");
 
                     out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");

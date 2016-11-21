@@ -68,11 +68,13 @@ public class ControladorInventario extends HttpServlet {
         String profe = request.getParameter("profesor");
         
         String estado = request.getParameter("estado");
-        
-        
         String seleccionado = request.getParameter("seleccionado");
-
-
+        String botonSeleccionado = "";
+        
+        if(request.getParameter("submit") != null) {
+            botonSeleccionado = request.getParameter("submit");
+        }
+        
         System.out.println("VALORES");
         System.out.println("mat: " + matricula);
         System.out.println("fecha: " + fecha);
@@ -86,15 +88,16 @@ public class ControladorInventario extends HttpServlet {
         System.out.println("status: " + status);
         System.out.println("obs: " + observaciones);
         System.out.println("tipo: " + tipo);
-
-
-        
         
         id = "1";
         //url de que algo fallo
         String url="/error.jsp";
         //si es material, hago un material nuevo, lo inserto en la base de datos y su un exito
-        if(tipo.equals("material")){
+        if(botonSeleccionado.equals("cancelar") && !tipo.equals("checar")) {
+             url="/exito.jsp";
+             ManejoBasesDatos.cancelarPedido(descripcion);
+             
+        } else if(tipo.equals("material")){
             Material mat = new Material("1", nombre, marca, localizacion, capacidad, disponibilidad);
             if(ManejoBasesDatos.insertarMaterial(mat))
              url="/exito.jsp";
@@ -154,23 +157,20 @@ public class ControladorInventario extends HttpServlet {
             url = "/exito.jsp";
         } 
         
+        
         if (!tipo.equals("checar")) {
-            RequestDispatcher dispatcher
+           RequestDispatcher dispatcher
                    = getServletContext().getRequestDispatcher(url);
            dispatcher.forward(request, response);
+           
         } else {
             String[] data2 = ManejoBasesDatos.checarCantidades();
             StringBuilder resultado = new StringBuilder();
-             
-            for(int i = 0; i < data2.length; i++) {
-                resultado.append(data2[i]);
+            for (String data21 : data2) {
+                resultado.append(data21);
                 resultado.append("\n");
-               // System.out.println("datos: " + data2[i]);
             }
-            System.out.println("dentro de checar");
-            String data = "Hello World!";
             response.getWriter().write(resultado.toString());
-            
         }
     }
 

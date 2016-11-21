@@ -283,6 +283,24 @@ public class ManejoBasesDatos {
         return false;
     }
     
+    public static boolean cancelarPedido(String nombreProducto) {
+       String query = "";
+        try {
+             iniciarConexion();
+             query = "DELETE FROM pedido WHERE Descripcion = ?";
+             PreparedStatement preparedStmt = connection.prepareStatement(query);
+             preparedStmt.setString   (1, nombreProducto);
+             if (preparedStmt.executeUpdate() == 1) {
+                return true;
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    
+    }
+    
+    
     public static boolean autorizarPrestamo(String nombre) {
         
         

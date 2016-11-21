@@ -61,7 +61,7 @@ public class ControladorFormas extends HttpServlet {
         String url="fallo.jsp";
        
         //si se puede modificar la base de datos
-        if(  ManejoBasesDatos.insertarPedido(forma1)){
+        if(ManejoBasesDatos.insertarPedido(forma1)){
             //inserto la forma en el registro de pedidos
         //el url es ahora de exito
              url="exito.jsp";
