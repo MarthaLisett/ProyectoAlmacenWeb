@@ -82,9 +82,7 @@
                 <label>
                     Nombre
                     <input placeholder="Nombre" name="nombre" id="nombre"
-                            value="${usuario.getNombre()} 
-                            ${usuario.getApellidoPaterno()} 
-                            ${usuario.getApellidoMaterno()}">
+                            value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
                 </label>
             </div>
 
