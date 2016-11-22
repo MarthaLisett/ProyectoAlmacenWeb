@@ -71,6 +71,7 @@ th, td{
                 <th>Status</th>
                 <th>Observaciones</th>
                 <th>Autorizar</th>
+                <th>Cancelar</th>
             </tr>
               <%
                 
