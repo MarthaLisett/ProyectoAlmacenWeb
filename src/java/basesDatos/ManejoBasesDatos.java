@@ -49,6 +49,7 @@ public class ManejoBasesDatos {
 
     private static Connection connection;
 
+        
     
     // TODO: esto es necesario?
     public ManejoBasesDatos() {
@@ -61,6 +62,11 @@ public class ManejoBasesDatos {
     }
 
     public static void iniciarConexion() throws SQLException {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
         System.out.println("conexion iniciada");
     }
@@ -94,8 +100,10 @@ public class ManejoBasesDatos {
     
     
     public static Boolean existe(Usuario user) {
+        
         Boolean existe = false;
         try {
+            iniciarConexion();
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT Matricula FROM usuarios");
             while (result.next()) {

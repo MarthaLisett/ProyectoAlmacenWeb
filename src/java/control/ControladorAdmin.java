@@ -39,7 +39,6 @@ public class ControladorAdmin extends HttpServlet {
         String url = "";
         
         String[][] pedidos = ManejoBasesDatos.leerPedidos();
-        
         String[][] prestados = ManejoBasesDatos.leerPrestados();
         String[] usuarios = ManejoBasesDatos.leerUsuarios();
 
