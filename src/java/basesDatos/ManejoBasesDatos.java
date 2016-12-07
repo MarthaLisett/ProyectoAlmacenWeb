@@ -13,16 +13,7 @@ import informacion.Equipo;
 import informacion.Forma;
 import informacion.Laboratorio;
 import informacion.Material;
-import informacion.Profesor;
 import informacion.Reactivo;
-import informacion.Usuario;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -171,8 +162,6 @@ public class ManejoBasesDatos {
          
             iniciarConexion();
             query =  "INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
-            
-            
             
              PreparedStatement preparedStmt = connection.prepareStatement(query);
              preparedStmt.setString   (1, mat.getId());

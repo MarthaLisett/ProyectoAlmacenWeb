@@ -48,8 +48,6 @@ public class ControladorInventario extends HttpServlet {
         
 
         String matricula = request.getParameter("matricula");
-        String apellido1 = request.getParameter("apellidoPat");
-        String apellido2 = request.getParameter("apellidoMat");
         String marca = request.getParameter("marca");
         String presentacion = request.getParameter("presentacion");
         String contenido = request.getParameter("contenido");
@@ -73,21 +71,7 @@ public class ControladorInventario extends HttpServlet {
         if(request.getParameter("submit") != null) {
             botonSeleccionado = request.getParameter("submit");
         }
-        
-        System.out.println("VALORES");
-        System.out.println("mat: " + matricula);
-        System.out.println("fecha: " + fecha);
-        System.out.println("vale/seleccionado: " + seleccionado);
-        System.out.println("correo: " + correo);
-        System.out.println("local: " + localizacion);
-        System.out.println("desc: " + descripcion);
-        System.out.println("capacidad: " + capacidad);
-        System.out.println("marca: " + marca);
-        System.out.println("cantidad: " + cantidad);
-        System.out.println("status: " + status);
-        System.out.println("obs: " + observaciones);
-        System.out.println("tipo: " + tipo);
-        
+
         id = "1";
         //url de que algo fallo
         String url="/error.jsp";
@@ -95,7 +79,6 @@ public class ControladorInventario extends HttpServlet {
         if(botonSeleccionado.equals("cancelar") && !tipo.equals("checar")) {
              url="/exito.jsp";
              ManejoBasesDatos.cancelarPedido(descripcion);
-             
         } else if(tipo.equals("material")){
             Material mat = new Material("1", nombre, marca, localizacion, capacidad, disponibilidad);
             if(ManejoBasesDatos.insertarMaterial(mat))
@@ -114,13 +97,7 @@ public class ControladorInventario extends HttpServlet {
         }else if(tipo.equals("equipo")){
             Equipo  eq = new Equipo(id, nombre, marca, inventario, localizacion, disponibilidad);
             if(ManejoBasesDatos.insertarEquipo(eq))
-             url="/exito.jsp";
-        //si es profesor/alumno, hago un profesor/alumno nuevo, lo inserto en la base de datos y su un exito
-        }else if(tipo.equals("usuario")){
-            Usuario user = new Usuario(matricula.toLowerCase(), nombre, apellido1, apellido2, correo);
-            if(ManejoBasesDatos.insertarUsuario(user)) {
-                url="/exito.jsp";
-            }
+             url="/exito.jsp";        
         //si es lab, hago un lab nuevo, lo inserto en la base de datos y su un exito
         }else if(tipo.equals("laboratorio")) {
             Laboratorio lab = new Laboratorio(nombre, clave);
@@ -133,9 +110,7 @@ public class ControladorInventario extends HttpServlet {
             
             ManejoBasesDatos.insertarPrestado(forma1);
             
-            System.out.println("nombre antes de buscar: " + descripcion);
             String tabla = ManejoBasesDatos.buscar(descripcion);
-            System.out.println("tabla despues de buscar: " + tabla);
             ManejoBasesDatos.modif(forma1, tabla, "resta");
             ManejoBasesDatos.eliminar(seleccionado);
             url = "/exito.jsp";
