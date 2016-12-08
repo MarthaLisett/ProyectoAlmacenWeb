@@ -86,7 +86,7 @@
                         Regresar a la Pantalla Principal</a>
                 <br><br>
                 <div style="padding-top:15px;">
-                    <img src="imagenes/logoTecGris.png" height="60" width="250"/>
+                    <img src="imagenes/logoTecGris.png" height="90" width="300"/>
                 </div>
                 <p class="message">Departamento de Química</p>
         </form>
