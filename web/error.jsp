@@ -77,16 +77,16 @@
     </style>
     </head>
     <body>    
-        <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+        <h1 style="background-color:#FF0000; height:50px; padding-top: 10px; 
             color:#FFFFFF; border-radius: 10px" align="center">
             ¡Ocurrió un Error!</h1>
         <form>
-                <div class="thumbnail"><img src="imagenes/Correcto.png"/></div>
+                <div class="thumbnail"><img src="imagenes/Error.png"/></div>
                 <a href="index.html" class="button">
                         Regresar a la Pantalla Principal</button></a>
                 <br><br>
                 <div style="padding-top:15px;">
-                    <img src="imagenes/logoTecGris.png" height="100" width="300"/>
+                    <img src="imagenes/logoTecGris.png" height="90" width="300"/>
                 </div>
                 <p class="message">Departamento de Química</p>
         </form>

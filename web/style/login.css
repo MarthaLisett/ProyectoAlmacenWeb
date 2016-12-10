@@ -20,10 +20,10 @@ form {
     z-index: 1;
     background: #FFFFFF;
     max-width: 300px;
-    margin: 0 auto 100px;
-    padding: 10px 30px 10px 30px;
     border-radius: 10px;
     text-align: center;
+    display: inline-block;
+    margin:20px;
 }
 input {
     outline: 0;
