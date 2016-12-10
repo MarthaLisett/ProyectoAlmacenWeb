@@ -18,16 +18,53 @@
     </servlet>
     <servlet>
         <servlet-name>ControladorInventario</servlet-name>
-        <servlet-class>control.ControladorInventario</servlet-class>
+        <servlet-class>control.ControladorRegresarProducto</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ControladorSelectProductos</servlet-name>
         <servlet-class>control.ControladorSelectProductos</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControladorUsuarios</servlet-name>
-        <servlet-class>control.ControladorUsuarios</servlet-class>
+        <servlet-name>ControladorAgregarUsuario</servlet-name>
+        <servlet-class>control.ControladorAgregarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorEliminarUsuario</servlet-name>
+        <servlet-class>control.ControladorEliminarUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAgregarMaterial</servlet-name>
+        <servlet-class>control.ControladorAgregarMaterial</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAgregarEquipo</servlet-name>
+        <servlet-class>control.ControladorAgregarEquipo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAgregarReactivo</servlet-name>
+        <servlet-class>control.ControladorAgregarReactivo</servlet-class>
+    </servlet>ControladorAgregarConsumible
+    <servlet>
+        <servlet-name>ControladorAgregarConsumible</servlet-name>
+        <servlet-class>control.ControladorAgregarConsumible</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAgregarLab</servlet-name>
+        <servlet-class>control.ControladorAgregarLab</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorCantidades</servlet-name>
+        <servlet-class>control.ControladorCantidades</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAceptarPedido</servlet-name>
+        <servlet-class>control.ControladorAceptarPedido</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorRegresarProducto</servlet-name>
+        <servlet-class>control.ControladorRegresarProducto</servlet-class>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>ControladorAdmin</servlet-name>
         <url-pattern>/ControladorAdmin</url-pattern>
@@ -53,8 +90,44 @@
         <url-pattern>/ControladorSelectProductos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControladorUsuarios</servlet-name>
-        <url-pattern>/ControladorUsuarios</url-pattern>
+        <servlet-name>ControladorAgregarUsuario</servlet-name>
+        <url-pattern>/ControladorAgregarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEliminarUsuario</servlet-name>
+        <url-pattern>/ControladorEliminarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAgregarMaterial</servlet-name>
+        <url-pattern>/ControladorAgregarMaterial</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAgregarEquipo</servlet-name>
+        <url-pattern>/ControladorAgregarEquipo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAgregarReactivo</servlet-name>
+        <url-pattern>/ControladorAgregarReactivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAgregarConsumible</servlet-name>
+        <url-pattern>/ControladorAgregarConsumible</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorCantidades</servlet-name>
+        <url-pattern>/ControladorCantidades</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAgregarLab</servlet-name>
+        <url-pattern>/ControladorAgregarLab</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAceptarPedido</servlet-name>
+        <url-pattern>/ControladorAceptarPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorRegresarProducto</servlet-name>
+        <url-pattern>/ControladorRegresarProducto</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

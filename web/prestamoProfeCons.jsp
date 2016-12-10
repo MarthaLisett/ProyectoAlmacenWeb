@@ -29,7 +29,7 @@
                         crearSelect(data);
                     }
                 }
-            }
+            };
             xhr.open('GET', 'ControladorSelectProductos?tipo=consumible', true);
             xhr.send(null);
 

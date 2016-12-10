@@ -10,7 +10,7 @@ package informacion;
 
 public class Reactivo {
 
-    String id, nombre, marca, presentacion, contenido, localizacion,
+    String nombre, marca, presentacion, contenido, localizacion,
             disponibilidad;
 
     /**
@@ -18,7 +18,6 @@ public class Reactivo {
      *
      * Método constructor para crear el objeto Reactivo usando todos sus datos
      *
-     * @param id es el <code>id</code> del objeto.
      * @param nombre es el <code>nombre</code> del objeto.
      * @param marca es la <code>marca</code> del objeto.
      * @param presentacion es la <code>presentacion</code> del objeto.
@@ -27,25 +26,14 @@ public class Reactivo {
      * @param disponibilidad es la <code>disponibilidad</code> del objeto.
      * 
      */
-    public Reactivo(String id, String nombre, String marca, String presentacion,
+    public Reactivo(String nombre, String marca, String presentacion,
             String contenido, String localizacion, String disponibilidad) {
-        this.id = id;
         this.nombre = nombre;
         this.marca = marca;
         this.presentacion = presentacion;
         this.contenido = contenido;
         this.localizacion = localizacion;
         this.disponibilidad = disponibilidad;
-    }
-
-    /**
-     * getId
-     *
-     * Método que obtiene el id del objeto Reactivo
-     *
-     */
-    public String getId() {
-        return id;
     }
 
     /**
@@ -106,18 +94,6 @@ public class Reactivo {
      */
     public String getDisponibilidad() {
         return disponibilidad;
-    }
-
-    /**
-     * setId
-     *
-     * Método usado para asignar el id del objeto Reactivo
-     *
-     * @param id es el <code>id</code> del objeto.
-     *
-     */
-    public void setId(String id) {
-        this.id = id;
     }
 
     /**

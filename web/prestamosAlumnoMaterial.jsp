@@ -22,6 +22,7 @@
         <script src="scripts/validar.js" type="text/javascript"></script>
         
         <script>
+            // muestra la lista de productos extraidos de la base de datos
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
@@ -30,7 +31,7 @@
                         crearSelect(data);
                     }
                 }
-            }
+            };
             xhr.open('GET', 'ControladorSelectProductos?tipo=material', true);
             xhr.send(null);
 
@@ -46,8 +47,6 @@
             }
         </script>
 
-        
-        
     </head>
     <body bgcolor="#848484">
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
@@ -56,7 +55,7 @@
         <form action="ControladorFormas" id="form">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
-
+            
             <div class="col-4">
                 <label>
                     Fecha

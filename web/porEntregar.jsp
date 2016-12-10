@@ -42,8 +42,8 @@ th, td{
                 desplegarInfo(data);
             }
         }
-    }
-    xhr.open('GET', 'ControladorInventario?tipo=checar', true);
+    };
+    xhr.open('GET', 'ControladorCantidades', true);
     xhr.send(null);
 
     function desplegarInfo(productos) {
@@ -56,7 +56,7 @@ th, td{
     </head>
     <body>
         <h1>Artículos por Entregar</h1>
-    <form action="ControladorInventario">
+        <form action="ControladorAceptarPedido">
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
@@ -74,19 +74,16 @@ th, td{
                 <th>Cancelar</th>
             </tr>
               <%
-                
                 String[][] pedidos = (String[][])request.getAttribute("pedidos");
                 
                 for(String[] elements : pedidos) {
-                   
-                    out.println("<form action=\"ControladorInventario\">");
+                    out.println("<form action=\"ControladorAceptarPedido\">");
                     out.println("<tr>");
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
                     }
                     out.println("<td><button name=\"submit\" id=\"submit\" type=\"submit\" value = \"autorizar\">Autorizar</button></td>");
                     out.println("<td><button name=\"submit\" id=\"cancel\" type=\"submit\" value=\"cancelar\">Cancelar</button></td>");
-
                     out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"prestado\">");
@@ -97,6 +94,7 @@ th, td{
                     out.println("<input type=\"hidden\"  name=\"localizacion\" value=\"" +  elements[4]  +  "\">");
                     out.println("<input type=\"hidden\"  name=\"capacidad\" value=\"" +  elements[6]  +  "\">");
                     out.println("<input type=\"hidden\"  name=\"marca\" value=\"" +  elements[7]  +  "\">");
+                    // TODO: tal vez ya no sea necesario desplegar la cantidad porque siempre sera 1
                     out.println("<input type=\"hidden\"  name=\"cantidad\" value=\"" +  elements[8]  +  "\">");
                     out.println("<input type=\"hidden\"  name=\"status\" value=\"prestado\">");
                     out.println("<input type=\"hidden\"  name=\"observaciones\" value=\"" +  elements[10]  +  "\">");

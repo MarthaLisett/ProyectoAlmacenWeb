@@ -19,7 +19,7 @@
         <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
             color:#FFFFFF; border-radius: 10px" align="center">Menú Principal
         </h1>
-            <span>     
+            <span>
             <form action="ControladorLlenado" name="someForm">
                 <a href="#" onclick="document.someForm.submit();">
                 <div class="thumbnail"><img src="imagenes/Material.png"/></div>
@@ -37,7 +37,7 @@
                        value="${usuario.getMatricula()}">
                 <input type="hidden" name="destino" 
                        value="prestamosAlumnoEquipo.jsp"> 
-            </form>    
+            </form>
             <form name="someForm3">
                 <a href="index.html" onclick="document.someForm3.submit();">
                 <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>

@@ -16,10 +16,10 @@
     <link href="style/menuProfesor.css" rel="stylesheet" type="text/css"/>
         
 <body>
-    <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
+    <h1 style="background-color:#848484; height:50px; padding-top: 10px;
             color:#FFFFFF; border-radius: 10px" align="center">Menú Principal
     </h1>
-    <span>            
+    <span>
     <form action="ControladorLlenado" name="someForm">
         <a href="#" onclick="document.someForm.submit();">
         <div class="thumbnail"><img src="imagenes/Mechero.png"/></div>

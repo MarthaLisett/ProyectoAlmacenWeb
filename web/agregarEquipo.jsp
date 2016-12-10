@@ -25,7 +25,7 @@
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Equipo</h1>
-        <form action="ControladorInventario" id="form">       
+        <form action="ControladorAgregarEquipo" id="form">       
             <div style="border-bottom: 1px solid  #848484; 
                  border-right: 1px solid  #848484;" class="col-2">
                 <label>

@@ -10,7 +10,7 @@ package informacion;
 
 public class Material {
 
-    String id, nombre, marca, localizacion, capacidad, disponibilidad;
+    private String nombre, marca, localizacion, capacidad, disponibilidad;
 
     /**
      * Material
@@ -25,24 +25,13 @@ public class Material {
      * @param disponibilidad es la <code>disponibilidad</code> del objeto.
      *
      */
-    public Material(String id, String nombre, String marca, String localizacion,
+    public Material(String nombre, String marca, String localizacion,
             String capacidad, String disponibilidad) {
-        this.id = id;
         this.nombre = nombre;
         this.marca = marca;
         this.localizacion = localizacion;
         this.capacidad = capacidad;
         this.disponibilidad = disponibilidad;
-    }
-
-    /**
-     * getId
-     *
-     * Método que obtiene el id del objeto Material
-     *
-     */
-    public String getId() {
-        return id;
     }
 
     /**
@@ -93,18 +82,6 @@ public class Material {
      */
     public String getDisponibilidad() {
         return disponibilidad;
-    }
-
-    /**
-     * setId
-     *
-     * Método usado para asignar el id del objeto Material
-     *
-     * @param id es el <code>id</code> del objeto.
-     *
-     */
-    public void setId(String id) {
-        this.id = id;
     }
 
     /**

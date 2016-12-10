@@ -21,6 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ControladorLogin extends HttpServlet {
+    // variables
+    private String  url;
+    private String  matricula;
+    private Usuario usuario;
+    private String  matPrimerCaracter;
     /**
      * processRequest
      *
@@ -38,19 +43,13 @@ public class ControladorLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             SQLException {
-        String url;
-        String matricula;
-        Usuario usuario;
-        matricula = request.getParameter("matricula");
         // pasar matricula a letras minusculas para hacer la busqueda
-        matricula = matricula.toLowerCase();
-        usuario = new Usuario(matricula);
+        matricula = request.getParameter("matricula").toLowerCase();
+        usuario   = new Usuario(matricula);
         // revisar si el usuario existe
         if (ManejoBasesDatos.existe(usuario)){
-            // revisar el tipo de usuario para obtener la url correspondiente
-            url = tipoUsuario(usuario);
+            url = urlTipoUsuario(usuario);
         } else {
-            // si el usuario no existe se queda en la pagina de login
             url = "/index.html";
         }
         request.setAttribute("usuario", usuario);
@@ -58,29 +57,28 @@ public class ControladorLogin extends HttpServlet {
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-    
-    public String tipoUsuario(Usuario usuario) {
-        String url;
-        String matPrimerCaracter;
-        
-        matPrimerCaracter = usuario.getMatricula().substring(0,1);
-        matPrimerCaracter = matPrimerCaracter.toLowerCase();
+     /**
+     * urlTipoUsuario
+     * 
+     * Revisa el tipo de usuario y regresa la pagina correspondiente.
+     * 
+     * @param usuario es el objeto usuario para obtener la matricula.
+     * @return string con la pagina que corresponde al tipo de usuario ingresado.
+     */
+    public String urlTipoUsuario(Usuario usuario) {
+        matPrimerCaracter = usuario.getMatricula().substring(0,1).toLowerCase();
         if (usuario.getMatricula().equals("adminquimica")){
-            url = "/MenuAdmin.jsp";
+            return "/MenuAdmin.jsp";
         } else {
             switch(matPrimerCaracter) {
                 case "a":
-                    url = "/MenuAlumno.jsp";
-                    break;
+                   return "/MenuAlumno.jsp";
                 case "l":
-                    url = "/MenuProfesor.jsp";
-                    break;
+                    return "/MenuProfesor.jsp";
                 default:
-                    url = "/index.html";
-                    break;
+                    return "/index.html";
             }
         }
-        return url;
     }
     
     /**

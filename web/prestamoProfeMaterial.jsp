@@ -30,7 +30,7 @@
                         crearSelect(data);
                     }
                 }
-            }
+            };
             xhr.open('GET', 'ControladorSelectProductos?tipo=material', true);
             xhr.send(null);
 

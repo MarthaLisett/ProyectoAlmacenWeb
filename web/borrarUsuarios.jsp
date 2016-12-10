@@ -27,7 +27,7 @@ If you like this solution, you might also want to check out the 1.0 version:
     </head>
     <body>
         <h1>Borrar Usuarios</h1>
-    <form action="ControladorInventario">
+    <form action="">
         <table class="responstable">
             <tr>
                 <th>Matrícula</th>
@@ -37,16 +37,11 @@ If you like this solution, you might also want to check out the 1.0 version:
                 String[] usuarios = (String[])request.getAttribute("usuarios");
                 
                 for(String usuario : usuarios) {
-                    out.println("<form action=\"ControladorInventario\">");
+                    out.println("<form action=\"ControladorEliminarUsuario\">");
                     out.println("<tr>");
                     out.print("<td>" + usuario + "</td>");
                     out.println("<td><button type=\"submit\">Eliminar</button></td>");
                     out.println("</tr>");
-                    
-                    //out.println("<tr>");
-                    //out.println("<td><input name=\"matricula\" value=\"" +  usuario  + " \"> </td>");
-                    //out.println("<td><button type=\"submit\">Eliminar</button></td>");
-                    //out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  usuario  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"eliminar\">");
                     out.println("</form>");

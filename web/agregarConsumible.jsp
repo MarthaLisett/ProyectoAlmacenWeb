@@ -26,7 +26,7 @@
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
             color:#FFFFFF; border-radius: 10px" align="center">Dar de Alta Consumible
         </h1>
-        <form action="ControladorInventario" id="form">       
+        <form action="ControladorAgregarConsumible" id="form">       
             <div class="col-3">
                 <label>
                     Nombre

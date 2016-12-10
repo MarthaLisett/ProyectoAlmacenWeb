@@ -1,11 +1,11 @@
 /*
- * Proyecto Desarrollo de Aplicaciones Web
- * José González Ayerdi A01036121
- * Pedro Mauricio Esparza García A01280126
- * Martha Lisett Benavides Martínez A01280115
- * Adrián Martínez Quiroga A01280252
- * 21 Noviembre 2016
- */
+* Proyecto Desarrollo de Aplicaciones Web
+* José González Ayerdi A01036121
+* Pedro Mauricio Esparza García A01280126
+* Martha Lisett Benavides Martínez A01280115
+* Adrián Martínez Quiroga A01280252
+* 21 Noviembre 2016
+*/
 package control;
 
 import basesDatos.ManejoBasesDatos;
@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ControladorSelectProductos extends HttpServlet {
-    private String tipo;
-    private String nombres;   
+public class ControladorCantidades extends HttpServlet {
+    // variables
+    private String[] cantidades;
+    private StringBuilder resultado;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,13 +30,21 @@ public class ControladorSelectProductos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType( "text/html; charset=iso-8859-1" );
-        tipo    = request.getParameter("tipo");
-        nombres = ManejoBasesDatos.obtenerLista(tipo);
-        response.getWriter().write(nombres);
+        
+        cantidades = ManejoBasesDatos.checarCantidades();
+        resultado  = new StringBuilder();
+        
+        for (String cantidad : cantidades) {
+            resultado.append(cantidad);
+            resultado.append("\n");
+        }
+        response.getWriter().write(resultado.toString());
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+    
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -48,14 +57,14 @@ public class ControladorSelectProductos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
+        
         processRequest(request, response);
         
         
         
         
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -69,7 +78,7 @@ public class ControladorSelectProductos extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -79,5 +88,5 @@ public class ControladorSelectProductos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

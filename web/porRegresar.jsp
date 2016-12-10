@@ -41,12 +41,13 @@
                 
                 for(String[] elements : prestado) {
                    
-                    out.println("<form action=\"ControladorInventario\">");
+                    out.println("<form action=\"ControladorRegresarProducto\">");
                     out.println("<tr>");
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
                     }
-                    out.println("<td><input type=\"radio\" name=\"estado\" value=\"roto\">Roto/Consumible<br><input type=\"radio\" name=\"estado\" value=\"devuelto\">Devuelto<br></td>");
+                    out.println("<td><input type=\"radio\" name=\"estado\" value=\"roto\">Roto/Consumible<br>");
+                    out.println("<input type=\"radio\" name=\"estado\" value=\"devuelto\">Devuelto<br></td>");
                     out.println("<td><button type=\"submit\">Devolver</button></td>");
                     out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");

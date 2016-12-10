@@ -1,11 +1,11 @@
 /*
- * Proyecto Desarrollo de Aplicaciones Web
- * José González Ayerdi A01036121
- * Pedro Mauricio Esparza García A01280126
- * Martha Lisett Benavides Martínez A01280115
- * Adrián Martínez Quiroga A01280252
- * 21 Noviembre 2016
- */
+* Proyecto Desarrollo de Aplicaciones Web
+* José González Ayerdi A01036121
+* Pedro Mauricio Esparza García A01280126
+* Martha Lisett Benavides Martínez A01280115
+* Adrián Martínez Quiroga A01280252
+* 21 Noviembre 2016
+*/
 package basesDatos;
 
 import informacion.Consumible;
@@ -37,21 +37,19 @@ import java.util.logging.Logger;
  * @author MarthaLisett
  */
 public class ManejoBasesDatos {
-
+    
     private static Connection connection;
-
-        
+    
+    
     
     // TODO: esto es necesario?
     public ManejoBasesDatos() {
         try {
-            //connection = DriverManager.getConnection("jdbc:mysql://10.12.172.100", "root", "");
-            // connection = DriverManager.getConnection("jdbc:mysql://localhost/laboratorioqumica", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
     public static void iniciarConexion() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -63,29 +61,29 @@ public class ManejoBasesDatos {
     }
     
     public static StringBuilder obtenerDatos(String matricula) throws SQLException {
-         StringBuilder resultado = new StringBuilder();
-         
-         Statement statement = connection.createStatement();
-         String query = "SELECT * FROM usuarios WHERE Matricula = '" +
-                 matricula + "'"; 
-         
-         ResultSet result = statement.executeQuery(query);
-         
-         while(result.next()) {
-             resultado.append(result.getString(1));
-             resultado.append("-");
-             resultado.append(result.getString(2));
-             resultado.append("-");
-             resultado.append(result.getString(3));
-             resultado.append("-");
-             resultado.append(result.getString(4));
-             resultado.append("-");
-             resultado.append(result.getString(5));
-             resultado.append("-");
-         }
+        StringBuilder resultado = new StringBuilder();
         
-         System.out.println("resultado:" + resultado);
-         
+        Statement statement = connection.createStatement();
+        String query = "SELECT * FROM usuarios WHERE Matricula = '" +
+                matricula + "'";
+        
+        ResultSet result = statement.executeQuery(query);
+        
+        while(result.next()) {
+            resultado.append(result.getString(1));
+            resultado.append("-");
+            resultado.append(result.getString(2));
+            resultado.append("-");
+            resultado.append(result.getString(3));
+            resultado.append("-");
+            resultado.append(result.getString(4));
+            resultado.append("-");
+            resultado.append(result.getString(5));
+            resultado.append("-");
+        }
+        
+        System.out.println("resultado:" + resultado);
+        
         return resultado;
     }
     
@@ -109,174 +107,171 @@ public class ManejoBasesDatos {
         }
         return existe;
     }
-
+    
     // Se quitó el tipo de la tabla
     public static String buscarTipo(Usuario user) {
         String matricula = user.getMatricula();
         String tipo = "";
         try {
             Statement statement = connection.createStatement();
-
+            
             ResultSet result = statement.executeQuery("SELECT Tipo FROM usuarios WHERE Matricula = '" + matricula + "'");
-
+            
             while (result.next()) {
                 tipo = result.getString(1);
             }
             statement.close();
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return tipo;
     }
-
+    
     public static boolean insertarEquipo(Equipo eq) {
         String query ="";
         try {
-         
+            
             iniciarConexion();
             
-            query = "INSERT INTO `equipo`(`Id`, `Nombre`, `Marca`, `Inventario`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, eq.getId());
-             preparedStmt.setString   (2, eq.getNombre());
-             preparedStmt.setString   (3, eq.getMarca());
-             preparedStmt.setString   (4, eq.getInventario());
-             preparedStmt.setString   (5, eq.getLocalizacion());
-             preparedStmt.setString   (6, eq.getDisponibilidad());
-             
-             if (preparedStmt.executeUpdate() == 1) {
+            query = "INSERT INTO `equipo`(`Nombre`, `Marca`, `Inventario`," 
+                    + "`Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?)";
+            
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString   (1, eq.getNombre());
+            preparedStmt.setString   (2, eq.getMarca());
+            preparedStmt.setString   (3, eq.getInventario());
+            preparedStmt.setString   (4, eq.getLocalizacion());
+            preparedStmt.setString   (5, eq.getDisponibilidad());
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-
+    
     public static boolean insertarMaterial(Material mat) {
-            String query ="";
+        String query ="";
         try {
-         
             iniciarConexion();
-            query =  "INSERT INTO `material`(`Id`, `Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
+            query =  "INSERT INTO `material`(`Nombre`, `Marca`, `Localización`, `Capacidad`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?)";
             
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             preparedStmt.setString   (1, mat.getId());
-             preparedStmt.setString   (2, mat.getNombre());
-             preparedStmt.setString   (3, mat.getMarca());
-             preparedStmt.setString   (4, mat.getLocalizacion());
-             preparedStmt.setString   (5, mat.getCapacidad());
-             preparedStmt.setInt      (6, Integer.parseInt(mat.getDisponibilidad()));
-             
-             if (preparedStmt.executeUpdate() == 1) {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString   (1, mat.getNombre());
+            preparedStmt.setString   (2, mat.getMarca());
+            preparedStmt.setString   (3, mat.getLocalizacion());
+            preparedStmt.setString   (4, mat.getCapacidad());
+            preparedStmt.setInt      (5, Integer.parseInt(mat.getDisponibilidad()));
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
-
+    
     public static boolean insertarReactivo(Reactivo react) {
         String query ="";
-       try {
-         
+        try {
+            
             iniciarConexion();
-            query ="INSERT INTO `reactivo`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, react.getId());
-             preparedStmt.setString   (2, react.getNombre());
-             preparedStmt.setString   (3, react.getMarca());
-             preparedStmt.setString   (4, react.getPresentacion());
-             preparedStmt.setString   (5, react.getContenido());
-             preparedStmt.setString   (6, react.getLocalizacion());
-             preparedStmt.setString   (7, react.getDisponibilidad());
-
-             
-             if (preparedStmt.executeUpdate() == 1) {
+            query ="INSERT INTO `reactivo`(`Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString   (1, react.getNombre());
+            preparedStmt.setString   (2, react.getMarca());
+            preparedStmt.setString   (3, react.getPresentacion());
+            preparedStmt.setString   (4, react.getContenido());
+            preparedStmt.setString   (5, react.getLocalizacion());
+            preparedStmt.setString   (6, react.getDisponibilidad());
+            
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-            
+        
     }
-
+    
     public static boolean insertarConsumible(Consumible cons) {
-       String query ="";
-       try {
-         
+        String query ="";
+        try {
+            
             iniciarConexion();
-            query ="INSERT INTO `consumible`(`Id`, `Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, cons.getId());
-             preparedStmt.setString   (2, cons.getNombre());
-             preparedStmt.setString   (3, cons.getMarca());
-             preparedStmt.setString   (4, cons.getPresentacion());
-             preparedStmt.setString   (5, cons.getContenido());
-             preparedStmt.setString   (6, cons.getLocalizacion());
-             preparedStmt.setString   (7, cons.getDisponibilidad());
-
-             
-             if (preparedStmt.executeUpdate() == 1) {
+            query ="INSERT INTO `consumible`(`Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString   (1, cons.getNombre());
+            preparedStmt.setString   (2, cons.getMarca());
+            preparedStmt.setString   (3, cons.getPresentacion());
+            preparedStmt.setString   (4, cons.getContenido());
+            preparedStmt.setString   (5, cons.getLocalizacion());
+            preparedStmt.setString   (6, cons.getDisponibilidad());
+            
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarPrestado(Forma forma) {
-     String query = "";
+        String query = "";
         try {
-             iniciarConexion();
-             query = "INSERT INTO prestado (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             preparedStmt.setString   (1, forma.getUsuario());
-             preparedStmt.setString   (2, forma.getFecha());
-             preparedStmt.setString   (3, forma.getCorreo());
-             preparedStmt.setString   (4, forma.getLocal());
-             preparedStmt.setString   (5, forma.getDesc());
-             preparedStmt.setString   (6, forma.getCap());
-             preparedStmt.setString   (7, forma.getMarca());
-             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
-             preparedStmt.setString   (9, forma.getStatus());
-             preparedStmt.setString   (10, forma.getObs());
-             if (preparedStmt.executeUpdate() == 1) {
+            iniciarConexion();
+            query = "INSERT INTO prestado (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString   (1, forma.getUsuario());
+            preparedStmt.setString   (2, forma.getFecha());
+            preparedStmt.setString   (3, forma.getCorreo());
+            preparedStmt.setString   (4, forma.getLocal());
+            preparedStmt.setString   (5, forma.getDesc());
+            preparedStmt.setString   (6, forma.getCap());
+            preparedStmt.setString   (7, forma.getMarca());
+            preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+            preparedStmt.setString   (9, forma.getStatus());
+            preparedStmt.setString   (10, forma.getObs());
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarPedido(Forma forma) {
-       String query = "";
+        String query = "";
         try {
-             iniciarConexion();
-             query = "INSERT INTO pedido (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             preparedStmt.setString   (1, forma.getUsuario());
-             preparedStmt.setString   (2, forma.getFecha());
-             preparedStmt.setString   (3, forma.getCorreo());
-             preparedStmt.setString   (4, forma.getLocal());
-             preparedStmt.setString   (5, forma.getDesc());
-             preparedStmt.setString   (6, forma.getCap());
-             preparedStmt.setString   (7, forma.getMarca());
-             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
-             preparedStmt.setString   (9, forma.getStatus());
-             preparedStmt.setString   (10, forma.getObs());
-             if (preparedStmt.executeUpdate() == 1) {
+            iniciarConexion();
+            query = "INSERT INTO pedido (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString   (1, forma.getUsuario());
+            preparedStmt.setString   (2, forma.getFecha());
+            preparedStmt.setString   (3, forma.getCorreo());
+            preparedStmt.setString   (4, forma.getLocal());
+            preparedStmt.setString   (5, forma.getDesc());
+            preparedStmt.setString   (6, forma.getCap());
+            preparedStmt.setString   (7, forma.getMarca());
+            preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+            preparedStmt.setString   (9, forma.getStatus());
+            preparedStmt.setString   (10, forma.getObs());
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -284,20 +279,20 @@ public class ManejoBasesDatos {
     }
     
     public static boolean cancelarPedido(String nombreProducto) {
-       String query = "";
+        String query = "";
         try {
-             iniciarConexion();
-             query = "DELETE FROM pedido WHERE Descripcion = ?";
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             preparedStmt.setString   (1, nombreProducto);
-             if (preparedStmt.executeUpdate() == 1) {
+            iniciarConexion();
+            query = "DELETE FROM pedido WHERE Descripcion = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString   (1, nombreProducto);
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-    
+        
     }
     
     
@@ -312,80 +307,75 @@ public class ManejoBasesDatos {
     }
     
     public static boolean insertarReporte(Forma forma) {
-       
-      String query = "";
+        
+        String query = "";
         
         try {
             
             iniciarConexion();
             
-             query = "INSERT INTO totales (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            query = "INSERT INTO totales (Matricula, Fecha, Correo, Lab, Descripcion, Capacidad, Marca, Cantidad, Estatus, Observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, forma.getUsuario());
-             preparedStmt.setString   (2, forma.getFecha());
-             preparedStmt.setString   (3, forma.getCorreo());
-             preparedStmt.setString   (4, forma.getLocal());
-             preparedStmt.setString   (5, forma.getDesc());
-             preparedStmt.setString   (6, forma.getCap());
-             preparedStmt.setString   (7, forma.getMarca());
-             preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
-             preparedStmt.setString   (9, forma.getStatus());
-             preparedStmt.setString   (10, forma.getObs());
-             
-             if (preparedStmt.executeUpdate() == 1) {
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString   (1, forma.getUsuario());
+            preparedStmt.setString   (2, forma.getFecha());
+            preparedStmt.setString   (3, forma.getCorreo());
+            preparedStmt.setString   (4, forma.getLocal());
+            preparedStmt.setString   (5, forma.getDesc());
+            preparedStmt.setString   (6, forma.getCap());
+            preparedStmt.setString   (7, forma.getMarca());
+            preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+            preparedStmt.setString   (9, forma.getStatus());
+            preparedStmt.setString   (10, forma.getObs());
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarLab(Laboratorio lab) {
-                String query = "";
+        String query = "";
         
         try {
-            
             iniciarConexion();
             
-             query = "INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES (?, ?)";
-
-            
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, lab.getNombre());
-             preparedStmt.setString   (2, lab.getClave());
-
-             if (preparedStmt.executeUpdate() == 1) {
+            query = "INSERT INTO `laboratorio`(`Nombre`, `Clave`) VALUES (?, ?)";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString   (1, lab.getNombre());
+            preparedStmt.setString   (2, lab.getClave());
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
     public static boolean insertarUsuario(Usuario user) {
-       String query = "";
+        String query = "";
         
         try {
             
             iniciarConexion();
             
-             query = "INSERT INTO `usuarios`(`Matricula`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`) VALUES (?, ?, ?, ?, ?)";
-
+            query = "INSERT INTO `usuarios`(`Matricula`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`) VALUES (?, ?, ?, ?, ?)";
             
-             PreparedStatement preparedStmt = connection.prepareStatement(query);
-             
-             preparedStmt.setString   (1, user.getMatricula());
-             preparedStmt.setString   (2, user.getNombre());
-             preparedStmt.setString   (3, user.getApellidoPaterno());
-             preparedStmt.setString   (4, user.getApellidoMaterno());
-             preparedStmt.setString   (5, user.getCorreo());
-
-             if (preparedStmt.executeUpdate() == 1) {
+            
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString   (1, user.getMatricula());
+            preparedStmt.setString   (2, user.getNombre());
+            preparedStmt.setString   (3, user.getApellidoPaterno());
+            preparedStmt.setString   (4, user.getApellidoMaterno());
+            preparedStmt.setString   (5, user.getCorreo());
+            
+            if (preparedStmt.executeUpdate() == 1) {
                 return true;
-             }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -408,116 +398,108 @@ public class ManejoBasesDatos {
                 ResultSet result = preparedStmt.executeQuery();
                 while (result.next()) {
                     System.out.println("tabla hasta el momento:" + tabla);
-                   return tabla;
+                    return tabla;
                 }
             }
-             
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
     }
-    
-    
     public static boolean modif(Forma form, String tipo, String operador) {
         //agarro la dispobinibilidad actual del inventario
         if(operador.equals("resta")){
-        String disp =  "";
-        String tabla = tipo;
-        String query = "";
-        
-        if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
-            tabla = "material";
-        } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
-            tabla = "equipo";
-        } else if (tipo.equals("profeConsumible")) {
-            tabla = "consumible";
-        } else if (tipo.equals("profeReactivo")) {
-            tabla = "reactivo";
-        }
-        
-        System.out.println("tabla en MODIF: " + tabla);
-        
-        try {
-            Statement statement = connection.createStatement();
-            query = "SELECT Disponibilidad FROM " + tabla + 
-                    " WHERE Nombre = '" + form.getDesc() + "'";
-            ResultSet result = statement.executeQuery(query);
-            while (result.next()) {
-                disp = result.getString(1);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //checo que haya suficientes
-        System.out.println("DISP: " + disp);
-        int iDisp = Integer.parseInt(disp);
-        int iCant = Integer.parseInt(form.getCant());
-        iDisp = iDisp - iCant;
-        //si no hay, regreso falso para fallar
-        if(iDisp < 0) {
-            return false;
-        } else {
-            //si si hay, inserto la nueva dipobilidad en el inventario
-            try {
-                System.out.println("tabla: " + tabla);
-                System.out.println("disponible: " + iDisp);
-                System.out.println("nombre: " + form.getDesc());
-                
-                query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
-                PreparedStatement preparedStmt = connection.prepareStatement(query);
-                preparedStmt.setInt   (1, iDisp);
-                preparedStmt.setString(2, form.getDesc());
-                preparedStmt.executeUpdate();
-                
-                if (preparedStmt.executeUpdate() == 1) {
-                    return true;
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }   
-        }
-         return false;
-    }else{
             String disp =  "";
-        String tabla = tipo;
-        String query = "";
-        /*
-        if(tipo.equals("alumnoMaterial") || tipo.equals("profeMaterial")) {
-            tabla = "material";
-        } else if (tipo.equals("profeEquipo") || tipo.equals("alumnoEquipo")) {
-            tabla = "equipo";
-        } else if (tipo.equals("profeConsumible")) {
-            tabla = "consumible";
-        } else if (tipo.equals("profeReactivo")) {
-            tabla = "reactivo";
-        }
-        */
-        System.out.println("tabla en MODIF: " + tabla);
-        
-        try {
-            Statement statement = connection.createStatement();
-            query = "SELECT Disponibilidad FROM " + tabla + 
-                    " WHERE Nombre = '" + form.getDesc() + "'";
-            ResultSet result = statement.executeQuery(query);
-            while (result.next()) {
-                disp = result.getString(1);
+            String tabla = tipo;
+            String query = "";
+            
+            switch (tipo) {
+                case "alumnoMaterial":
+                case "profeMaterial":
+                    tabla = "material";
+                    break;
+                case "profeEquipo":
+                case "alumnoEquipo":
+                    tabla = "equipo";
+                    break;
+                case "profeConsumible":
+                    tabla = "consumible";
+                    break;
+                case "profeReactivo":
+                    tabla = "reactivo";
+                    break;
+                default:
+                    break;
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //checo que haya suficientes
-        System.out.println("DISP: " + disp);
-        int iDisp = Integer.parseInt(disp);
-        int iCant = Integer.parseInt(form.getCant());
-        iDisp = iDisp + iCant;
-        //si no hay, regreso falso para fallar
-       
+            try {
+                Statement statement = connection.createStatement();
+                query = "SELECT Disponibilidad FROM " + tabla +
+                        " WHERE Nombre = '" + form.getDesc() + "'";
+                ResultSet result = statement.executeQuery(query);
+                while (result.next()) {
+                    disp = result.getString(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            //checo que haya suficientes
+            System.out.println("DISP: " + disp);
+            int iDisp = Integer.parseInt(disp);
+            int iCant = Integer.parseInt(form.getCant());
+            iDisp = iDisp - iCant;
+            //si no hay, regreso falso para fallar
+            if(iDisp < 0) {
+                return false;
+            } else {
+                //si si hay, inserto la nueva dipobilidad en el inventario
+                try {
+                    System.out.println("tabla: " + tabla);
+                    System.out.println("disponible: " + iDisp);
+                    System.out.println("nombre: " + form.getDesc());
+                    
+                    query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
+                    PreparedStatement preparedStmt = connection.prepareStatement(query);
+                    preparedStmt.setInt   (1, iDisp);
+                    preparedStmt.setString(2, form.getDesc());
+                    preparedStmt.executeUpdate();
+                    
+                    if (preparedStmt.executeUpdate() == 1) {
+                        return true;
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    return false;
+                }
+            }
+            return false;
+        }else{
+            String disp =  "";
+            String tabla = tipo;
+            String query = "";
+            
+            try {
+                Statement statement = connection.createStatement();
+                query = "SELECT Disponibilidad FROM " + tabla +
+                        " WHERE Nombre = '" + form.getDesc() + "'";
+                ResultSet result = statement.executeQuery(query);
+                while (result.next()) {
+                    disp = result.getString(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+            //checo que haya suficientes
+            System.out.println("DISP: " + disp);
+            int iDisp = Integer.parseInt(disp);
+            int iCant = Integer.parseInt(form.getCant());
+            iDisp = iDisp + iCant;
+            //si no hay, regreso falso para fallar
+            
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
-                System.out.println("tabla: " + tabla);
-                System.out.println("disponible: " + iDisp);
-                System.out.println("nombre: " + form.getDesc());
                 
                 query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
                 PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -530,27 +512,28 @@ public class ManejoBasesDatos {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }   
+                return false;
+            }
         }
-         return false;
+        return false;
     }
     
     public static String[][] leerReportes() {
-       //saco el total de registros
+        //saco el total de registros
         int cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM totales");
             while (result.next()) {
-             cont++;
+                cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //matriz para guardar los registros
-           String[][] reporte = new String[cont][11];
-           cont = 0;
+        String[][] reporte = new String[cont][11];
+        cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM totales");
@@ -569,31 +552,31 @@ public class ManejoBasesDatos {
                 reporte[cont][10] = result.getString(11);
                 cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //regreso reporte completo
         return reporte;
-       }
+    }
     
     
-     public static String[][] leerPedidos() {
-       //saco el total de registros
+    public static String[][] leerPedidos() {
+        //saco el total de registros
         int cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM pedido");
             while (result.next()) {
-             cont++;
+                cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //matriz para guardar los registros
-           String[][] reporte = new String[cont][11];
-           cont = 0;
+        String[][] reporte = new String[cont][11];
+        cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM pedido");
@@ -614,30 +597,30 @@ public class ManejoBasesDatos {
                 reporte[cont][10] = result.getString(11);
                 cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //regreso reporte completo
         return reporte;
-       }
+    }
     
-     public static String[][] leerPrestados() {
-       //saco el total de registros
+    public static String[][] leerPrestados() {
+        //saco el total de registros
         int cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM prestado");
             while (result.next()) {
-             cont++;
+                cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //matriz para guardar los registros
-           String[][] reporte = new String[cont][11];
-           cont = 0;
+        String[][] reporte = new String[cont][11];
+        cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM prestado");
@@ -658,79 +641,81 @@ public class ManejoBasesDatos {
                 reporte[cont][10] = result.getString(11);
                 cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //regreso reporte completo
         return reporte;
-       }
-     
-       public static void eliminar(String vale) {
-            String query = "";
+    }
+    
+    public static void eliminar(String vale) {
+        String query = "";
         
-            try {
-                iniciarConexion();
-                query = "DELETE FROM pedido WHERE Vale = ?";
-                PreparedStatement preparedStmt = connection.prepareStatement(query);
-
-                preparedStmt.setInt   (1, Integer.parseInt(vale));
-                preparedStmt.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
-       
-       public static String[] leerUsuarios() {
-           //saco el total de registros
+        try {
+            iniciarConexion();
+            query = "DELETE FROM pedido WHERE Vale = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setInt   (1, Integer.parseInt(vale));
+            preparedStmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static String[] leerUsuarios() {
+        //saco el total de registros
         int cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM usuarios");
             while (result.next()) {
-             cont++;
+                cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //matriz para guardar los registros
-           String[] usuarios = new String[cont];
-           cont = 0;
+        String[] usuarios = new String[cont];
+        cont = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM usuarios");
             while (result.next()) {
                 //leolos registros y los guardo cada uno en un renglon de la matriz
-                System.out.println("ResultSet: " + result.getString(1));                
+                System.out.println("ResultSet: " + result.getString(1));
                 usuarios[cont] = result.getString(1);
                 cont++;
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         //regreso reporte completo
-          return usuarios;
-       }
-       
-       public static void eliminarUsuario(String mat) {
-           String query = "";
+        return usuarios;
+    }
+    
+    public static boolean eliminarUsuario(String mat) {
+        String query = "";
         
-            try {
-                iniciarConexion();
-                query = "DELETE FROM usuarios WHERE Matricula = ?";
-                PreparedStatement preparedStmt = connection.prepareStatement(query);
-
-                preparedStmt.setString (1, mat);
-                preparedStmt.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
-       
-       
-       public static String[] checarCantidades() {
+        try {
+            iniciarConexion();
+            query = "DELETE FROM usuarios WHERE Matricula = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setString (1, mat);
+            preparedStmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    
+    public static String[] checarCantidades() {
         
         int contador = 0;
         String[] tablas = {"equipo", "material", "reactivo", "consumible"};
@@ -744,7 +729,7 @@ public class ManejoBasesDatos {
                 while (result.next()) {
                     contador ++;
                 }
-            } 
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -762,37 +747,39 @@ public class ManejoBasesDatos {
                     i ++;
                 }
             }
-             return resultado;
+            return resultado;
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-            String[] resultadoAux = new String[1];
-            resultadoAux[0] = "Hay suficientes";
-            return resultadoAux;
-       } 
-       
-       public static void eliminarDevueltos(String vale) {
-            String query = "";
+        String[] resultadoAux = new String[1];
+        resultadoAux[0] = "Hay suficientes";
+        return resultadoAux;
+    }
+    
+    public static boolean eliminarDevueltos(String vale) {
+        String query = "";
         
-            try {
-                iniciarConexion();
-                query = "DELETE FROM prestado WHERE Vale = ?";
-                PreparedStatement preparedStmt = connection.prepareStatement(query);
-
-                preparedStmt.setInt   (1, Integer.parseInt(vale));
-                preparedStmt.executeUpdate();
-            } catch (SQLException ex) {
-                Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
-       
-       /*
-       *
-       */
-      public static String obtenerLista (String tipo) {
-          StringBuilder sb = new StringBuilder();
-          try {
+        try {
+            iniciarConexion();
+            query = "DELETE FROM prestado WHERE Vale = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            
+            preparedStmt.setInt   (1, Integer.parseInt(vale));
+            preparedStmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    /*
+    *
+    */
+    public static String obtenerLista (String tipo) {
+        StringBuilder sb = new StringBuilder();
+        try {
             iniciarConexion();
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM " + tipo;
@@ -805,5 +792,5 @@ public class ManejoBasesDatos {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return sb.toString();
-      }
+    }
 }

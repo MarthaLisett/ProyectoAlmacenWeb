@@ -1,23 +1,33 @@
 /*
- * Proyecto Desarrollo de Aplicaciones Web
- * José González Ayerdi A01036121
- * Pedro Mauricio Esparza García A01280126
- * Martha Lisett Benavides Martínez A01280115
- * Adrián Martínez Quiroga A01280252
- * 21 Noviembre 2016
- */
+* Proyecto Desarrollo de Aplicaciones Web
+* José González Ayerdi A01036121
+* Pedro Mauricio Esparza García A01280126
+* Martha Lisett Benavides Martínez A01280115
+* Adrián Martínez Quiroga A01280252
+* 21 Noviembre 2016
+*/
 package control;
 
 import basesDatos.ManejoBasesDatos;
+import informacion.Reactivo;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ControladorSelectProductos extends HttpServlet {
-    private String tipo;
-    private String nombres;   
+public class ControladorAgregarReactivo extends HttpServlet {
+    // variables
+    private String nombre;
+    private String marca;
+    private String presentacion;
+    private String contenido;
+    private String localizacion;
+    private String disponibilidad;
+    private String url;
+    private Reactivo reactivo;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,13 +39,31 @@ public class ControladorSelectProductos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType( "text/html; charset=iso-8859-1" );
-        tipo    = request.getParameter("tipo");
-        nombres = ManejoBasesDatos.obtenerLista(tipo);
-        response.getWriter().write(nombres);
+   
+        nombre         = request.getParameter("nombre");
+        marca          = request.getParameter("marca");
+        presentacion   = request.getParameter("presentacion");
+        contenido      = request.getParameter("contenido");
+        localizacion   = request.getParameter("localizacion");
+        disponibilidad = request.getParameter("disponibilidad");
+        reactivo       = new Reactivo(nombre, marca, presentacion, contenido,
+                localizacion, disponibilidad);
+        
+        if(ManejoBasesDatos.insertarReactivo(reactivo)) {
+            url = "/exito.jsp";
+        } else {
+            url = "/error.jsp";
+        }
+        //si es reactivo, hago un reactivo nuevo, lo inserto en la base de datos y su un exito
+        RequestDispatcher dispatcher
+                = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+    
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -48,14 +76,14 @@ public class ControladorSelectProductos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
+        
         processRequest(request, response);
         
         
         
         
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -69,7 +97,7 @@ public class ControladorSelectProductos extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -79,5 +107,5 @@ public class ControladorSelectProductos extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

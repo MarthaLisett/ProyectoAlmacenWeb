@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ControladorUsuarios extends HttpServlet {
+public class ControladorAgregarUsuario extends HttpServlet {
     // variables
     private String url;
     private Usuario usuario;
@@ -45,8 +45,8 @@ public class ControladorUsuarios extends HttpServlet {
         apellidoP = request.getParameter("apellidoPat");
         apellidoM = request.getParameter("apellidoMat");
         correo    = request.getParameter("correo");
-        // cracion del nuevo usuario
-        usuario = new Usuario(matricula.toLowerCase(),nombre,apellidoP,apellidoM,correo);
+        usuario   = new Usuario(matricula.toLowerCase(), nombre, apellidoP,
+                 apellidoM, correo);
         // guardar usuario en base de datos
         if(ManejoBasesDatos.insertarUsuario(usuario)) {
             url = "/exito.jsp";

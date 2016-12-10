@@ -10,14 +10,13 @@ package informacion;
 
 public class Equipo {
 
-    String id, nombre, marca, inventario, localizacion, disponibilidad;
+    String nombre, marca, inventario, localizacion, disponibilidad;
 
     /**
      * Equipo
      *
      * Método constructor para crear el objeto Equipo usando todos sus datos
      *
-     * @param id es el <code>id</code> del objeto.
      * @param nombre es el <code>nombre</code> del objeto.
      * @param marca es la <code>marca</code> del objeto.
      * @param inventario es el <code>inventario</code> del objeto.
@@ -25,24 +24,13 @@ public class Equipo {
      * @param disponibilidad es la <code>disponibilidad</code> del objeto.
      *
      */
-    public Equipo(String id, String nombre, String marca, String inventario,
+    public Equipo(String nombre, String marca, String inventario,
             String localizacion, String disponibilidad) {
-        this.id = id;
         this.nombre = nombre;
         this.marca = marca;
         this.inventario = inventario;
         this.localizacion = localizacion;
         this.disponibilidad = disponibilidad;
-    }
-
-    /**
-     * getId
-     *
-     * Método que obtiene el id del objeto Equipo
-     *
-     */
-    public String getId() {
-        return id;
     }
 
     /**
@@ -63,18 +51,6 @@ public class Equipo {
      */
     public String getMarca() {
         return marca;
-    }
-
-    /**
-     * setId
-     *
-     * Método usado para asignar el id del objeto Equipo
-     *
-     * @param id es el <code>id</code> del objeto.
-     *
-     */
-    public void setId(String id) {
-        this.id = id;
     }
 
     /**

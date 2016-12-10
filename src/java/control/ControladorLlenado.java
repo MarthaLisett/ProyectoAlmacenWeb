@@ -1,21 +1,18 @@
 /*
- * Proyecto Desarrollo de Aplicaciones Web
- * José González Ayerdi A01036121
- * Pedro Mauricio Esparza García A01280126
- * Martha Lisett Benavides Martínez A01280115
- * Adrián Martínez Quiroga A01280252
- * 21 Noviembre 2016
- */
+* Proyecto Desarrollo de Aplicaciones Web
+* José González Ayerdi A01036121
+* Pedro Mauricio Esparza García A01280126
+* Martha Lisett Benavides Martínez A01280115
+* Adrián Martínez Quiroga A01280252
+* 21 Noviembre 2016
+*/
 package control;
 
 import informacion.Usuario;
 import basesDatos.ManejoBasesDatos;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -23,15 +20,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 public class ControladorLlenado extends HttpServlet {
-
+    // variables
+    private String   url;
+    private String   matricula;
+    private String   destino;
+    private String   datos;
+    private String[] partes;
+    private Date     fechaActual;
+    private String   fechaConFormato;
+    private Usuario  usuario;
     /**
      * processRequest
-     * 
+     *
      * Busca la matrícula del usuario en la base de datos y llena de forma
      * automática el nombre, correo y fecha actual en la forma.
      *
@@ -41,28 +44,21 @@ public class ControladorLlenado extends HttpServlet {
      * al usuario solicitado.
      * @throws ServletException cuando ocurre un error de servlet
      * @throws IOException cuando ocurre un error de input/output
+     * @throws java.sql.SQLException
      */
-    protected void processRequest(HttpServletRequest request, 
+    protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException,
             SQLException {
+        matricula       = request.getParameter("usuario");
+        destino         = request.getParameter("destino");
+        datos           = ManejoBasesDatos.obtenerDatos(matricula).toString();
+        partes          = datos.split("-");
+        url             = "/" + destino;
+        fechaActual     = new Date();
+        usuario         = new Usuario(matricula);
+        fechaConFormato = new
+                SimpleDateFormat("yyyy-MM-dd',' HH:mm").format(fechaActual);
         
-        String url = "";
-        
-        String matricula = request.getParameter("usuario");
-        String destino = request.getParameter("destino");
-        
-        System.out.println("hola mundo");
-        String datos = ManejoBasesDatos.obtenerDatos(matricula).toString();
-
-        String[] partes = datos.split("-");
-   
-        url = "/" + destino;
-   
-        Date fechaActual = new Date();
-        String fechaConFormato = new 
-        SimpleDateFormat("yyyy-MM-dd',' HH:mm").format(fechaActual);
-        
-        Usuario usuario = new Usuario(matricula);
         usuario.setNombre(partes[1]);
         usuario.setApellidoPaterno(partes[2]);
         usuario.setApellidoMaterno(partes[3]);
@@ -72,13 +68,12 @@ public class ControladorLlenado extends HttpServlet {
         request.setAttribute("fecha", fechaConFormato);
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-
+        dispatcher.forward(request, response);   
     }
-
+    
     /**
      * doGet
-     * 
+     *
      * Maneja el método <code>GET</code> de HTTP.
      *
      * @param request es la petición que se hace al servlet
@@ -87,7 +82,7 @@ public class ControladorLlenado extends HttpServlet {
      * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doGet(HttpServletRequest request, 
+    protected void doGet(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
@@ -95,10 +90,10 @@ public class ControladorLlenado extends HttpServlet {
             Logger.getLogger(ControladorLlenado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     /**
      * doPost
-     * 
+     *
      * Maneja el método <code>POST</code> de HTTP.
      *
      * @param request es la petición que se hace al servlet
@@ -107,7 +102,7 @@ public class ControladorLlenado extends HttpServlet {
      * @throws IOException cuando ocurre un error de input/output
      */
     @Override
-    protected void doPost(HttpServletRequest request, 
+    protected void doPost(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
@@ -116,10 +111,10 @@ public class ControladorLlenado extends HttpServlet {
                     log(Level.SEVERE, null, ex);
         }
     }
-
+    
     /**
      * getServletInfo
-     * 
+     *
      * Regresa una descripción corta del servlet
      *
      * @return una string con la descripción del servlet
@@ -128,5 +123,5 @@ public class ControladorLlenado extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

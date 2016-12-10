@@ -8,45 +8,34 @@
  */
 package informacion;
 
-/**
- * Consumible
- *
- * Método constructor para crear el objeto Consumible usando todos sus datos
- *
- * @param id es el <code>id</code> del objeto.
- * @param nombre es el <code>nombre</code> del objeto.
- * @param marca es la <code>marca</code> del objeto.
- * @param presentacion es la <code>presentacion</code> del objeto.
- * @param contenido es el <code>contenido</code> del objeto.
- * @param localizacion es la <code>localizacion</code> del objeto.
- * @param disponibilidad es la <code>disponibilidad</code> del objeto.
- *
- */
+
 public class Consumible {
 
-    String id, nombre, marca, presentacion, contenido, localizacion,
+    String nombre, marca, presentacion, contenido, localizacion,
             disponibilidad;
-
-    public Consumible(String id, String nombre, String marca,
+    /**
+     * Consumible
+     *
+     * Método constructor para crear el objeto Consumible usando todos sus datos
+     *
+     * @param id es el <code>id</code> del objeto.
+     * @param nombre es el <code>nombre</code> del objeto.
+     * @param marca es la <code>marca</code> del objeto.
+     * @param presentacion es la <code>presentacion</code> del objeto.
+     * @param contenido es el <code>contenido</code> del objeto.
+     * @param localizacion es la <code>localizacion</code> del objeto.
+     * @param disponibilidad es la <code>disponibilidad</code> del objeto.
+     *
+     */
+    public Consumible(String nombre, String marca,
             String presentacion, String contenido, String localizacion,
             String disponibilidad) {
-        this.id = id;
         this.nombre = nombre;
         this.marca = marca;
         this.presentacion = presentacion;
         this.contenido = contenido;
         this.localizacion = localizacion;
         this.disponibilidad = disponibilidad;
-    }
-
-    /**
-     * getId
-     *
-     * Método que obtiene el id del objeto Consumible
-     *
-     */
-    public String getId() {
-        return id;
     }
 
     /**
@@ -109,17 +98,6 @@ public class Consumible {
         return disponibilidad;
     }
 
-    /**
-     * setId
-     *
-     * Método usado para asignar el id del objeto Consumible
-     *
-     * @param id es el <code>id</code> del objeto.
-     *
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
     /**
      * setNombre

@@ -30,7 +30,7 @@
                         crearSelect(data);
                     }
                 }
-            }
+            };
             xhr.open('GET', 'ControladorSelectProductos?tipo=equipo', true);
             xhr.send(null);
 

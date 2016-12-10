@@ -29,7 +29,7 @@
                         crearSelect(data);
                     }
                 }
-            }
+            };
             xhr.open('GET', 'ControladorSelectProductos?tipo=reactivo', true);
             xhr.send(null);
 

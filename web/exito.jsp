@@ -78,8 +78,8 @@
     </head>
     <body>    
         <h1 style="background-color:#848484; height:50px; padding-top: 10px; 
-            color:#FFFFFF; border-radius: 10px" align="center">¡Tu reporte se 
-            registró con Éxito!</h1>
+            color:#FFFFFF; border-radius: 10px" align="center">¡La acción se
+            llevó a cabo con éxito!</h1>
         <form>
                 <div class="thumbnail"><img src="imagenes/Correcto.png"/></div>
                 <a href="index.html" class="button">
