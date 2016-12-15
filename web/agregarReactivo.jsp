@@ -8,7 +8,17 @@
  * 21 Noviembre 2016
  */
 --%>
-
+<%
+    Cookie[] cookies = request.getCookies();
+    String cookieName = "entra";
+    String cookieValue = "";
+    for (int i=0; i<cookies.length; i++){
+        Cookie cookie = cookies[i];
+        if (cookieName.equals(cookie.getName()))
+        cookieValue = cookie.getValue();
+    }
+    if(cookieValue.equals("admin")){
+    %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -78,4 +88,7 @@
             align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
             en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
-</html>
+</html
+<%
+    }
+%>

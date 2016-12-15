@@ -60,13 +60,13 @@
                 <label>
                     Fecha
                     <input placeholder="Fecha" type="date" name="fecha"
-                           value="${fecha}" id="fecha">
+                           value="${fecha}" id="fecha"  readonly>
                 </label>
             </div>
             <div class="col-4">
                 <label>
                     Folio
-                    <input placeholder="Folio" name="folio" id="folio">
+                    <input placeholder="Folio" name="folio" id="folio"  readonly>
                 </label>
             </div>
 
@@ -74,14 +74,14 @@
                 <label>
                     Matrícula
                     <input placeholder="Matrícula" name="matricula" id="matricula"
-                           value="${usuario.getMatricula().toUpperCase()}">
+                           value="${usuario.getMatricula().toUpperCase()}" readonly>
                 </label>
             </div>        
             <div class="col-3">
                 <label>
                     Nombre
                     <input placeholder="Nombre" name="nombre" id="nombre"
-                            value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}">
+                            value="${usuario.getNombre()} ${usuario.getApellidoPaterno()} ${usuario.getApellidoMaterno()}" readonly>
                 </label>
             </div>
 
@@ -89,7 +89,7 @@
                 <label>
                     Correo
                     <input placeholder="Correo" name="correo" id="correo"
-                           value="${usuario.getCorreo()}">
+                           value="${usuario.getCorreo()}" readonly>
                 </label>
             </div>
             <div class="col-3">
