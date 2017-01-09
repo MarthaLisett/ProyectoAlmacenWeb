@@ -40,15 +40,7 @@ public class ManejoBasesDatos {
     
     private static Connection connection;
     
-    
-    
-    // TODO: esto es necesario?
-    public ManejoBasesDatos() {
-        try {
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    public ManejoBasesDatos() {}
     
     public static void iniciarConexion() throws SQLException {
         try {
@@ -56,17 +48,16 @@ public class ManejoBasesDatos {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        connection = DriverManager.getConnection("jdbc:mysql://localhost/quimica", "root", "");
-        System.out.println("conexion iniciada");
+        connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost/quimica", "root", "");
+        Logger.getLogger("Conexion con el servidor iniciada.");
     }
     
     public static StringBuilder obtenerDatos(String matricula) throws SQLException {
-        StringBuilder resultado = new StringBuilder();
-        
+        StringBuilder resultado = new StringBuilder();    
         Statement statement = connection.createStatement();
         String query = "SELECT * FROM usuarios WHERE Matricula = '" +
-                matricula + "'";
-        
+                matricula + "'";    
         ResultSet result = statement.executeQuery(query);
         
         while(result.next()) {
@@ -81,8 +72,6 @@ public class ManejoBasesDatos {
             resultado.append(result.getString(5));
             resultado.append("-");
         }
-        
-        System.out.println("resultado:" + resultado);
         
         return resultado;
     }
@@ -135,7 +124,7 @@ public class ManejoBasesDatos {
             
             iniciarConexion();
             
-            query = "INSERT INTO `equipo`(`Nombre`, `Marca`, `Inventario`," 
+            query = "INSERT INTO `equipo`(`Nombre`, `Marca`, `Inventario`,"
                     + "`Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?)";
             
             PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -714,28 +703,31 @@ public class ManejoBasesDatos {
         }
     }
     
+    public static int cantidadRenglones(String[] tablas) throws SQLException {
+        int contador = 0;
+        for(String tabla : tablas) {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM "+ tabla + " WHERE Disponibilidad < 5";
+            ResultSet result = statement.executeQuery(query);
+            while (result.next()) {
+                contador ++;
+            }
+        }
+        return contador;
+    }
     
     public static String[] checarCantidades() {
-        
-        int contador = 0;
+        String[] resultado;
         String[] tablas = {"equipo", "material", "reactivo", "consumible"};
+        int i = 0;
         
         try {
             iniciarConexion();
-            for(String tabla : tablas) {
-                Statement statement = connection.createStatement();
-                String query = "SELECT * FROM "+ tabla + " WHERE Disponibilidad < 5";
-                ResultSet result = statement.executeQuery(query);
-                while (result.next()) {
-                    contador ++;
-                }
-            }
-        } catch (SQLException ex) {
+            resultado = new String[cantidadRenglones(tablas)];
+        } catch (SQLException ex) {            
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-        
-        String[] resultado = new String[contador];
-        int i = 0;
         try {
             iniciarConexion();
             for(String tabla : tablas) {
@@ -758,13 +750,11 @@ public class ManejoBasesDatos {
     }
     
     public static boolean eliminarDevueltos(String vale) {
-        String query = "";
-        
+        String query;
         try {
             iniciarConexion();
             query = "DELETE FROM prestado WHERE Vale = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            
             preparedStmt.setInt   (1, Integer.parseInt(vale));
             preparedStmt.executeUpdate();
             return true;
@@ -777,20 +767,28 @@ public class ManejoBasesDatos {
     /*
     *
     */
-    public static String obtenerLista (String tipo) {
-        StringBuilder sb = new StringBuilder();
+    public static String obtenerLista (String producto) {
+        StringBuilder sb;
+        Statement stmt;
+        String query;
+        ResultSet result;
         try {
             iniciarConexion();
-            Statement statement = connection.createStatement();
-            String query = "SELECT * FROM " + tipo;
-            ResultSet result = statement.executeQuery(query);
+            sb     = new StringBuilder();
+            stmt   = connection.createStatement();
+            query  = "SELECT * FROM " + producto;
+            result = stmt.executeQuery(query);
             while (result.next()) {
                 sb.append(result.getString(2));
                 sb.append(" ");
             }
+            return sb.toString();
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
         }
-        return sb.toString();
     }
+
 }
+
+
