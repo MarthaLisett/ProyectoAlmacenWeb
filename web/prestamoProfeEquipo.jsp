@@ -53,7 +53,7 @@
         <form action="ControladorFormas" id="form">
             <div class="col-4"></div>  
             <div class="col-4"></div> 
-
+            <div class="col-4"></div> 
             <div class="col-4">
                 <label>
                     Fecha
@@ -61,13 +61,14 @@
                            value="${fecha}" id="fecha" readonly>
                 </label>
             </div>
+            <!--    
             <div class="col-4">
                 <label>
                     Folio
                     <input placeholder="Folio" name="folio" id="folio" readonly>
                 </label>
             </div>
-
+            -->
             <div class="col-3">
                 <label>
                     Matrícula
