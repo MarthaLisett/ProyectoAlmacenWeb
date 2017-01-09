@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,7 @@ public class ControladorLogin extends HttpServlet {
     private String  matricula;
     private Usuario usuario;
     private String  matPrimerCaracter;
+    private String entra = "";
     /**
      * processRequest
      *
@@ -52,6 +54,10 @@ public class ControladorLogin extends HttpServlet {
         } else {
             url = "/index.html";
         }
+        Cookie userIdCookie = new Cookie("entra", entra);
+        userIdCookie.setMaxAge(60*60*24);
+        userIdCookie.setPath("/");
+        response.addCookie(userIdCookie); 
         request.setAttribute("usuario", usuario);
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
@@ -68,6 +74,7 @@ public class ControladorLogin extends HttpServlet {
     public String urlTipoUsuario(Usuario usuario) {
         matPrimerCaracter = usuario.getMatricula().substring(0,1).toLowerCase();
         if (usuario.getMatricula().equals("adminquimica")){
+            entra = "admin";
             return "/MenuAdmin.jsp";
         } else {
             switch(matPrimerCaracter) {
