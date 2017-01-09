@@ -78,7 +78,6 @@ public class ManejoBasesDatos {
     
     
     public static Boolean existe(Usuario user) {
-        
         Boolean existe = false;
         try {
             iniciarConexion();
@@ -121,14 +120,12 @@ public class ManejoBasesDatos {
     public static boolean insertarEquipo(Equipo eq) {
         String query ="";
         try {
-            
             iniciarConexion();
             
             query = "INSERT INTO `equipo`(`Nombre`, `Marca`, `Inventario`,"
                     + "`Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?)";
             
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            
             preparedStmt.setString   (1, eq.getNombre());
             preparedStmt.setString   (2, eq.getMarca());
             preparedStmt.setString   (3, eq.getInventario());
@@ -196,7 +193,6 @@ public class ManejoBasesDatos {
     public static boolean insertarConsumible(Consumible cons) {
         String query ="";
         try {
-            
             iniciarConexion();
             query ="INSERT INTO `consumible`(`Nombre`, `Marca`, `Presentacion`, `Contenido`, `Localizacion`, `Disponibilidad`) VALUES (?, ?, ?, ?, ?, ?)";
             
@@ -208,7 +204,6 @@ public class ManejoBasesDatos {
             preparedStmt.setString   (4, cons.getContenido());
             preparedStmt.setString   (5, cons.getLocalizacion());
             preparedStmt.setString   (6, cons.getDisponibilidad());
-            
             
             if (preparedStmt.executeUpdate() == 1) {
                 return true;
@@ -286,8 +281,6 @@ public class ManejoBasesDatos {
     
     
     public static boolean autorizarPrestamo(String nombre) {
-        
-        
         return true;
     }
     
@@ -348,14 +341,10 @@ public class ManejoBasesDatos {
         String query = "";
         
         try {
-            
             iniciarConexion();
             
             query = "INSERT INTO `usuarios`(`Matricula`, `Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Correo`) VALUES (?, ?, ?, ?, ?)";
-            
-            
             PreparedStatement preparedStmt = connection.prepareStatement(query);
-            
             preparedStmt.setString   (1, user.getMatricula());
             preparedStmt.setString   (2, user.getNombre());
             preparedStmt.setString   (3, user.getApellidoPaterno());
@@ -434,7 +423,6 @@ public class ManejoBasesDatos {
                 return false;
             }
             //checo que haya suficientes
-            System.out.println("DISP: " + disp);
             int iDisp = Integer.parseInt(disp);
             int iCant = Integer.parseInt(form.getCant());
             iDisp = iDisp - iCant;
@@ -444,10 +432,6 @@ public class ManejoBasesDatos {
             } else {
                 //si si hay, inserto la nueva dipobilidad en el inventario
                 try {
-                    System.out.println("tabla: " + tabla);
-                    System.out.println("disponible: " + iDisp);
-                    System.out.println("nombre: " + form.getDesc());
-                    
                     query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
                     PreparedStatement preparedStmt = connection.prepareStatement(query);
                     preparedStmt.setInt   (1, iDisp);
@@ -463,7 +447,7 @@ public class ManejoBasesDatos {
                 }
             }
             return false;
-        }else{
+        } else {
             String disp =  "";
             String tabla = tipo;
             String query = "";
@@ -481,7 +465,6 @@ public class ManejoBasesDatos {
                 return false;
             }
             //checo que haya suficientes
-            System.out.println("DISP: " + disp);
             int iDisp = Integer.parseInt(disp);
             int iCant = Integer.parseInt(form.getCant());
             iDisp = iDisp + iCant;
@@ -489,7 +472,6 @@ public class ManejoBasesDatos {
             
             //si si hay, inserto la nueva dipobilidad en el inventario
             try {
-                
                 query = "UPDATE " + tabla + " SET Disponibilidad = ? WHERE Nombre = ?";
                 PreparedStatement preparedStmt = connection.prepareStatement(query);
                 preparedStmt.setInt   (1, iDisp);
@@ -516,7 +498,6 @@ public class ManejoBasesDatos {
             while (result.next()) {
                 cont++;
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
