@@ -17,11 +17,14 @@ function validar() {
     var descripcion = document.getElementById("descripcion").value;
     var cantidad = document.getElementById("cantidad").value;
     var observaciones = document.getElementById("observaciones").value;
+    cantidad = parseInt(cantidad);
 
-    if (fecha == "" || folio == "" || matricula == "" || nombre == "" ||
+    if (fecha == "" || matricula == "" || nombre == "" ||
             correo == "" || clave == "" || descripcion == "" ||
             cantidad == "" || observaciones == "") {
-        alert("Llena todos los campos");
+        alert("Llene todos los campos");
+    } else if (isNaN(cantidad)) {
+        alert("Introduzca un entero en la cantidad");
     } else {
         document.getElementById("form").submit();
     }
