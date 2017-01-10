@@ -47,8 +47,8 @@ public class ControladorLogin extends HttpServlet {
             SQLException {
         // pasar matricula a letras minusculas para hacer la busqueda
         matricula = request.getParameter("matricula").toLowerCase();
-        System.out.println("EXISTE:" + ManejoBasesDatos.existe(usuario));
         usuario   = new Usuario(matricula);
+
         // revisar si el usuario existe
         if (ManejoBasesDatos.existe(usuario)){
             url = urlTipoUsuario(usuario);
