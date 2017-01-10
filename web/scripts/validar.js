@@ -46,10 +46,13 @@ function validarConsReact() {
     var contenido = document.getElementById("contenido").value;
     var localizacion = document.getElementById("localizacion").value;
     var disponibilidad = document.getElementById("disponibilidad").value;
+    disponibilidad = parseInt(disponibilidad);
     
     if (nombre == "" || marca == "" || presentacion == "" || 
             contenido == "" || localizacion == "" || disponibilidad == "") {
         alert("Llena todos los campos");
+    } else if (isNaN(disponibilidad)) {
+        alert("Introduzca un entero en disponibilidad");
     } else {
         document.getElementById("form").submit();
     }
@@ -96,10 +99,13 @@ function validarMaterialEq() {
     var localizacion = document.getElementById("localizacion").value;
     var disponibilidad = document.getElementById("disponibilidad").value;
     var inventario = document.getElementById("inventario").value;
+    disponibilidad = parseInt(disponibilidad);
     
     if (nombre == "" || marca == "" ||  capacidad == "" || localizacion == "" 
             || disponibilidad == "" || inventario == "") {
         alert("Llena todos los campos");
+    } else if (isNaN(disponibilidad)) {
+        alert("Introduzca un entero en disponibilidad");
     } else {
         document.getElementById("form").submit();
     }

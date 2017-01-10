@@ -96,6 +96,29 @@ public class ManejoBasesDatos {
         return existe;
     }
     
+    /*
+    * Revisa si el producto que se quiere agregar ya existe, para no repetirlo.
+    */
+    public static Boolean existeProducto(String nombre, String tabla, String parametro) {
+        Statement statement;
+        try {
+            iniciarConexion();
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM " + tabla +
+                    " WHERE " + parametro + " = '" + nombre + "'");
+
+            while (result.next()) {
+                return true;
+            }
+            statement.close();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+    
+    
     // Se quitó el tipo de la tabla
     public static String buscarTipo(Usuario user) {
         String matricula = user.getMatricula();
@@ -119,6 +142,10 @@ public class ManejoBasesDatos {
     
     public static boolean insertarEquipo(Equipo eq) {
         String query ="";
+        if (existeProducto(eq.getNombre(), "equipo", "Nombre")) {
+            return false;
+        }
+        
         try {
             iniciarConexion();
             
@@ -142,6 +169,10 @@ public class ManejoBasesDatos {
     }
     
     public static boolean insertarMaterial(Material mat) {
+        if (existeProducto(mat.getNombre(), "material", "Nombre")) {
+            return false;
+        }
+        
         String query ="";
         try {
             iniciarConexion();
@@ -165,6 +196,10 @@ public class ManejoBasesDatos {
     
     public static boolean insertarReactivo(Reactivo react) {
         String query ="";
+        if (existeProducto(react.getNombre(), "reactivo", "Nombre")) {
+            return false;
+        }
+        
         try {
             
             iniciarConexion();
@@ -191,6 +226,10 @@ public class ManejoBasesDatos {
     }
     
     public static boolean insertarConsumible(Consumible cons) {
+        if (existeProducto(cons.getNombre(), "consumible", "Nombre")) {
+            return false;
+        }
+        
         String query ="";
         try {
             iniciarConexion();
@@ -320,7 +359,10 @@ public class ManejoBasesDatos {
         return false;
     }
     public static boolean insertarLab(Laboratorio lab) {
-        String query = "";
+        String query ="";
+        if (existeProducto(lab.getNombre(), "laboratorio", "Nombre")) {
+            return false;
+        }
         
         try {
             iniciarConexion();
@@ -339,6 +381,9 @@ public class ManejoBasesDatos {
     }
     public static boolean insertarUsuario(Usuario user) {
         String query = "";
+        if (existeProducto(user.getMatricula(), "usuarios", "Matricula")) {
+            return false;
+        }
         
         try {
             iniciarConexion();
