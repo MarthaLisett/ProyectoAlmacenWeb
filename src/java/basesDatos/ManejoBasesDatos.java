@@ -819,21 +819,18 @@ public class ManejoBasesDatos {
         String query;
         Statement stmt;
         ResultSet result;
-        
+        String name = "admin";
         try {
             iniciarConexion();
-            query = "UPDATE usuarios SET Matricula = '" + contraaux + "' WHERE Nombre = 'admin'";
-            stmt   = connection.createStatement();
-            result = stmt.executeQuery(query);
-            
-            while (result.next()) {
-             return true;   
-            }
+            query = "UPDATE usuarios SET Matricula = ? WHERE Nombre = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, contraaux);
+            preparedStmt.setString (2, name);
+            return preparedStmt.executeUpdate() == 1;
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        return false;
     }
     public static String regresarAdmin(){
         String query;
@@ -845,7 +842,7 @@ public class ManejoBasesDatos {
             query = "SELECT Matricula FROM usuarios where Nombre = 'admin'";
             stmt   = connection.createStatement();
             result = stmt.executeQuery(query);
-            
+
             while (result.next()) {
              return result.getString(1);
             }
