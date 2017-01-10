@@ -17,7 +17,7 @@
             color:#FFFFFF; border-radius: 10px" align="center">Cambia tu Contraseña</h1>
             <form action="ControladorCambioContra">
                 <p style="text-align: center; font-size: 20px; padding-top: 80px; padding-bottom: 20px;">Nueva Contraseña: <input type="password" name="contra"></p>
-                <p style="text-align: center; font-size: 20px; padding-bottom: 40px;">Repite la Contraseña <input type="password" name="contra2"></p>
+                <p style="text-align: center; font-size: 20px; padding-bottom: 40px;">Repite la Contraseña: <input type="password" name="contra2"></p>
                 <div style="text-align: center; margin:0px auto; display:block; padding-bottom: 40px;">
                     <input type="submit" value="Hacer Cambio">
                 </div>   
