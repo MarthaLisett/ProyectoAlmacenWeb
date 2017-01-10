@@ -9,7 +9,7 @@
 function validar() {
 
     var fecha = document.getElementById("fecha").value;
-    var folio = document.getElementById("folio").value;
+    //var folio = document.getElementById("folio").value;
     var matricula = document.getElementById("matricula").value;
     var nombre = document.getElementById("nombre").value;
     var correo = document.getElementById("correo").value;

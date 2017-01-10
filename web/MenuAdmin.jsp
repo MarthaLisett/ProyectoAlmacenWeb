@@ -84,7 +84,7 @@
                 <p>Agregar Laboratorio</p>
                  <input type="hidden" name="destino" value="agregarLab.jsp">
             </form>
-            <form action="ControladorAdmin" name="someForm11">
+            <form action="cambiarContra.jsp" name="someForm11">
                 <a href="#" onclick="document.someForm11.submit();">
                 <div class="thumbnail"><img src="imagenes/Candado.png"/></div>
                 <p>Cambiar Contraseña</p>

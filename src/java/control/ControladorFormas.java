@@ -69,7 +69,7 @@ public class ControladorFormas extends HttpServlet {
         if(ManejoBasesDatos.insertarPedido(forma)){
             url = "/exito.jsp";
         } else {
-            url = "/fallo.jsp";
+            url = "/error.jsp";
         }
         // me voy al url
         RequestDispatcher dispatcher

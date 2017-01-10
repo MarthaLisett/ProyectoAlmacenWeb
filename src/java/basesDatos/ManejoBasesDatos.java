@@ -814,7 +814,47 @@ public class ManejoBasesDatos {
             return "";
         }
     }
-
+    
+    public static boolean cambiarContrasena(String contraaux){
+        String query;
+        Statement stmt;
+        ResultSet result;
+        
+        try {
+            iniciarConexion();
+            query = "UPDATE usuarios SET Matricula = '" + contraaux + "' WHERE Nombre = 'admin'";
+            stmt   = connection.createStatement();
+            result = stmt.executeQuery(query);
+            
+            while (result.next()) {
+             return true;   
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return false;
+    }
+    public static String regresarAdmin(){
+        String query;
+        Statement stmt;
+        ResultSet result;
+        
+        try {
+            iniciarConexion();
+            query = "SELECT Matricula FROM usuarios where Nombre = 'admin'";
+            stmt   = connection.createStatement();
+            result = stmt.executeQuery(query);
+            
+            while (result.next()) {
+             return result.getString(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+        return "";
+    }
 }
 
 
