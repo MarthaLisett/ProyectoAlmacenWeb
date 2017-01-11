@@ -289,12 +289,18 @@ public class ManejoBasesDatos {
             preparedStmt.setString   (5, forma.getDesc());
             preparedStmt.setString   (6, forma.getCap());
             preparedStmt.setString   (7, forma.getMarca());
-            preparedStmt.setInt      (8, Integer.parseInt(forma.getCant()));
+            preparedStmt.setInt      (8, 1);//Integer.parseInt(forma.getCant()));
             preparedStmt.setString   (9, forma.getStatus());
             preparedStmt.setString   (10, forma.getObs());
-            if (preparedStmt.executeUpdate() == 1) {
-                return true;
+            // ciclo para agregar varios productos de manera independiente
+            for (int i = 0; i < Integer.parseInt(forma.getCant() + 1); i++) {   
+                if (i < Integer.parseInt(forma.getCant())) {
+                    if (preparedStmt.executeUpdate() != 1) {
+                        return false;
+                    }
+                }   
             }
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
