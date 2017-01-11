@@ -75,6 +75,8 @@ public class ControladorLogin extends HttpServlet {
     public String urlTipoUsuario(Usuario usuario) {
         matPrimerCaracter = usuario.getMatricula().substring(0,1).toLowerCase();
         String real = ManejoBasesDatos.regresarAdmin();
+        System.out.print("EEEEEEEEEEEEEEEEEEEEEEEEE");
+        System.out.print(usuario.getMatricula());
         if (usuario.getMatricula().equals(real)){
             entra = "admin";
             return "/MenuAdmin.jsp";
