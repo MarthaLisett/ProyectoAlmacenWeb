@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ControladorAdmin extends HttpServlet {
     // variables
     private String     url;
+    private String[][] totales;
     private String[][] pedidos;
     private String[][] prestados;
     private String[]   usuarios;
@@ -38,12 +39,14 @@ public class ControladorAdmin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
+        totales   = ManejoBasesDatos.leerTotales();
         pedidos   = ManejoBasesDatos.leerPedidos();
         prestados = ManejoBasesDatos.leerPrestados();
         usuarios  = ManejoBasesDatos.leerUsuarios();
         destino   = request.getParameter("destino");
         url = "/" + destino;
         
+        request.setAttribute("totales", totales);
         request.setAttribute("prestados", prestados);
         request.setAttribute("usuarios", usuarios);
         request.setAttribute("pedidos", pedidos);

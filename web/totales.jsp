@@ -80,20 +80,33 @@ th, td{
                 <th>Cantidad</th>
                 <th>Status</th>
                 <th>Observaciones</th>
-                <th>Autorizar</th>
-                <th>Cancelar</th>
+                
             </tr>
               <%
-                String[][] pedidos = (String[][])request.getAttribute("pedidos");
+                String[][] pedidos = (String[][])request.getAttribute("totales");
                 
                 for(String[] elements : pedidos) {
                     out.println("<form action=\"ControladorAceptarPedido\">");
                     out.println("<tr>");
-                    for(String innerElements : elements) {
-                        out.print("<td>" + innerElements + "</td>");
+                    for(int i = 0; i < elements.length; i++){
+                         // si no es el ultimo elemento (no hay que imprimier el estado)
+                         if (i != elements.length - 1) {
+                         // si es el primer elemento (por que la matricula es la del color)
+                            if (i == 0) {
+                                // si el ultimo elemento es 1 (roto)
+                                if(elements[elements.length - 1].equals("1")) {
+                                    // imprime el fondo rojo
+                                    out.print("<td bgcolor=\"red\">" + elements[0] + "</td>");
+                                } else {
+                                    // de lo contrario imprimelo normalmente
+                                    out.print("<td>" + elements[0] + "</td>");
+                                }
+                            } else {
+                                // si no es el primero (ni el ultimo) imprime normal 
+                                out.print("<td>" + elements[i] + "</td>");
+                            } 
+                        }
                     }
-                    out.println("<td><button name=\"submit\" id=\"submit\" type=\"submit\" value = \"autorizar\">Autorizar</button></td>");
-                    out.println("<td><button name=\"submit\" id=\"cancel\" type=\"submit\" value=\"cancelar\">Cancelar</button></td>");
                     out.println("</tr>");
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"prestado\">");
@@ -108,6 +121,7 @@ th, td{
                     out.println("<input type=\"hidden\"  name=\"cantidad\" value=\"" +  elements[8]  +  "\">");
                     out.println("<input type=\"hidden\"  name=\"status\" value=\"prestado\">");
                     out.println("<input type=\"hidden\"  name=\"observaciones\" value=\"" +  elements[10]  +  "\">");
+                    out.println("<input type=\"hidden\"  name=\"edo\" value=\"" +  elements[11]  +  "\">");
                     out.println("</form>");
                 }
             %>

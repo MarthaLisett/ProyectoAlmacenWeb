@@ -90,7 +90,7 @@
                 <p>Cambiar Contraseña</p>
                 <input type="hidden" name="destino" value="cambiarContra.jsp">
             </form>
-            <form action="totales.jsp" name="someForm12">
+            <form action="ControladorAdmin" name="someForm12">
                 <a href="#" onclick="document.someForm12.submit();">
                 <div class="thumbnail"><img src="imagenes/Candado.png"/></div>
                 <p>Mostrar Reportes</p>

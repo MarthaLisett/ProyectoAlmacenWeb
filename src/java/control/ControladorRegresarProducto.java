@@ -88,7 +88,7 @@ public class ControladorRegresarProducto extends HttpServlet {
             case "devuelto":
                 if(ManejoBasesDatos.modif(forma, tabla, "suma")) {
                     if(ManejoBasesDatos.eliminarDevueltos(seleccionado)) {
-                        if(ManejoBasesDatos.insertarReporte(forma)) {
+                        if(ManejoBasesDatos.insertarReporte(forma, "devuelto")) {
                             return "/exito.jsp";
                         } else {
                             return "/error.jsp";
@@ -101,7 +101,7 @@ public class ControladorRegresarProducto extends HttpServlet {
                 }
             case "roto":
                 if(ManejoBasesDatos.eliminarDevueltos(seleccionado)) {
-                    if(ManejoBasesDatos.insertarReporte(forma)) {
+                    if(ManejoBasesDatos.insertarReporte(forma, "roto")) {
                         return "/exito.jsp";
                     } else {
                         return "/error.jsp";
