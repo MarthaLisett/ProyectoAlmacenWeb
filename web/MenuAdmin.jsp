@@ -42,6 +42,12 @@
                 <p>Artículos por Regresar</p>
                  <input type="hidden" name="destino" value="porRegresar.jsp">
             </form>
+            <form action="ControladorAdmin" name="someForm12">
+                <a href="#" onclick="document.someForm12.submit();">
+                <div class="thumbnail"><img src="imagenes/Reporte.png"/></div>
+                <p>Mostrar Reportes</p>
+                <input type="hidden" name="destino" value="totales.jsp">
+            </form>
             <form action="ControladorAdmin" name="someForm3">
                 <a href="#" onclick="document.someForm3.submit();">
                 <div class="thumbnail"><img src="imagenes/Usuario.png"/></div>
@@ -89,12 +95,6 @@
                 <div class="thumbnail"><img src="imagenes/Candado.png"/></div>
                 <p>Cambiar Contraseña</p>
                 <input type="hidden" name="destino" value="cambiarContra.jsp">
-            </form>
-            <form action="ControladorAdmin" name="someForm12">
-                <a href="#" onclick="document.someForm12.submit();">
-                <div class="thumbnail"><img src="imagenes/Candado.png"/></div>
-                <p>Mostrar Reportes</p>
-                <input type="hidden" name="destino" value="totales.jsp">
             </form>
             <form action="ControladorLlenado" name="someForm10">
                 <a href="index.html" onclick="document.someForm10.submit();">
