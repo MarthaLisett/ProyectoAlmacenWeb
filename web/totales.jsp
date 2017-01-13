@@ -62,7 +62,6 @@ th, td{
         alert(mensaje2);
     }
 </script>
-
     </head>
     <body>
         <h1>Reporte</h1>
@@ -80,7 +79,6 @@ th, td{
                 <th>Cantidad</th>
                 <th>Status</th>
                 <th>Observaciones</th>
-                
             </tr>
               <%
                 String[][] pedidos = (String[][])request.getAttribute("totales");

@@ -31,6 +31,32 @@
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
         <script src="scripts/validar.js" type="text/javascript"></script>
+        <script>
+            // muestra la lista de productos extraidos de la base de datos
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    var data = xhr.responseText;
+                    if(data.length > 0) {
+                        crearSelectLaboratorios(data);
+                    }
+                }
+            };
+            xhr.open('GET', 'ControladorSelectLabs', true);
+            xhr.send(null);
+
+            function crearSelectLaboratorios(productos) {
+                var nombres = productos.split(' ');
+                for(var i = 0; i < nombres.length - 1; i++) {
+                    node = document.createElement("OPTION");
+                    node.setAttribute("value", nombres[i]);
+                    txt = document.createTextNode(nombres[i]);
+                    node.appendChild(txt);
+                    document.getElementById("localizacion").appendChild(node);
+                }
+            }
+        </script>
+        
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
@@ -66,11 +92,14 @@
                 </label>
             </div>
             <div class="col-3">
-                <label>
+             <label>
                     Localización
-                    <input placeholder="Ubicación del consumible" 
-                           name="localizacion" id="localizacion">
-                </label>
+                   <!-- <input placeholder="Localización del material" 
+                           name="localizacion" id="localizacion"> -->
+                     <select name ="localizacion" id="localizacion">
+                       
+                    </select>
+             </label>
             </div>    
             <div class="col-3">
                 <label>

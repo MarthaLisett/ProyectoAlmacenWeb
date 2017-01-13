@@ -19,6 +19,7 @@
     }
     if(cookieValue.equals("admin")){
     %>
+    
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,7 @@
         <link href="style/styles.css" rel="stylesheet" type="text/css"/>
         <link href="style/switchery.min.css" rel="stylesheet" type="text/css"/>
         <script src="scripts/switchery.min.js" type="text/javascript"></script>
-        <script src="scripts/validar.js" type="text/javascript"></script>
+        <script src="scripts/validar.js" type="text/javascript"></script>        
     </head>
     <body bgcolor="gray">     
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
