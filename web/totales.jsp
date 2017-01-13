@@ -25,7 +25,7 @@ Referencia para el css = https://colorlib.com/wp/html5-and-css3-login-forms/
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Artículos por Entregar</title>
+        <title>Reporte</title>
         <link href="style/tablasFormas.css" rel="stylesheet" type="text/css"/>
         
 <!--
@@ -65,7 +65,7 @@ th, td{
 
     </head>
     <body>
-        <h1>Artículos por Entregar</h1>
+        <h1>Reporte</h1>
         <form action="ControladorAceptarPedido">
         <table class="responstable">
             <tr>
