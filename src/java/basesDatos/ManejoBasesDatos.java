@@ -841,9 +841,9 @@ public class ManejoBasesDatos {
     }
     
     /*
-    *
+    * obtener lista de nombres de un producto
     */
-    public static String obtenerLista (String producto) {
+    public static String obtenerListaNombres (String producto) {
         StringBuilder sb;
         Statement stmt;
         String query;
@@ -864,6 +864,36 @@ public class ManejoBasesDatos {
             return "";
         }
     }
+    
+    /*
+    * obtener lista de nombres de los profesores disponibles
+    */
+    public static String obtenerListaProfesores () {
+        StringBuilder sb;
+        Statement stmt;
+        String query;
+        ResultSet result;
+        try {
+            iniciarConexion();
+            sb     = new StringBuilder();
+            stmt   = connection.createStatement();
+            query  = "SELECT * FROM usuarios WHERE Matricula LIKE 'l%';";
+            result = stmt.executeQuery(query);
+            while (result.next()) {
+                sb.append(result.getString(2));
+                sb.append(" ");
+                sb.append(result.getString(3));
+                sb.append(",");
+            }
+            return sb.toString();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
+        }
+    }
+    
+    
+    
     
     public static boolean cambiarContrasena(String contraaux){
         String query;

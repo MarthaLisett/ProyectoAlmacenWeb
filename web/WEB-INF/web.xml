@@ -68,6 +68,10 @@
         <servlet-name>ControladorCambioContra</servlet-name>
         <servlet-class>control.ControladorCambioContra</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorSelectProfesor</servlet-name>
+        <servlet-class>control.ControladorSelectProfesor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorAdmin</servlet-name>
         <url-pattern>/ControladorAdmin</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>ControladorCambioContra</servlet-name>
         <url-pattern>/ControladorCambioContra</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorSelectProfesor</servlet-name>
+        <url-pattern>/ControladorSelectProfesor</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

@@ -28,14 +28,14 @@
                 if (xhr.readyState === 4) {
                     var data = xhr.responseText;
                     if(data.length > 0) {
-                        crearSelect(data);
+                        crearSelectProdutos(data);
                     }
                 }
             };
             xhr.open('GET', 'ControladorSelectProductos?tipo=material', true);
             xhr.send(null);
 
-            function crearSelect(productos) {
+            function crearSelectProdutos(productos) {
                 var nombres = productos.split(' ');
                 for(var i = 0; i < nombres.length - 1; i++) {
                     node = document.createElement("OPTION");
@@ -47,6 +47,36 @@
             }
         </script>
 
+        <script>
+            // muestra la lista profesores extraidos de la base de datos
+            var xhr2 = new XMLHttpRequest();
+            xhr2.onreadystatechange = function() {
+                if (xhr2.readyState === 4) {
+                    var data = xhr2.responseText;
+                    if(data.length > 0) {
+                        crearSelectProfesores(data);
+                    }
+                }
+            };
+            xhr2.open('GET', 'ControladorSelectProfesor', true);
+            xhr2.send(null);
+
+            function crearSelectProfesores(productos) {
+                var nombres = productos.split(',');
+                alert(nombres);
+                for(var i = 0; i < nombres.length - 1; i++) {
+                    node = document.createElement("OPTION");
+                    node.setAttribute("value", nombres[i]);
+                    txt = document.createTextNode(nombres[i]);
+                    node.appendChild(txt);
+                    document.getElementById("profesor").appendChild(node);
+                }
+            }
+        </script>
+        
+        
+        
+        
     </head>
     <body bgcolor="#848484">
         <h1 style="background-color:#848484; height:50px; padding-top: 3px; 
@@ -113,9 +143,9 @@
                 <label>
                     Profesor
                     <select name="profesor" id="profesor">
-                        <option>Prof1</option>
+                       <!-- <option>Prof1</option>
                         <option>Prof2</option>
-                        <option>Prof3</option>
+                        <option>Prof3</option>-->
                     </select>
                 </label>
             </div>
