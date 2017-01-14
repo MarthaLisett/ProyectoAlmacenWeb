@@ -59,6 +59,13 @@ If you like this solution, you might also want to check out the 1.0 version:
             %>
         </table>
     </form>
+    
+        <form action="ControladorEliminarTodosUsuarios">
+            <div style="text-align: center; margin:0px auto; display:block; padding-bottom: 30px;">
+                <input type="submit" value="Eliminar Todos">
+            </div>   
+        </form>
+        
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
             align="center"><font size="3">Para volver al <b>Menú</b> dar clic 

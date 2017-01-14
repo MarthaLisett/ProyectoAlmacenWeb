@@ -49,17 +49,17 @@
 
         <script>
             // muestra la lista profesores extraidos de la base de datos
-            var xhr2 = new XMLHttpRequest();
-            xhr2.onreadystatechange = function() {
-                if (xhr2.readyState === 4) {
-                    var data = xhr2.responseText;
+            var xhr3 = new XMLHttpRequest();
+            xhr3.onreadystatechange = function() {
+                if (xhr3.readyState === 4) {
+                    var data = xhr3.responseText;
                     if(data.length > 0) {
                         crearSelectProfesores(data);
                     }
                 }
             };
-            xhr2.open('GET', 'ControladorSelectProfesor', true);
-            xhr2.send(null);
+            xhr3.open('GET', 'ControladorSelectProfesor', true);
+            xhr3.send(null);
 
             function crearSelectProfesores(productos) {
                 var nombres = productos.split(',');
@@ -73,9 +73,33 @@
                 }
             }
         </script>
-        
-        
-        
+
+        <script>
+            // muestra la lista de laboratorios extraidos de la base de datos
+            var xhr2 = new XMLHttpRequest();
+            xhr2.onreadystatechange = function() {
+                if (xhr2.readyState === 4) {
+                    var data = xhr2.responseText;
+                    if(data.length > 0) {
+                        crearSelectLabs(data);
+                    }
+                }
+            };
+            xhr2.open('GET', 'ControladorSelectLabs', true);
+            xhr2.send(null);
+
+            function crearSelectLabs(productos) {
+                var nombres = productos.split(',');
+                alert(nombres);
+                for(var i = 0; i < nombres.length - 1; i++) {
+                    node = document.createElement("OPTION");
+                    node.setAttribute("value", nombres[i]);
+                    txt = document.createTextNode(nombres[i]);
+                    node.appendChild(txt);
+                    document.getElementById("laboratorio").appendChild(node);
+                }
+            }
+        </script>   
         
     </head>
     <body bgcolor="#848484">
@@ -127,9 +151,9 @@
                 <label>
                     Laboratorio
                     <select name ="laboratorio" id="laboratorio">
-                        <option>Química Experimental</option>
+                    <!--    <option>Química Experimental</option>
                         <option>Química Orgánica General</option>
-                        <option>Semana i</option>
+                        <option>Semana i</option> -->
                     </select>
                 </label>
             </div>

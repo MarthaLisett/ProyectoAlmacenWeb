@@ -779,6 +779,22 @@ public class ManejoBasesDatos {
         }
     }
     
+    public static boolean eliminarTodosUsuarios() {
+        String query = "";
+        
+        try {
+            iniciarConexion();
+            query = "DELETE FROM usuarios WHERE NOT Nombre = ?";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, "admin");
+            preparedStmt.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
     public static int cantidadRenglones(String[] tablas) throws SQLException {
         int contador = 0;
         for(String tabla : tablas) {
