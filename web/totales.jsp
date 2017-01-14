@@ -125,6 +125,10 @@ th, td{
             %>
         </table>
     </form>
+        <form> 
+            <center>
+<input type='button' onclick='window.print();' value='Imprimir' /></form>
+              </center>
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
             align="center"><font size="3">Para volver al <b>Menú</b> dar clic 
