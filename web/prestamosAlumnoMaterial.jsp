@@ -63,7 +63,6 @@
 
             function crearSelectProfesores(productos) {
                 var nombres = productos.split(',');
-                alert(nombres);
                 for(var i = 0; i < nombres.length - 1; i++) {
                     node = document.createElement("OPTION");
                     node.setAttribute("value", nombres[i]);
@@ -89,8 +88,7 @@
             xhr2.send(null);
 
             function crearSelectLabs(productos) {
-                var nombres = productos.split(',');
-                alert(nombres);
+                var nombres = productos.split(' ');
                 for(var i = 0; i < nombres.length - 1; i++) {
                     node = document.createElement("OPTION");
                     node.setAttribute("value", nombres[i]);
