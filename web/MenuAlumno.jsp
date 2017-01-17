@@ -38,6 +38,14 @@
                 <input type="hidden" name="destino" 
                        value="prestamosAlumnoEquipo.jsp"> 
             </form>
+            <form name="someForm4">
+                <a href="" onclick="document.someForm4.submit();">
+                <div class="thumbnail"><img src="imagenes/Calendario.png"/></div>
+                <p>Pedidos</p>
+                <input type="hidden" name="usuario" 
+                       value="${usuario.getMatricula()}">
+                <input type="hidden">
+            </form>    
             <form name="someForm3">
                 <a href="index.html" onclick="document.someForm3.submit();">
                 <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>

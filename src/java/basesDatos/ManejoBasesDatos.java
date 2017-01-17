@@ -800,8 +800,9 @@ public class ManejoBasesDatos {
         
         try {
             iniciarConexion();
-            query = "DELETE * FROM totales";
+            query = "DELETE FROM totales WHERE NOT Matricula = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.setString (1, "");
             preparedStmt.executeUpdate();
             return true;
         } catch (SQLException ex) {
