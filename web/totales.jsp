@@ -65,6 +65,12 @@ th, td{
     </head>
     <body>
         <h1>Reporte</h1>
+        <form action="ControladorEliminarReporte">
+            <div style=" height: 20px; text-align: center; margin:0px auto; display:block; padding-bottom: 15px;">
+                <input type="submit" value="Vaciar Reporte">
+            </div>   
+        </form>
+        
         <form action="ControladorAceptarPedido">
         <table class="responstable">
             <tr>
@@ -125,7 +131,7 @@ th, td{
             %>
         </table>
     </form>
-        <form> 
+        <form style="padding-bottom: 20px;" > 
             <center>
 <input type='button' onclick='window.print();' value='Imprimir' /></form>
               </center>

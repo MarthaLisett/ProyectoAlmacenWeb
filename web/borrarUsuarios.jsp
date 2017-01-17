@@ -37,8 +37,14 @@ If you like this solution, you might also want to check out the 1.0 version:
     </head>
     <body>
         <h1>Borrar Usuarios</h1>
+        <form action="ControladorEliminarTodosUsuarios">
+            <div style=" height: 20px; text-align: center; margin:0px auto; display:block; padding-bottom: 15px;">
+                <input type="submit" value="Eliminar Todos">
+            </div>   
+        </form>
+        
     <form action="">
-        <table class="responstable">
+        <table class="responstable"> 
             <tr>
                 <th>Matrícula</th>
                 <th>Eliminar</th>
@@ -59,12 +65,6 @@ If you like this solution, you might also want to check out the 1.0 version:
             %>
         </table>
     </form>
-    
-        <form action="ControladorEliminarTodosUsuarios">
-            <div style="text-align: center; margin:0px auto; display:block; padding-bottom: 30px;">
-                <input type="submit" value="Eliminar Todos">
-            </div>   
-        </form>
         
         <p style="background-color:#848484; height:30px; padding-top: 6px; 
             color:#FFFFFF; border-radius: 3px; width: 500px; margin: 0 auto" 
