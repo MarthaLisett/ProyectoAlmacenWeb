@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Pedro/Desktop/ProyectoAlmacenWeb/web/totales.jsp</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/src/java/control/ControladorAdmin.java</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/web/agregarReactivo.jsp</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/web/totales.jsp</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/web/MenuAlumno.jsp</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/src/java/basesDatos/ManejoBasesDatos.java</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/web/WEB-INF/web.xml</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/web/pedidosUsuario.jsp</file>
+            <file>file:/C:/xampp/htdocs/Almacen%20Quimica/ProyectoAlmacenWeb/src/java/control/ControladorPedidos.java</file>
         </group>
     </open-files>
 </project-private>

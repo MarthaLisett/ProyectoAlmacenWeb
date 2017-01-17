@@ -81,10 +81,14 @@
         <servlet-class>control.ControladorEliminarTodosUsuarios</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ControladorPedidos</servlet-name>
+        <servlet-class>control.ControladorPedidos</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ControladorEliminarReporte</servlet-name>
         <servlet-class>control.ControladorEliminarReporte</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>ControladorAdmin</servlet-name>
         <url-pattern>/ControladorAdmin</url-pattern>
@@ -165,10 +169,14 @@
     <servlet-name>ControladorEliminarTodosUsuarios</servlet-name>
         <url-pattern>/ControladorEliminarTodosUsuarios</url-pattern>
     </servlet-mapping>
+    <servlet-name>ControladorPedidos</servlet-name>
+        <url-pattern>/ControladorPedidos</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
     <servlet-name>ControladorEliminarReporte</servlet-name>
         <url-pattern>/ControladorEliminarReporte</url-pattern>
     </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

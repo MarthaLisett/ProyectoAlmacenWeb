@@ -989,6 +989,50 @@ public class ManejoBasesDatos {
         }
         return "";
     }
+    
+        public static String[][] leerPedidosUsuario(String matricula) {
+        //saco el total de registros
+        int cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM totales where matricula = '" + matricula + "'");
+            
+            while (result.next()) {
+                cont++;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //matriz para guardar los registros
+        String[][] reporte = new String[cont][11];
+        cont = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM totales where matricula = '" + matricula + "'");
+            while (result.next()) {
+                //leo los registros y los guardo cada uno en un renglon de la matriz                
+                reporte[cont][0] = result.getString(1);
+                reporte[cont][1] = result.getString(2);
+                reporte[cont][2] = result.getString(3);
+                reporte[cont][3] = result.getString(4);
+                reporte[cont][4] = result.getString(5);
+                reporte[cont][5] = result.getString(6);
+                reporte[cont][6] = result.getString(7);
+                reporte[cont][7] = result.getString(8);
+                reporte[cont][8] = result.getString(9);
+                reporte[cont][9] = result.getString(10);
+                reporte[cont][10] = result.getString(11);
+                cont++;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejoBasesDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //regreso reporte completo
+        return reporte;
+    }
+    
+    
 }
 
 
