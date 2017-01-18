@@ -51,7 +51,15 @@
         <input type="hidden" name="usuario" value="${usuario.getMatricula()}">
         <input type="hidden" name="destino" value="prestamoProfeMaterial.jsp">
     </form>
-
+     <form action="ControladorPedidos" name="someForm6">
+                <a href="#" onclick="document.someForm6.submit();">
+                <div class="thumbnail"><img src="imagenes/Calendario.png"/></div>
+                <p>Pedidos</p>
+                <input type="hidden" name="usuario" 
+                       value="${usuario.getMatricula()}">
+                 <input type="hidden" name="destino" 
+                       value="pedidosUsuario.jsp"> 
+      </form>                    
     <form name="someForm5">
         <a href="index.html" onclick="document.someForm5.submit();">
         <div class="thumbnail"><img src="imagenes/Cancel.png"/></div>
