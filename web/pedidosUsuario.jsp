@@ -9,17 +9,7 @@ Referencia para el css = https://colorlib.com/wp/html5-and-css3-login-forms/
  * 21 Noviembre 2016
  */
 --%>
-<%
-    Cookie[] cookies = request.getCookies();
-    String cookieName = "entra";
-    String cookieValue = "";
-    for (int i=0; i<cookies.length; i++){
-        Cookie cookie = cookies[i];
-        if (cookieName.equals(cookie.getName()))
-        cookieValue = cookie.getValue();
-    }
-    if(cookieValue.equals("admin")){
-    %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

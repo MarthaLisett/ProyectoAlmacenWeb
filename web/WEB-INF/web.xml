@@ -169,6 +169,7 @@
     <servlet-name>ControladorEliminarTodosUsuarios</servlet-name>
         <url-pattern>/ControladorEliminarTodosUsuarios</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
     <servlet-name>ControladorPedidos</servlet-name>
         <url-pattern>/ControladorPedidos</url-pattern>
     </servlet-mapping>
