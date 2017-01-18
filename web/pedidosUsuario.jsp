@@ -60,8 +60,9 @@ th, td{
                     for(String innerElements : elements) {
                         out.print("<td>" + innerElements + "</td>");
                     }
-                   /*
                     out.println("</tr>");
+                    out.println("</form>");
+                    
                     out.println("<input type=\"hidden\"  name=\"matricula\" value=\"" +  elements[0]  + "\">");
                     out.println("<input type=\"hidden\"  name=\"tipo\" value=\"prestado\">");
                     out.println("<input type=\"hidden\"  name=\"descripcion\" value=\"" +  elements[5]  + "\">");
@@ -75,9 +76,9 @@ th, td{
                     out.println("<input type=\"hidden\"  name=\"cantidad\" value=\"" +  elements[8]  +  "\">");
                     out.println("<input type=\"hidden\"  name=\"status\" value=\"prestado\">");
                     out.println("<input type=\"hidden\"  name=\"observaciones\" value=\"" +  elements[10]  +  "\">");
-                    out.println("</form>");
+                   
                 }
-*/
+
             %>
         </table>
     </form>
@@ -87,6 +88,3 @@ th, td{
             en el botón <b><i>Regresar</i></b> del Navegador</font></p>
     </body>
 </html>
-<%
-    }
-%>

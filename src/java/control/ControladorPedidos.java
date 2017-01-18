@@ -39,7 +39,7 @@ public class ControladorPedidos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        matricula   = request.getParameter("matricula");
+        matricula   = request.getParameter("usuario");
         destino   = request.getParameter("destino");
         pedidos   = ManejoBasesDatos.leerPedidosUsuario(matricula);
         url = "/" + destino;
